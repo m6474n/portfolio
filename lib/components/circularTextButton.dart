@@ -1,23 +1,12 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-class CircularTextButton extends StatefulWidget {
-  final String text;
-  final double size;
-  final Widget centerChild; // Add a center child widget
-
-  const CircularTextButton({
-    super.key,
-    required this.text,
-    required this.size,
-    required this.centerChild, // Initialize the center child
-  });
-
+class RotatingContainer extends StatefulWidget {
   @override
-  _CircularTextButtonState createState() => _CircularTextButtonState();
+  _RotatingContainerState createState() => _RotatingContainerState();
 }
 
-class _CircularTextButtonState extends State<CircularTextButton>
+class _RotatingContainerState extends State<RotatingContainer>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
@@ -25,7 +14,7 @@ class _CircularTextButtonState extends State<CircularTextButton>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(seconds: 10),
+      duration: const Duration(seconds: 5),
       vsync: this,
     )..repeat();
   }
@@ -39,6 +28,9 @@ class _CircularTextButtonState extends State<CircularTextButton>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Rotating Container with Fixed Center'),
+      ),
       body: Center(
         child: Stack(
           alignment: Alignment.center,
@@ -48,58 +40,25 @@ class _CircularTextButtonState extends State<CircularTextButton>
               builder: (context, child) {
                 return Transform.rotate(
                   angle: _controller.value * 2 * pi,
-                  child: CustomPaint(
-                    size: Size(widget.size, widget.size),
-                    painter: CircularTextPainter(text: widget.text),
+                  child: Container(
+                    width: 200,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(100),
+                    ),
                   ),
                 );
               },
             ),
-            widget.centerChild, // Add the center child widget here
+            // Fixed child in the center
+            Text(
+              'Fixed',
+              style: TextStyle(fontSize: 24, color: Colors.white),
+            ),
           ],
         ),
       ),
     );
-  }
-}
-
-class CircularTextPainter extends CustomPainter {
-  final String text;
-  CircularTextPainter({required this.text});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final radius = size.width / 2;
-    final center = Offset(radius, radius);
-    final textStyle = TextStyle(color: Colors.black, fontSize: 16);
-
-    for (int i = 0; i < text.length; i++) {
-      final angle = (i / text.length) * 2 * pi;
-      final offset = Offset(
-        radius * cos(angle) + center.dx,
-        radius * sin(angle) + center.dy,
-      );
-
-      final textPainter = TextPainter(
-        text: TextSpan(text: text[i], style: textStyle),
-        textDirection: TextDirection.ltr,
-      )..layout();
-
-      final textOffset = Offset(
-        offset.dx - textPainter.width / 2,
-        offset.dy - textPainter.height / 2,
-      );
-
-      canvas.save();
-      canvas.translate(textOffset.dx, textOffset.dy);
-      canvas.rotate(angle + pi / 2);
-      textPainter.paint(canvas, Offset.zero);
-      canvas.restore();
-    }
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
   }
 }

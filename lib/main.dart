@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio/components/circularTextButton.dart';
 import 'package:portfolio/utility/appsettings.dart';
+import 'package:portfolio/utility/responsiveness/desktop_view.dart';
+import 'package:portfolio/utility/responsiveness/mobile_view.dart';
+import 'package:portfolio/utility/responsiveness/responsive_layout.dart';
 import 'package:portfolio/view/home.dart';
 
 void main() {
@@ -40,7 +43,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  Home()
+      // home: Home(),
+      home: const ResponsiveLayout(mobileView: MobileView(), desktopView: DesktopView())
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:portfolio/components/mask.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 import 'package:portfolio/utility/appsettings.dart';
 
@@ -20,6 +21,7 @@ class CustomRoundedButton extends StatefulWidget {
 
 class _CustomRoundedButtonState extends State<CustomRoundedButton> {
   Color inactiveColor = AppSettings.bgColor;
+  bool isHover = false;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class _CustomRoundedButtonState extends State<CustomRoundedButton> {
           onTap: widget.onTap,
           onHover: (val) {
             setState(() {
+              isHover = val;
               inactiveColor = val ? AppSettings.primaryColor : AppSettings.bgColor;
             });
             cont.handleHover(val);
@@ -38,8 +41,9 @@ class _CustomRoundedButtonState extends State<CustomRoundedButton> {
             duration: Duration(milliseconds: 200), // Duration of the animation
             padding: EdgeInsets.symmetric(horizontal: 18, vertical: 12),
             decoration: BoxDecoration(
-              border: Border.all(width: 1, color: AppSettings.primaryColor),
-              color: inactiveColor,
+              border: Border.all(width: 1, color:isHover? Colors.transparent: AppSettings.grad2),
+              gradient: isHover ? AppSettings.primaryGradient : null,
+              // color: inactiveColor,
               borderRadius: BorderRadius.circular(36),
             ),
             child: Center(
@@ -47,23 +51,36 @@ class _CustomRoundedButtonState extends State<CustomRoundedButton> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(
+              !isHover ?     CustomMask(
+                child: Icon(
+                      Icons.email_outlined,
+                      color: Colors.white
+,                      size: 32,
+                    ),
+              ): Icon(
                     Icons.email_outlined,
-                    color: inactiveColor != AppSettings.bgColor
-                        ? Colors.black
-                        : AppSettings.primaryColor,
+                    color: Colors.white,
+                    // color: inactiveColor != AppSettings.bgColor
+                    //     ? Colors.black
+                    //     : AppSettings.primaryColor,
                     size: 32,
                   ),
                   SizedBox(
                     width: 12,
                   ),
-                  Text(
+                !isHover?  CustomMask(
+                  child: Text(
+                      widget.label,
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.white
+                      ),
+                    ),
+                ): Text(
                     widget.label,
                     style: TextStyle(
                       fontSize: 22,
-                      color: inactiveColor != AppSettings.bgColor
-                          ? Colors.black
-                          : AppSettings.primaryColor,
+                      color: AppSettings.whiteColor,
                     ),
                   ),
                 ],

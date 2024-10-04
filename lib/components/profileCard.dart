@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:portfolio/components/CustomRoundedButton.dart';
+import 'package:portfolio/components/mask.dart';
 import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 import 'package:portfolio/utility/appsettings.dart';
@@ -143,10 +144,12 @@ class ProfileCard extends StatelessWidget {
                         ? 0.5
                         : 0.0, // Rotate 180 degrees on hover
 
-                    child: Icon(
-                      FontAwesomeIcons.gear,
-                      color: AppSettings.primaryColor,
-                      size: 32,
+                    child: CustomMask(
+                      child: Icon(
+                        FontAwesomeIcons.gear,
+                        color: AppSettings.whiteColor,
+                        size: 32,
+                      ),
                     ),
                   ),
                 ),
