@@ -20,7 +20,7 @@ class _HeroSectionState extends State<HeroSection> {
     super.initState();
     // Trigger the animation after the widget is built
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(Duration(milliseconds: 600), () {
+      Future.delayed(Duration(milliseconds: 100), () {
         setState(() {
           _opacity = 1.0;
         });

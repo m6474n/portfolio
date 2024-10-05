@@ -91,7 +91,7 @@ class ReusableExperienceCard extends StatelessWidget {
                       role??"",
                     style: TextStyle(
                         fontSize: 28,
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w200,
                         color: AppSettings.whiteColor),
                   ),
                   Text(

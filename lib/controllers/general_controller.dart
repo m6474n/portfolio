@@ -6,6 +6,7 @@ import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/view/sections/about_section.dart';
 import 'package:portfolio/view/sections/hero_section.dart';
 import 'package:portfolio/view/sections/resume_section.dart';
+import 'package:portfolio/view/sections/service_section.dart';
 
 class GeneralController extends GetxController {
   final PageController pageController = PageController();
@@ -15,6 +16,7 @@ class GeneralController extends GetxController {
     const HeroSection(),
     const AboutSection(),
     const ResumeSection(),
+    const ServiceSection(),
   ];
   List<IconData> icons = [
     HugeIcons.strokeRoundedHome01,

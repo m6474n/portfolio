@@ -42,7 +42,7 @@ class ExperienceController extends GetxController{
 
 List<Map<String,dynamic>> education = [
   {
-    'time': 'Oct 2019 - August 2023',
+    'time': 'Sep 2019 - Aug 2023',
     'experience' : [
       {
         'role': 'BS Hons. Information Technology',
@@ -54,7 +54,7 @@ List<Map<String,dynamic>> education = [
     ]
   },
   {
-    'time': 'Oct 2016 - August 2019',
+    'time': 'Aug 2016 - Jul 2019',
     'experience' : [
        {
         'role': 'DAE Instrumentation Technology',
