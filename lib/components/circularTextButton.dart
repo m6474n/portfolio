@@ -1,5 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
+import 'package:portfolio/utility/appsettings.dart';
 
 class RotatingContainer extends StatefulWidget {
   @override
@@ -14,7 +16,7 @@ class _RotatingContainerState extends State<RotatingContainer>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(seconds: 5),
+      duration: const Duration(seconds: 30),
       vsync: this,
     )..repeat();
   }
@@ -25,13 +27,16 @@ class _RotatingContainerState extends State<RotatingContainer>
     super.dispose();
   }
 
+  bool isHover = false;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Rotating Container with Fixed Center'),
-      ),
-      body: Center(
+    return MouseRegion(
+      onEnter: (_) => _onHover(true),
+      onExit: (_) => _onHover(false),
+      child: Container(
+        height: 150,
+        width: 150,
         child: Stack(
           alignment: Alignment.center,
           children: [
@@ -41,24 +46,37 @@ class _RotatingContainerState extends State<RotatingContainer>
                 return Transform.rotate(
                   angle: _controller.value * 2 * pi,
                   child: Container(
-                    width: 200,
-                    height: 200,
                     decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(100),
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/round-text.png')),
+
+                      // borderRadius: BorderRadius.circular(100),
                     ),
                   ),
                 );
               },
             ),
             // Fixed child in the center
-            Text(
-              'Fixed',
-              style: TextStyle(fontSize: 24, color: Colors.white),
-            ),
+            Icon(
+              HugeIcons.strokeRoundedArrowDown02,
+              size: 42,
+              color:
+                  isHover ? AppSettings.primaryColor : AppSettings.borderColor,
+            )
           ],
         ),
       ),
     );
+  }
+
+  void _onHover(bool hover) {
+    setState(() {
+      isHover = hover;
+      if (isHover) {
+        _controller.stop();
+      } else {
+        _controller.repeat();
+      }
+    });
   }
 }

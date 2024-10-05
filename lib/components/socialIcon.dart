@@ -6,13 +6,19 @@ import 'package:url_launcher/url_launcher.dart';
 class SocialIcon extends StatefulWidget {
   final IconData icon;
   final String link;
- 
-  const SocialIcon({super.key, required this.icon, required this.link, });
+
+  const SocialIcon({
+    super.key,
+    required this.icon,
+    required this.link,
+  });
 
   @override
   State<SocialIcon> createState() => _SocialIconState();
 }
+
 Color inactiveColor = AppSettings.borderColor;
+
 class _SocialIconState extends State<SocialIcon> {
   bool isHover = false;
   @override
@@ -20,21 +26,12 @@ class _SocialIconState extends State<SocialIcon> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
-        onHover: (val){
+        onHover: (val) {
           isHover = val;
-         val? setState(() {
-                    inactiveColor = AppSettings.grad2;
-      
-          }):setState(() {
-
-            inactiveColor = AppSettings.borderColor;
-          });
-          ;
-        }
-      ,
-        onTap: (){
+          setState(() {});
+        },
+        onTap: () {
           launchUrl(Uri.parse(widget.link));
-          print(widget.link);
         },
         child: AnimatedContainer(
           duration: Duration(milliseconds: 200),
@@ -46,7 +43,17 @@ class _SocialIconState extends State<SocialIcon> {
                 color: inactiveColor,
               ),
               borderRadius: BorderRadius.circular(50)),
-          child: Center(child: isHover ? CustomMask(child: Icon(widget.icon, color: Colors.white,)):Icon(widget.icon, color: inactiveColor,)),
+          child: Center(
+              child: isHover
+                  ? CustomMask(
+                      child: Icon(
+                      widget.icon,
+                      color: Colors.white,
+                    ))
+                  : Icon(
+                      widget.icon,
+                      color: inactiveColor,
+                    )),
         ),
       ),
     );

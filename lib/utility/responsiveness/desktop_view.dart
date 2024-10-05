@@ -28,26 +28,7 @@ class DesktopView extends StatelessWidget {
           // Web View
           Expanded(
               flex: 3,
-              // child: Padding(
-              //   padding: const EdgeInsets.only(right: 20.0),
-              //   child: SingleChildScrollView(
-              //     child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.start,
-              //       crossAxisAlignment: CrossAxisAlignment.start,
-              //       children: [
-              //         SizedBox(
-              //           height: 42,
-              //         ),
-              //         // Hero Section.
-              //         HeroSection()
-                     
-              //       ],
-              //     ),
-              //   ),
-              // )
               child: Home(),
-              
-              
               ), SizedBox(width: 120,child: Center(child: Container(
                 height: 350,
                 child: FloatingNavbar())),)
