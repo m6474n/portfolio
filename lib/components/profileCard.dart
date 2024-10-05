@@ -33,18 +33,21 @@ class ProfileCard extends StatelessWidget {
                       Row(
                         children: [
                           Expanded(
+                            flex: 1,
                               child: Text("Mosen",
                                   style: TextStyle(
                                       color: AppSettings.whiteColor,
                                       fontWeight: FontWeight.w800,
+                                    
                                       fontSize: 38))),
                           Expanded(
+                            flex: 1,
                               child: Text(
                             "Flutter Developer / \nFull Stack Developer",
                             style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w300,
-                                color: AppSettings.whiteColor),
+                                color: AppSettings.whiteColor, letterSpacing: 2),
                             textAlign: TextAlign.end,
                           ))
                         ],
@@ -97,8 +100,8 @@ class ProfileCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           SocialIcon(
-                            icon: FontAwesomeIcons.facebook,
-                            link: "https://www.facebook.com/m.mohsin03",
+                            icon: FontAwesomeIcons.github,
+                            link: "https://github.com/m6474n",
                           ),
                           SocialIcon(
                             icon: FontAwesomeIcons.instagram,

@@ -35,12 +35,15 @@ class _RotatingContainerState extends State<RotatingContainer>
       onEnter: (_) => _onHover(true),
       onExit: (_) => _onHover(false),
       child: Container(
-        height: 150,
-        width: 150,
+        decoration: BoxDecoration(border: Border.all(width: 1,color: AppSettings.borderColor), borderRadius: BorderRadius.circular(500)),
+        height: 160,
+        width: 160,
+        padding: EdgeInsets.all(12),
         child: Stack(
           alignment: Alignment.center,
           children: [
             AnimatedBuilder(
+            
               animation: _controller,
               builder: (context, child) {
                 return Transform.rotate(

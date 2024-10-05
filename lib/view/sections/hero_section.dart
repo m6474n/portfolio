@@ -5,15 +5,38 @@ import 'package:portfolio/components/outlineButton.dart';
 import 'package:portfolio/test.dart';
 import 'package:portfolio/utility/appsettings.dart';
 
-class HeroSection extends StatelessWidget {
+class HeroSection extends StatefulWidget {
   const HeroSection({super.key});
+
+  @override
+  State<HeroSection> createState() => _HeroSectionState();
+}
+
+class _HeroSectionState extends State<HeroSection> {
+   double _opacity = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+    // Trigger the animation after the widget is built
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(Duration(milliseconds: 600), () {
+        setState(() {
+          _opacity = 1.0;
+        });
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return Container(
-      child: Column(
+    return AnimatedOpacity(
+      opacity: _opacity,
+      duration: Duration(seconds: 1), // Duration of the fade-in animation
+      curve: Curves.easeInOut, // Curve for the animation
+      child:Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
