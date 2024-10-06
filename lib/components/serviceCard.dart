@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:portfolio/components/mask.dart';
 import 'package:portfolio/components/outlineButton.dart';
@@ -49,7 +49,7 @@ class _ServiceCardState extends State<ServiceCard> {
                Icon(widget.icon, size: 42,color: AppSettings.primaryColor),
                  ],
                ),
-                SizedBox(height: 12,),
+                SizedBox(height: 6,),
                  Text(
                  widget.description,
                   style: TextStyle(

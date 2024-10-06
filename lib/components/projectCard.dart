@@ -5,7 +5,14 @@ import 'package:portfolio/components/outlineButton.dart';
 import 'package:portfolio/utility/appsettings.dart';
 
 class ProjectCard extends StatefulWidget {
-  const ProjectCard({super.key});
+  final String title, description, image;
+  final List<String> tech;
+  const ProjectCard(
+      {super.key,
+      required this.title,
+      required this.description,
+      required this.image,
+      required this.tech});
 
   @override
   State<ProjectCard> createState() => _ProjectCardState();
@@ -16,21 +23,19 @@ class _ProjectCardState extends State<ProjectCard> {
   bool showContent = false;
   @override
   Widget build(BuildContext context) {
-      double height = MediaQuery.of(context).size.height;
+    double height = MediaQuery.of(context).size.height;
 
     return MouseRegion(
       onEnter: (_) => onHover(true),
       onExit: (_) => onHover(false),
       child: Container(
-       height: height,
+        height: height,
         width: 500,
         decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage(
-                  '../../assets/images/projects/portfolio1.jpg'),
-              fit: BoxFit.cover),
-          border: Border.all(width: 1, color: AppSettings.borderColor),
-          borderRadius: BorderRadius.circular(32)),
+            image: DecorationImage(
+                image: AssetImage(widget.image), fit: BoxFit.cover),
+            border: Border.all(width: 1, color: AppSettings.borderColor),
+            borderRadius: BorderRadius.circular(32)),
         child: Stack(
           children: [
             Align(
@@ -45,28 +50,56 @@ class _ProjectCardState extends State<ProjectCard> {
                       height: isHover ? height * 0.235 : 0,
                       width: 500,
                       decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.23), borderRadius: BorderRadius.circular(32)),
+                          color: Colors.black.withOpacity(0.6),
+                          borderRadius: BorderRadius.circular(32)),
                       child: Padding(
-                        padding: EdgeInsets.all(24),
-                        child: showContent? SingleChildScrollView( // Wrap the Column with SingleChildScrollView
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('DreamHome Finder', style: TextStyle(fontSize: 32, fontWeight: FontWeight.w300, color: AppSettings.whiteColor),),
-                              SizedBox(height: 12,),
-                              Text('DreamHome Finder is an innovative real estate platform designed to simplify the home buying and selling process.', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w200, color: AppSettings.whiteColor, letterSpacing: 2),),
-                              SizedBox(height: 12,),
-                              Row(
-                                children: [
-                                  CustomOutlineButton(
-                                      title: "Figma", onTap: () {})
-                                ],
-                              ),
-                            ],
-                          ),
-                        ):Container()
-                      )),
+                          padding: EdgeInsets.all(24),
+                          child: showContent
+                              ? SingleChildScrollView(
+                                  // Wrap the Column with SingleChildScrollView
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        widget.title,
+                                        style: TextStyle(
+                                            fontSize: 32,
+                                            fontWeight: FontWeight.w300,
+                                            color: AppSettings.whiteColor),
+                                      ),
+                                      SizedBox(
+                                        height: 12,
+                                      ),
+                                      Text(
+                                        widget.description,
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w200,
+                                            color: AppSettings.whiteColor,
+                                            letterSpacing: 2),
+                                      ),
+                                      SizedBox(
+                                        height: 12,
+                                      ),
+                                      Wrap(
+                                        direction: Axis.horizontal,
+                                        children: List.generate(
+                                            widget.tech.length, (index) {
+                                          return Padding(
+                                            padding: EdgeInsets.only(
+                                                right: 8, bottom: 8),
+                                            child: CustomOutlineButton(
+                                                title: widget.tech[index],
+                                                onTap: () {}),
+                                          );
+                                        }),
+                                      )
+                                    ],
+                                  ),
+                                )
+                              : Container())),
                 ),
               ),
             ),
@@ -79,18 +112,17 @@ class _ProjectCardState extends State<ProjectCard> {
   onHover(hover) {
     setState(() {
       isHover = hover;
-      if(isHover){
-        Future.delayed(Duration(milliseconds: 400,),(){
+      if (isHover) {
+        Future.delayed(
+            Duration(
+              milliseconds: 400,
+            ), () {
           showContent = true;
-          setState(() {
-            
-          });
+          setState(() {});
         });
-      }else{
-        setState(() {
-          
-        });
-        showContent  = false;
+      } else {
+        setState(() {});
+        showContent = false;
       }
     });
   }

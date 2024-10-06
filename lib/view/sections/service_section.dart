@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio/components/outlineButton.dart';
 import 'package:portfolio/components/serviceCard.dart';

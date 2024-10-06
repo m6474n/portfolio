@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:portfolio/components/outlineButton.dart';
 import 'package:portfolio/components/projectCard.dart';
@@ -65,19 +65,38 @@ class _PortfolioSectionState extends State<PortfolioSection> {
                   height: 20,
                 ),
                 Container(
-                  height: height *0.635,
-                  width:width ,
+                  height: height * 0.635,
+                  width: width,
                   child: Row(
                     children: [
-                      Expanded(child: ProjectCard()),
+                      Expanded(
+                          child: ProjectCard(
+                        title: cont.projects[0]['title'],
+                        description: cont.projects[0]['description'],
+                        tech: cont.projects[0]['tech'],
+                        image: cont.projects[0]['image'],
+                      )),
                       Padding(
-                        padding: const EdgeInsets.only(left:18.0),
+                        padding: const EdgeInsets.only(left: 18.0),
                         child: Column(
                           children: [
-                            Expanded(child: ProjectCard()),
-                            SizedBox(height: 18,),
-                            Expanded(child: ProjectCard()),
-                          ],
+                             Expanded(
+                          child: ProjectCard(
+                        title: cont.projects[1]['title'],
+                        description: cont.projects[1]['description'],
+                        tech: cont.projects[1]['tech'],
+                        image: cont.projects[1]['image'],
+                      )),
+                            SizedBox(
+                              height: 18,
+                            ),
+    Expanded(
+                          child: ProjectCard(
+                        title: cont.projects[2]['title'],
+                        description: cont.projects[2]['description'],
+                        tech: cont.projects[2]['tech'],
+                        image: cont.projects[2]['image'],
+                      )),                          ],
                         ),
                       )
                     ],

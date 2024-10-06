@@ -36,9 +36,9 @@ class _CustomRoundedButtonState extends State<CustomRoundedButton> {
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: isHover ? Colors.transparent : AppSettings.primaryColor,
+              color: !isHover ? Colors.transparent : AppSettings.primaryColor,
             ),
-            color: isHover ? AppSettings.primaryColor : null,
+            color: !isHover ? AppSettings.primaryColor : null,
             borderRadius: BorderRadius.circular(36),
           ),
           child: Center(
@@ -48,7 +48,7 @@ class _CustomRoundedButtonState extends State<CustomRoundedButton> {
               children: [
               Icon(
                   Icons.email_outlined,
-                  color: isHover? AppSettings.whiteColor : AppSettings.primaryColor,
+                  color: !isHover? AppSettings.whiteColor : AppSettings.primaryColor,
                   size: 32,
                 ),
                 SizedBox(width: 12),
@@ -56,7 +56,7 @@ class _CustomRoundedButtonState extends State<CustomRoundedButton> {
                   widget.label,
                   style: TextStyle(
                     fontSize: 22,
- color: isHover? AppSettings.whiteColor : AppSettings.primaryColor,                  ),
+ color: !isHover? AppSettings.whiteColor : AppSettings.primaryColor,                  ),
                 )   
                 
               ],

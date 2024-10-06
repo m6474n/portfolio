@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -132,31 +134,59 @@ class ProfileCard extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
+            
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(52),
+                  child: BackdropFilter(
+                    
+                    filter: ImageFilter.blur(sigmaX: 15,sigmaY: 15),
+                    child: AnimatedContainer(duration: Duration(milliseconds: 700),
+                     height:cont.showSettings? height * 0.8 : 0,
+                     width: 350,
+                      decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(52),
+                      color: Colors.black54,
+                      border: Border.all(width: 1,color: AppSettings.borderColor)
+                        ),
+                    
+                    child: Column(children: [],),),
+                  ),
+                ),
+              ),
+                Container(
                 height: 40,
                 width: 40,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(80),
                     color: AppSettings.bgColor),
                 child: MouseRegion(
                   onEnter: (_) => cont.onSettingHover(true),
                   onExit: (_) => cont.onSettingHover(false),
-                  child: AnimatedRotation(
-                    duration: Duration(milliseconds: 1200),
-                    turns: cont.isSettingHover
-                        ? 0.5
-                        : 0.0, // Rotate 180 degrees on hover
-
-                  
-                      child: Icon(
-                        FontAwesomeIcons.gear,
-                        color: AppSettings.primaryColor,
-                        size: 32,
-                      ),
+                  child: GestureDetector(
+                    onTap: (){
+cont.handleSetting();
+                    },
+                    child: AnimatedRotation(
+                      duration: Duration(milliseconds: 1200),
+                      turns: cont.isSettingHover
+                          ? 0.5
+                          : 0.0, // Rotate 180 degrees on hover
                     
+                    
+                        child: Icon(
+                          FontAwesomeIcons.gear,
+                          color: AppSettings.primaryColor,
+                          size: 32,
+                        ),
+                      
+                    ),
                   ),
                 ),
-              )
+              ),
             ],
           );
         });

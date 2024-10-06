@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:portfolio/components/animatedCounter.dart';
 import 'package:portfolio/components/circularTextButton.dart';
 import 'package:portfolio/components/outlineButton.dart';
+import 'package:portfolio/controllers/general_controller.dart';
 import 'package:portfolio/test.dart';
 import 'package:portfolio/utility/appsettings.dart';
 
@@ -27,7 +29,7 @@ class _HeroSectionState extends State<HeroSection> {
       });
     });
   }
-
+  var cont = Get.find<GeneralController>();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -108,7 +110,9 @@ class _HeroSectionState extends State<HeroSection> {
                       endValue: 50,
                     )),Spacer(), Container(
                      width: 200,
-                      child:Center(child: RotatingContainer()))
+                      child:Center(child: RotatingContainer(onTap: (){
+                        cont.changePage(5);
+                      },)))
               ],
             ),
           )

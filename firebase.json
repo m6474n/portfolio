@@ -1,0 +1,49 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "mosen-portfolio",
+          "appId": "1:1092315055213:android:ac50b6fb563ed6d411eb64",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "mosen-portfolio",
+          "appId": "1:1092315055213:ios:bc1b76b7ee88d81611eb64",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "mosen-portfolio",
+          "appId": "1:1092315055213:ios:bc1b76b7ee88d81611eb64",
+          "uploadDebugSymbols": false,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "mosen-portfolio",
+          "configurations": {
+            "android": "1:1092315055213:android:ac50b6fb563ed6d411eb64",
+            "ios": "1:1092315055213:ios:bc1b76b7ee88d81611eb64",
+            "macos": "1:1092315055213:ios:bc1b76b7ee88d81611eb64",
+            "web": "1:1092315055213:web:bbd8bc45c14b294511eb64",
+            "windows": "1:1092315055213:web:6043352dc8e4554e11eb64"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

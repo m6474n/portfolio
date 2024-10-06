@@ -29,9 +29,12 @@ class DesktopView extends StatelessWidget {
           Expanded(
               flex: 3,
               child: Home(),
-              ), SizedBox(width: 120,child: Center(child: Container(
+              ), SizedBox(width: 80,child: Center(child: Container(
                 height: 350,
-                child: FloatingNavbar())),)
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 30.0),
+                  child: FloatingNavbar(),
+                ))),)
         ],
               ),
             ));

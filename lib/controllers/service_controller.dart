@@ -7,7 +7,7 @@ class ServiceController extends GetxController {
       'icon': HugeIcons.strokeRoundedCompass01 ,
       'title': "Digital Experience Design",
       'description':
-          "Crafting visually stunning and user-friendly websites that not only captivate your audience but also drive engagement. Our design philosophy blends aesthetics with functionality to deliver seamless digital experiences",
+          "Crafting visually stunning and user-friendly websites that not only captivate your audience but also drive engagement.",
       'tech': [
         'WordPress',
         'Elementor',
@@ -22,7 +22,7 @@ class ServiceController extends GetxController {
       'icon': HugeIcons.strokeRoundedWebDesign02 ,
       'title': "Custom Software Solutions",
       'description':
-          "Elevate your business with our custom software solutions, designed to tackle unique challenges and streamline processes. Our expert developers deliver scalable, secure software that drives growth and innovation.",
+          "Elevate your business with our custom software solutions, designed to tackle unique challenges and streamline processes.",
       'tech': [
         'Node JS',
         'React JS',

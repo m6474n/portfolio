@@ -17,8 +17,9 @@ class SkillController extends GetxController {
     {'title': 'Flutter', 'icon': '../../assets/images/skills/flutter.svg'},
     {'title': 'Firebase', 'icon': '../../assets/images/skills/firebase.svg'},
     {'title': 'Material UI', 'icon': '../../assets/images/skills/material.svg'},
+    {'title': 'Figma', 'icon': '../../assets/images/skills/figma.svg'},
+
     {'title': 'Photoshop', 'icon': '../../assets/images/skills/photoshop.svg'},
     {'title': 'Illustrator', 'icon': '../../assets/images/skills/illustrator.svg'},
-    {'title': 'Figma', 'icon': '../../assets/images/skills/figma.svg'},
   ];
 }

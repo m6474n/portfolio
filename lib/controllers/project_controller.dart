@@ -4,8 +4,8 @@ class ProjectController  extends GetxController{
 
   List<Map<String,dynamic>> projects = [
     {
-      'title': 'DreamHome Finder',
-      'description': 'DreamHome Finder is an innovative real estate platform designed to simplify the home buying and selling process.',
+      'title': 'Project 1',
+      'description': 'Project 1 is an innovative real estate platform designed to simplify the home buying and selling process.',
       'image': '../../assets/images/projects/portfolio1.jpg',
       'tech':[
         'Figma',
@@ -14,8 +14,8 @@ class ProjectController  extends GetxController{
       ]
     },
      {
-      'title': 'DreamHome Finder',
-      'description': 'DreamHome Finder is an innovative real estate platform designed to simplify the home buying and selling process.',
+      'title': 'Project 2',
+      'description': 'Project 2 is an innovative real estate platform designed to simplify the home buying and selling process.',
       'image': '../../assets/images/projects/portfolio3.jpg',
       'tech':[
         'Figma',
@@ -24,8 +24,8 @@ class ProjectController  extends GetxController{
         'ShadCN',
       ]
     }, {
-      'title': 'DreamHome Finder',
-      'description': 'DreamHome Finder is an innovative real estate platform designed to simplify the home buying and selling process.',
+      'title': 'Project 3',
+      'description': 'Project 3 is an innovative real estate platform designed to simplify the home buying and selling process.',
       'image': '../../assets/images/projects/portfolio5.jpg',
       'tech':[
         'Figma',

@@ -16,6 +16,10 @@ class GeneralController extends GetxController {
 
   bool showSettings = false;
 
+handleSetting(){
+  showSettings  = !showSettings;
+  update();
+}
 
   final PageController pageController = PageController();
   int currentIndex = 0;
