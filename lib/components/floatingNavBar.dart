@@ -46,12 +46,12 @@ final int index;
     final gencont = Get.find<GeneralController>();
     return gencont.currentIndex == index ? Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: CustomMask(
+     
         child: Icon(
           icon,
           size: 24,
-          color: AppSettings.whiteColor,
-        ),
+          color: AppSettings.primaryColor,
+        
       ),
     ):GestureDetector(
         onTap: onTap,

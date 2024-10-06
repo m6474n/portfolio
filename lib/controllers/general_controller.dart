@@ -4,11 +4,19 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:portfolio/components/floatingNavBar.dart';
 import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/view/sections/about_section.dart';
+import 'package:portfolio/view/sections/contact_section.dart';
 import 'package:portfolio/view/sections/hero_section.dart';
+import 'package:portfolio/view/sections/portfolio_section.dart';
 import 'package:portfolio/view/sections/resume_section.dart';
 import 'package:portfolio/view/sections/service_section.dart';
+import 'package:portfolio/view/sections/skill_section.dart';
+import 'package:portfolio/view/sections/testimonial_section.dart';
 
 class GeneralController extends GetxController {
+
+  bool showSettings = false;
+
+
   final PageController pageController = PageController();
   int currentIndex = 0;
 
@@ -17,6 +25,10 @@ class GeneralController extends GetxController {
     const AboutSection(),
     const ResumeSection(),
     const ServiceSection(),
+    const SkillsSection(),
+    const PortfolioSection(),
+    const TestimonialSection(),
+    const ContactSection(),
   ];
   List<IconData> icons = [
     HugeIcons.strokeRoundedHome01,

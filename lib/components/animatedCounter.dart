@@ -21,15 +21,15 @@ class AnimatedCounter extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                CustomMask(
-                  child: Text(
+           
+                Text(
                     '$value+',
                     style: TextStyle(
                         fontSize: 72,
                         fontWeight: FontWeight.w900,
-                        color: AppSettings.whiteColor, height: 1),textAlign: TextAlign.center,
+                        color: AppSettings.primaryColor, height: 1),textAlign: TextAlign.center,
                   ),
-                ),
+              
                 Text(
                   '$title',
                   style: TextStyle(

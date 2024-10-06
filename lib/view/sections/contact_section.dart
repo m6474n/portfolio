@@ -1,21 +1,19 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:portfolio/components/outlineButton.dart';
-import 'package:portfolio/components/serviceCard.dart';
-import 'package:portfolio/controllers/service_controller.dart';
-import 'package:portfolio/models/service.dart';
+import 'package:portfolio/controllers/contact_controller.dart';
 import 'package:portfolio/utility/appsettings.dart';
 
-class ServiceSection extends StatefulWidget {
-  const ServiceSection({super.key});
+class ContactSection extends StatefulWidget {
+  const ContactSection({super.key});
 
   @override
-  State<ServiceSection> createState() => _ServiceSectionState();
+  State<ContactSection> createState() => _ContactSectionState();
 }
 
-class _ServiceSectionState extends State<ServiceSection> {
-  double _opacity = 0.0;
+class _ContactSectionState extends State<ContactSection> {
+    double _opacity = 0.0;
 
   @override
   void initState() {
@@ -37,7 +35,7 @@ class _ServiceSectionState extends State<ServiceSection> {
       duration: Duration(seconds: 1), // Duration of the fade-in animation
       curve: Curves.easeInOut, // Curve for the animation
       child: GetBuilder(
-        init: ServiceController(),
+        init: ContactController(),
         builder: (cont) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -46,12 +44,12 @@ class _ServiceSectionState extends State<ServiceSection> {
               SizedBox(
                 height: 100,
               ),
-              CustomOutlineButton(title: "Services", onTap: () {}),
+              CustomOutlineButton(title: "Contact", onTap: () {}),
               SizedBox(
                 height: 12,
               ),
               Text(
-                "My Specialization",
+                "Let's Work Together",
                 style: TextStyle(
                     color: AppSettings.whiteColor,
                     fontSize: 72,
@@ -60,11 +58,7 @@ class _ServiceSectionState extends State<ServiceSection> {
                     height: 1.2),
               ),
               SizedBox(height: 20,),
-            ...List.generate(cont.services.length, (index){
-              var service = Service.fromMap(cont.services[index]);
-              return ServiceCard(title: service.title, description: service.description, icon: service.icon, tech: service.tech);
-            })
-            
+           
             ],
           );
         }

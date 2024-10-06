@@ -38,7 +38,7 @@ class _CustomRoundedButtonState extends State<CustomRoundedButton> {
               width: 1,
               color: isHover ? Colors.transparent : AppSettings.primaryColor,
             ),
-            gradient: isHover ? AppSettings.primaryGradient : null,
+            color: isHover ? AppSettings.primaryColor : null,
             borderRadius: BorderRadius.circular(36),
           ),
           child: Center(
@@ -46,33 +46,19 @@ class _CustomRoundedButtonState extends State<CustomRoundedButton> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-               isHover ?  Icon(
+              Icon(
                   Icons.email_outlined,
-                  color: Colors.white,
+                  color: isHover? AppSettings.whiteColor : AppSettings.primaryColor,
                   size: 32,
-                ):CustomMask(
-                  child: Icon(
-                    Icons.email_outlined,
-                    color: Colors.white,
-                    size: 32,
-                  ),
-                ) ,
+                ),
                 SizedBox(width: 12),
-             isHover? Text(
+          Text(
                   widget.label,
                   style: TextStyle(
                     fontSize: 22,
-                    color: AppSettings.whiteColor,
-                  ),
-                ) :   CustomMask(
-                  child: Text(
-                    widget.label,
-                    style: TextStyle(
-                      fontSize: 22,
-                      color: AppSettings.whiteColor,
-                    ),
-                  ),
-                ),
+ color: isHover? AppSettings.whiteColor : AppSettings.primaryColor,                  ),
+                )   
+                
               ],
             ),
           ),

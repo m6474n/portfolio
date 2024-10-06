@@ -30,7 +30,7 @@ class _ServiceCardState extends State<ServiceCard> {
           
           width: width,
           decoration: BoxDecoration(
-              border: Border.all(width: 1, color:isHover ? AppSettings.primaryColor :  AppSettings.borderColor)),
+              border: Border.all(width: 1, color:isHover ? AppSettings.primaryColor :  AppSettings.borderColor), borderRadius: BorderRadius.circular(32)),
           child: Padding(
             padding: const EdgeInsets.all(24.0),
             child: Column(
@@ -46,7 +46,7 @@ class _ServiceCardState extends State<ServiceCard> {
                         widget.title,
                         style: TextStyle(fontSize: 32, fontWeight: FontWeight.w200),
                       ) ,
-                 CustomMask(child: Icon(widget.icon, size: 42,color: AppSettings.whiteColor,))
+               Icon(widget.icon, size: 42,color: AppSettings.primaryColor),
                  ],
                ),
                 SizedBox(height: 12,),

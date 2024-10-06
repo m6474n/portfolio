@@ -147,13 +147,13 @@ class ProfileCard extends StatelessWidget {
                         ? 0.5
                         : 0.0, // Rotate 180 degrees on hover
 
-                    child: CustomMask(
+                  
                       child: Icon(
                         FontAwesomeIcons.gear,
-                        color: AppSettings.whiteColor,
+                        color: AppSettings.primaryColor,
                         size: 32,
                       ),
-                    ),
+                    
                   ),
                 ),
               )

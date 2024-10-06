@@ -44,15 +44,9 @@ class _SocialIconState extends State<SocialIcon> {
               ),
               borderRadius: BorderRadius.circular(50)),
           child: Center(
-              child: isHover
-                  ? CustomMask(
-                      child: Icon(
+              child:  Icon(
                       widget.icon,
-                      color: Colors.white,
-                    ))
-                  : Icon(
-                      widget.icon,
-                      color: inactiveColor,
+                      color: !isHover? AppSettings.borderColor : AppSettings.primaryColor,
                     )),
         ),
       ),

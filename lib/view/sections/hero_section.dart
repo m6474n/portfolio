@@ -20,7 +20,7 @@ class _HeroSectionState extends State<HeroSection> {
     super.initState();
     // Trigger the animation after the widget is built
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(Duration(milliseconds: 100), () {
+       Future.delayed(Duration(milliseconds: 0), () {
         setState(() {
           _opacity = 1.0;
         });
@@ -56,17 +56,14 @@ class _HeroSectionState extends State<HeroSection> {
                 letterSpacing: 4,
                 height: 1.2),
           ),
-          ShaderMask(
-              shaderCallback: (bounds) =>
-                  AppSettings.primaryGradient.createShader(bounds),
-              child: Text(
+         Text(
                 "Muhammad Mohsin",
                 style: TextStyle(
-                    color: AppSettings.whiteColor,
+                    color: AppSettings.primaryColor,
                     fontSize: 90,
                     fontWeight: FontWeight.w900,
                     height: 1),
-              )),
+              ),
           Text(
             "A Passionate Flutter Developer, Full-stack Web developer.",
             style: TextStyle(
