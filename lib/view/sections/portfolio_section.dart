@@ -55,7 +55,7 @@ class _PortfolioSectionState extends State<PortfolioSection> {
                 Text(
                   "Featured Projects",
                   style: TextStyle(
-                      color: AppSettings.whiteColor,
+                      color: cont.generalCont.whiteColor,
                       fontSize: 72,
                       fontWeight: FontWeight.w200,
                       letterSpacing: 4,

@@ -5,7 +5,6 @@ import 'package:portfolio/components/CustomRoundedButton.dart';
 import 'package:portfolio/components/customInputfield.dart';
 import 'package:portfolio/components/outlineButton.dart';
 import 'package:portfolio/controllers/contact_controller.dart';
-import 'package:portfolio/utility/appsettings.dart';
 
 class ContactSection extends StatefulWidget {
   const ContactSection({super.key});
@@ -53,7 +52,7 @@ class _ContactSectionState extends State<ContactSection> {
                 Text(
                   "Let's Work Together",
                   style: TextStyle(
-                      color: AppSettings.whiteColor,
+                      color: cont.generalCont.whiteColor,
                       fontSize: 72,
                       fontWeight: FontWeight.w200,
                       letterSpacing: 4,
@@ -67,7 +66,7 @@ class _ContactSectionState extends State<ContactSection> {
                   style: TextStyle(
                       fontSize: 32,
                       letterSpacing: 5,
-                      color: AppSettings.whiteColor,
+                      color: cont.generalCont.whiteColor,
                       fontWeight: FontWeight.w200),
                 ),
                 SizedBox(

@@ -16,7 +16,7 @@ class FloatingNavbar extends StatelessWidget {
       builder: (cont) {
         return Container(
           decoration: BoxDecoration(
-              border: Border.all(width: 1, color: AppSettings.borderColor),
+              border: Border.all(width: 1, color: cont.borderColor),
               borderRadius: BorderRadius.circular(32)),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8),
@@ -50,7 +50,7 @@ final int index;
         child: Icon(
           icon,
           size: 24,
-          color: AppSettings.primaryColor,
+          color: Get.find<GeneralController>().primaryColor,
         
       ),
     ):GestureDetector(
@@ -60,7 +60,7 @@ final int index;
           child: Icon(
             icon,
             size: 24,
-            color: AppSettings.borderColor,
+            color: Get.find<GeneralController>().borderColor,
           ),
         ));
   }

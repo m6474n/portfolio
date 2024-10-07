@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
+import 'package:portfolio/controllers/general_controller.dart';
 
 class ExperienceController extends GetxController{
-
+final generalCont = Get.find<GeneralController>();
  List<Map<String,dynamic>> experienceList = [
   {
     'time': 'Jan 2024 - Present',

@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:portfolio/components/mask.dart';
 import 'package:portfolio/components/outlineButton.dart';
-import 'package:portfolio/utility/appsettings.dart';
+import 'package:portfolio/controllers/general_controller.dart';
 
 class ServiceCard extends StatefulWidget {
   final String title, description;
@@ -17,7 +18,10 @@ class ServiceCard extends StatefulWidget {
 
 class _ServiceCardState extends State<ServiceCard> {
   bool isHover = false;
+ final generalCont = Get.find<GeneralController>();
+ 
   @override
+
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return MouseRegion(
@@ -30,7 +34,7 @@ class _ServiceCardState extends State<ServiceCard> {
           
           width: width,
           decoration: BoxDecoration(
-              border: Border.all(width: 1, color:isHover ? AppSettings.primaryColor :  AppSettings.borderColor), borderRadius: BorderRadius.circular(32)),
+              border: Border.all(width: 1, color:isHover ? generalCont.primaryColor :  generalCont.borderColor), borderRadius: BorderRadius.circular(32)),
           child: Padding(
             padding: const EdgeInsets.all(24.0),
             child: Column(
@@ -44,16 +48,16 @@ class _ServiceCardState extends State<ServiceCard> {
                  children: [
           Text(
                         widget.title,
-                        style: TextStyle(fontSize: 32, fontWeight: FontWeight.w200, color: AppSettings.whiteColor),
+                        style: TextStyle(fontSize: 32, fontWeight: FontWeight.w200, color: generalCont.whiteColor),
                       ) ,
-               Icon(widget.icon, size: 42,color: AppSettings.primaryColor),
+               Icon(widget.icon, size: 42,color: generalCont.primaryColor),
                  ],
                ),
                 SizedBox(height: 6,),
                  Text(
                  widget.description,
                   style: TextStyle(
-                  color: AppSettings.whiteColor,
+                  color: generalCont.whiteColor,
                   fontSize: 14,
                   fontWeight: FontWeight.w200,
                   letterSpacing: 4),

@@ -8,7 +8,6 @@ import 'package:portfolio/components/CustomRoundedButton.dart';
 import 'package:portfolio/components/mask.dart';
 import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/general_controller.dart';
-import 'package:portfolio/utility/appsettings.dart';
 
 class ProfileCard extends StatelessWidget {
   const ProfileCard({super.key});
@@ -29,7 +28,7 @@ class ProfileCard extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(52),
                     border:
-                        Border.all(width: 1, color: AppSettings.borderColor)),
+                        Border.all(width: 1, color: cont.borderColor)),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -39,7 +38,7 @@ class ProfileCard extends StatelessWidget {
                               flex: 1,
                               child: Text("Mosen",
                                   style: TextStyle(
-                                      color: AppSettings.whiteColor,
+                                      color: cont.whiteColor,
                                       fontWeight: FontWeight.w800,
                                       fontSize: 38))),
                           Expanded(
@@ -49,7 +48,7 @@ class ProfileCard extends StatelessWidget {
                                 style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w300,
-                                    color: AppSettings.whiteColor,
+                                    color: cont.whiteColor,
                                     letterSpacing: 2),
                                 textAlign: TextAlign.end,
                               ))
@@ -64,7 +63,7 @@ class ProfileCard extends StatelessWidget {
                         decoration: BoxDecoration(
                             border: Border.all(
                               width: 1,
-                              color: AppSettings.borderColor,
+                              color: cont.borderColor,
                             ),
                             image: DecorationImage(
                               image: AssetImage(
@@ -78,7 +77,7 @@ class ProfileCard extends StatelessWidget {
                       ),
                       Text(
                         "Muhammad Mohsin",
-                        style: TextStyle(fontSize: 32, color: AppSettings.whiteColor),
+                        style: TextStyle(fontSize: 32, color: cont.whiteColor),
                       ),
                       SizedBox(height: 12),
                       Text(
@@ -87,14 +86,14 @@ class ProfileCard extends StatelessWidget {
                             fontSize: 14,
                             letterSpacing: 2,
                             fontWeight: FontWeight.w300,
-                            color: AppSettings.borderColor),
+                            color: cont.borderColor),
                       ),
                       SizedBox(height: 8),
                       Text(
                         "m.mohsin2055@gmail.com",
                         style: TextStyle(
                             fontSize: 16,
-                            color: AppSettings.whiteColor
+                            color: cont.whiteColor
 ,                            letterSpacing: 3,
                             fontWeight: FontWeight.w300),
                       ),
@@ -136,7 +135,7 @@ class ProfileCard extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w300,
-                            color: AppSettings.borderColor),
+                            color: cont.borderColor),
                       ),
                     ],
                   ),
@@ -158,24 +157,32 @@ class ProfileCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(52),
                           color: Colors.black54,
                           border: Border.all(
-                              width: 1, color: AppSettings.borderColor)),
+                              width: 1, color: cont.borderColor)),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 32.0),
                         child: Column(
                           children: [
-                            SizedBox(
-                              height: 42,
-                            ),
-                            Text(
-                              "Settings",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w200,
-                                  fontSize: 32),
-                            ), SizedBox(height: 32,),
-                            ReusableRow(title: "Theme Setting", child: Switch(value: cont.isLightTheme, onChanged: (newVal){
-                              cont.changeTheme(newVal);
-                            }))
+                            // SizedBox(
+                            //   height: 42,
+                            // ),
+                            // Text(
+                            //   "Settings",
+                            //   style: TextStyle(
+                            //       color: Colors.white,
+                            //       fontWeight: FontWeight.w200,
+                            //       fontSize: 32),
+                            // ), SizedBox(height: 32,),
+                            // ReusableRow(title: "Color", child: Row(children: List.generate(cont.colors.length, (index){
+                            //   return Padding(
+                            //     padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                            //     child: GestureDetector(
+                            //       onTap: (){
+                            //         // cont.changeColor(cont.colors[index]);
+                            //       },
+                            //       child: Container(height: 30,width: 30 ,decoration: BoxDecoration(color:cont.colors[index],borderRadius: BorderRadius.circular(50)))),
+                            //   );
+                            // }),)
+                            // )
                           ],
                         ),
                       ),
@@ -188,7 +195,7 @@ class ProfileCard extends StatelessWidget {
                 width: 40,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(80),
-                    color: AppSettings.bgColor),
+                    color: cont.bgColor),
                 child: MouseRegion(
                   onEnter: (_) => cont.onSettingHover(true),
                   onExit: (_) => cont.onSettingHover(false),
@@ -204,7 +211,7 @@ class ProfileCard extends StatelessWidget {
 
                       child: Icon(
                         FontAwesomeIcons.gear,
-                        color: AppSettings.primaryColor,
+                        color: cont.primaryColor,
                         size: 32,
                       ),
                     ),
@@ -230,12 +237,14 @@ class ReusableRow extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            '$title',
-            style: TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400),
+          Expanded(
+            child: Text(
+              '$title',
+              style: TextStyle(
+                  color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400),
+            ),
           ),
-          child
+          Expanded(child: child)
         ],
       ),
     );

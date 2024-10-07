@@ -5,9 +5,9 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:portfolio/components/outlineButton.dart';
 import 'package:portfolio/components/testimonialCard.dart';
 import 'package:portfolio/controllers/contact_controller.dart';
+import 'package:portfolio/controllers/general_controller.dart';
 import 'package:portfolio/controllers/testimonial_controller.dart';
 import 'package:portfolio/models/testimonial.dart';
-import 'package:portfolio/utility/appsettings.dart';
 
 class TestimonialSection extends StatefulWidget {
   const TestimonialSection({super.key});
@@ -57,7 +57,7 @@ class _TestimonialSectionState extends State<TestimonialSection> {
               Text(
                 "Trusted By",
                 style: TextStyle(
-                    color: AppSettings.whiteColor,
+                    color: cont.generalCont.whiteColor,
                     fontSize: 72,
                     fontWeight: FontWeight.w200,
                     letterSpacing: 4,
@@ -107,21 +107,21 @@ class _TestimonialSectionState extends State<TestimonialSection> {
                           text: '${cont.currentIndex+1}',
                           style: TextStyle(
                               fontSize: 24,
-                              color: AppSettings.primaryColor,
+                              color: cont.generalCont.primaryColor,
                               fontWeight: FontWeight.w200),
                           children: [
                         TextSpan(
                           text: ' / ',
                           style: TextStyle(
                               fontSize: 24,
-                              color: AppSettings.whiteColor,
+                              color: cont.generalCont.whiteColor,
                               fontWeight: FontWeight.w200),
                         ),
                         TextSpan(
                           text: '${cont.testimonials.length}',
                           style: TextStyle(
                               fontSize: 18,
-                              color: AppSettings.borderColor,
+                              color: cont.generalCont.borderColor,
                               fontWeight: FontWeight.w400),
                         )
                       ])),
@@ -178,8 +178,8 @@ class _CircularIconButtonState extends State<CircularIconButton> {
               border: Border.all(
                   width: 1,
                   color: isHover
-                      ? AppSettings.primaryColor
-                      : AppSettings.borderColor),
+                      ? Get.find<GeneralController>().primaryColor
+                      : Get.find<GeneralController>().borderColor),
               borderRadius: BorderRadius.circular(50)),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -187,8 +187,8 @@ class _CircularIconButtonState extends State<CircularIconButton> {
               child: Icon(
                 widget.icon,
                 color: isHover
-                    ? AppSettings.primaryColor
-                    : AppSettings.borderColor,
+                    ? Get.find<GeneralController>().primaryColor
+                    : Get.find<GeneralController>().borderColor,
                 size: 32,
               ),
             ),

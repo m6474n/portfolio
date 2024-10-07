@@ -14,32 +14,41 @@ import 'package:portfolio/view/sections/skill_section.dart';
 import 'package:portfolio/view/sections/testimonial_section.dart';
 
 class GeneralController extends GetxController {
-  bool isLightTheme = false;
+// Colors.
+  //  Color primaryColor= Color(0xFFcc4499);
+   Color primaryColor= Color(0xff03dac5);
+   Color bgColor= Color(0xff1f1f1f);
+   Color borderColor= Color.fromARGB(255, 119, 119, 119);
 
-// void toggleTheme() {
-//     isLightTheme = !isLightTheme;
-//     Get.changeTheme(isLightTheme ? ThemeData(scaffoldBackgroundColor: Colors.white): ThemeData(scaffoldBackgroundColor: Colors.white));
-//     update();
-//   }
-  changeTheme(val) {
-    isLightTheme = val;
+   Color whiteColor= Color(0xFFFFFFFF);
+  // static Color grad1= Color(0xFFDB6885);
+  // static Color grad2= Color(0xFF972239);
+   Color grad1= Color(0xFF663dff);
+   Color grad2= Color(0xFFcc4499);
+  // static Gradient primaryGradient = LinearGradient(colors: [grad1,grad2],begin: Alignment.centerLeft, end: Alignment.centerRight);
+// sizing
+static double mobileWidth = 1220;
 
-    if (val) {
-      // Colors.white = Colors.white;
-      AppSettings.borderColor = Colors.black87;
-      AppSettings.whiteColor = Colors.black;
-      update();
-    } else {
-      // AppSettings.primaryColor = Color(0xFFcc4499);
-      // Colors.white = Color(0xff1f1f1f);
-      AppSettings.borderColor = Color.fromARGB(255, 119, 119, 119);
+  
 
-      AppSettings.whiteColor = Color(0xFFFFFFFF);
-      update();
-    }
-    update();
-  }
 
+
+  
+  List<Color > colors = [
+    Color(0xffFFC857),
+    Color(0xffbb86fc),
+    Color(0xff03dac5),
+    Color(0xffFF5797),
+  
+  ];
+
+
+// changeColor(Color newColor)
+// {
+//   primaryColor = newColor;
+//   GeneralController().update();
+//   update();
+// }
   bool showSettings = false;
 
   handleSetting() {

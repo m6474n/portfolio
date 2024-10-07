@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:portfolio/controllers/general_controller.dart';
 import 'package:portfolio/models/experience.dart';
-import 'package:portfolio/utility/appsettings.dart';
 
 class ResumeCard extends StatefulWidget {
   final Experience experience;
@@ -12,6 +13,7 @@ class ResumeCard extends StatefulWidget {
 
 class _ResumeCardState extends State<ResumeCard> {
   bool isHover  = false;
+  final generalCont= Get.find<GeneralController>();
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
@@ -28,7 +30,7 @@ class _ResumeCardState extends State<ResumeCard> {
               padding: EdgeInsets.only(left: 32),
               decoration: BoxDecoration(
                 border: Border(
-                    left: BorderSide(width: 1, color: AppSettings.borderColor)),
+                    left: BorderSide(width: 1, color: generalCont.borderColor)),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -38,7 +40,7 @@ class _ResumeCardState extends State<ResumeCard> {
                    widget.experience.time,
                     style: TextStyle(
                         fontSize: 12,
-                        color: isHover ? AppSettings.primaryColor : AppSettings.whiteColor,
+                        color: isHover ? generalCont.primaryColor : generalCont.whiteColor,
                         fontWeight: FontWeight.w400,
                         letterSpacing: 2),
                   ),
@@ -61,7 +63,7 @@ class _ResumeCardState extends State<ResumeCard> {
                   width: 10,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-                      color:isHover ? AppSettings.primaryColor :AppSettings.borderColor),
+                      color:isHover ? generalCont.primaryColor :generalCont.borderColor),
                 ))
             //
           ],
@@ -92,14 +94,14 @@ class ReusableExperienceCard extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.w200,
-                        color: AppSettings.whiteColor),
+                        color: Get.find<GeneralController>().whiteColor),
                   ),
                   Text(
                     "${company??""} ${address??""}",
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
-                        color: AppSettings.borderColor, letterSpacing: 3),
+                        color: Get.find<GeneralController>().borderColor, letterSpacing: 3),
                   ),
                   SizedBox(height: 10,),],);
   }

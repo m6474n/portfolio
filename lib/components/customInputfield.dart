@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:portfolio/utility/appsettings.dart';
+import 'package:get/get.dart';
+import 'package:portfolio/controllers/general_controller.dart';
 
 class CustomInputField extends StatefulWidget {
   final String title, placeholder;
@@ -19,7 +20,11 @@ class CustomInputField extends StatefulWidget {
   State<CustomInputField> createState() => _CustomInputFieldState();
 }
 
+
 class _CustomInputFieldState extends State<CustomInputField> {
+
+final generalCont = Get.find<GeneralController>();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -30,15 +35,15 @@ class _CustomInputFieldState extends State<CustomInputField> {
           "${widget.title}",
           style: TextStyle(
               fontSize: 24,
-              color: AppSettings.whiteColor,
+              color: generalCont.whiteColor,
               fontWeight: FontWeight.w200),
         ),
         SizedBox(
           height: 8,
         ),
         TextFormField(
-          cursorColor: AppSettings.primaryColor,
-          cursorErrorColor: AppSettings.primaryColor,
+          cursorColor: generalCont.primaryColor,
+          cursorErrorColor: generalCont.primaryColor,
           maxLines: widget.maxLines,
           validator: (value) {
             return value == null || value.isEmpty
@@ -52,7 +57,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
               hintStyle: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w400,
-                  color: AppSettings.borderColor),
+                  color: generalCont.borderColor),
                   border: OutlineInputBorder(borderSide: BorderSide.none))
              
         ),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:portfolio/components/outlineButton.dart';
 import 'package:portfolio/components/unOrderedList.dart';
-import 'package:portfolio/utility/appsettings.dart';
+import 'package:portfolio/controllers/general_controller.dart';
 
 class AboutSection extends StatefulWidget {
   const AboutSection({super.key});
@@ -25,6 +26,7 @@ class _AboutSectionState extends State<AboutSection> {
       });
     });
   }
+  final generalCont = Get.find<GeneralController>();
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class _AboutSectionState extends State<AboutSection> {
           Text(
             "Who I Am",
             style: TextStyle(
-                color: AppSettings.whiteColor,
+                color: generalCont.whiteColor,
                 fontSize: 72,
                 fontWeight: FontWeight.w200,
                 letterSpacing: 4,
@@ -56,7 +58,7 @@ class _AboutSectionState extends State<AboutSection> {
           Text(
             "Hello I am Mosen, a dedicated Full Stack Developer and Designer with over three years of experience in creating dynamic and visually appealing applications and websites. My technical expertise includes Flutter, WordPress, Next.js, JavaScript, and Ruby on Rails, allowing me to effectively bridge the gap between front-end and back-end development. With a strong background in graphic design, I focus on user-centric design principles to achieve a seamless blend of functionality and aesthetics.\n \nI am passionate about solving complex challenges and am driven by a commitment to deliver outstanding results, whether in a team setting or independently. As a lifelong learner, I am constantly exploring new technologies and methodologies to enhance my skills and contribute to project success. Thank you for visiting my portfolio. I am excited about the opportunity to collaborate on future projects. Please feel free to reach out with any questions or opportunities!",
             style: TextStyle(
-                color: AppSettings.whiteColor,
+                color: generalCont.whiteColor,
                 fontSize: 18,
                 fontWeight: FontWeight.w200,
                 letterSpacing: 4),
@@ -67,7 +69,7 @@ class _AboutSectionState extends State<AboutSection> {
           Text(
             "Lifelong Learner",
             style: TextStyle(
-                color: AppSettings.whiteColor,
+                color: generalCont.whiteColor,
                 fontSize: 32,
                 fontWeight: FontWeight.w200,
                 letterSpacing: 4,
@@ -79,7 +81,7 @@ class _AboutSectionState extends State<AboutSection> {
           Text(
             "In the ever-evolving world of technology, I am committed to continuous learning and growth. I am always on the lookout for new tools, techniques, and methodologies that can enhance my skills and contribute to the success of my projects. My curiosity and passion for learning drive me to explore inventive ways to make projects succeed.",
             style: TextStyle(
-                color: AppSettings.whiteColor,
+                color: generalCont.whiteColor,
                 fontSize: 18,
                 fontWeight: FontWeight.w200,
                 letterSpacing: 4),

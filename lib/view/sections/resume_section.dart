@@ -4,7 +4,6 @@ import 'package:portfolio/components/outlineButton.dart';
 import 'package:portfolio/components/resumeCard.dart';
 import 'package:portfolio/controllers/experience_controller.dart';
 import 'package:portfolio/models/experience.dart';
-import 'package:portfolio/utility/appsettings.dart';
 
 class ResumeSection extends StatefulWidget {
   const ResumeSection({super.key});
@@ -52,7 +51,7 @@ class _ResumeSectionState extends State<ResumeSection> {
                 Text(
                   "Education and Experience",
                   style: TextStyle(
-                      color: AppSettings.whiteColor,
+                      color: cont.generalCont.whiteColor,
                       fontSize: 72,
                       fontWeight: FontWeight.w200,
                       letterSpacing: 4,

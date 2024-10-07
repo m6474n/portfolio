@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:portfolio/components/circularTextButton.dart';
 import 'package:portfolio/components/floatingNavBar.dart';
 import 'package:portfolio/components/outlineButton.dart';
 import 'package:portfolio/components/profileCard.dart';
-import 'package:portfolio/utility/appsettings.dart';
+import 'package:portfolio/controllers/general_controller.dart';
 import 'package:portfolio/view/home.dart';
 import 'package:portfolio/view/sections/hero_section.dart';
 
 class DesktopView extends StatelessWidget {
-  const DesktopView({super.key});
-
+   DesktopView({super.key});
+final generalCont = Get.find<GeneralController>();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: AppSettings.bgColor,
+      backgroundColor: generalCont.bgColor,
      
         body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 60.0),

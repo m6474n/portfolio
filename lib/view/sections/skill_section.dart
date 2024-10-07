@@ -51,7 +51,7 @@ class _SkillsSectionState extends State<SkillsSection> {
               Text(
                 "My Advantages",
                 style: TextStyle(
-                    color: AppSettings.whiteColor,
+                    color: cont.generalCont.whiteColor,
                     fontSize: 72,
                     fontWeight: FontWeight.w200,
                     letterSpacing: 4,

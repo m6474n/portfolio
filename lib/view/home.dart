@@ -12,23 +12,23 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    return Scaffold(
-backgroundColor: AppSettings.bgColor,
-      body: GetBuilder(
-        init: GeneralController(),
-        builder: (cont) {
-          return PageView(
-            controller: cont.pageController,
-            scrollDirection:Axis.vertical,
-            physics: NeverScrollableScrollPhysics(), 
-            children: cont.sectionList
-          );
-        }
-      ),
-      // floatingActionButton: FloatingActionButton(onPressed: (){
+    return GetBuilder(
+      init: GeneralController(),
+      builder: (cont) {
+        return Scaffold(
+          backgroundColor: cont.bgColor,
+          body: PageView(
+                controller: cont.pageController,
+                scrollDirection:Axis.vertical,
+                physics: NeverScrollableScrollPhysics(), 
+                children: cont.sectionList
+              ),);
+      }
+    )
+;      // floatingActionButton: FloatingActionButton(onPressed: (){
       //   String text = "Working with Mohsin has been a fantastic experience. He helped me create a professional website that exceeded my expectations in terms of design, functionality, and attention to detail. From the start, they demonstrated a strong ability to understand my vision and turn it into an attractive and functional site. Communication";
       //   print(text.length);
       // }),
-    );
+   
   }
 }

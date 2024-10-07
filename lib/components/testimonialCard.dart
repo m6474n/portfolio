@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:portfolio/controllers/general_controller.dart';
 import 'package:portfolio/models/testimonial.dart';
-import 'package:portfolio/utility/appsettings.dart';
 
 class TestimonialCard extends StatefulWidget {
   final Testimonial testimonial;
@@ -23,6 +24,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
       _startAutoScroll();
     });
   }
+  final generalCont = Get.find<GeneralController>();
 
   void _startAutoScroll() {
     Future.delayed(Duration(milliseconds: 0), () {
@@ -48,7 +50,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
       decoration: BoxDecoration(
           border: Border.all(
             width: 1,
-            color: AppSettings.borderColor,
+            color: generalCont.borderColor,
           ),
           borderRadius: BorderRadius.circular(32)),
     child:  SingleChildScrollView(
@@ -59,10 +61,10 @@ class _TestimonialCardState extends State<TestimonialCard> {
               children: [
                 CircleAvatar(
                     radius: 32,
-                    backgroundColor: AppSettings.borderColor,
+                    backgroundColor: generalCont.borderColor,
                     child: HugeIcon(
                         icon: HugeIcons.strokeRoundedUser,
-                        color: AppSettings.whiteColor)),
+                        color: generalCont.whiteColor)),
                 SizedBox(
                   width: 24,
                 ),
@@ -75,14 +77,14 @@ class _TestimonialCardState extends State<TestimonialCard> {
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w300,
-                          color: AppSettings.whiteColor),
+                          color: generalCont.whiteColor),
                     ),
                     Text(
                       widget.testimonial.clientCountry,
                       style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w400,
-                          color: AppSettings.borderColor,
+                          color: generalCont.borderColor,
                           letterSpacing: 2),
                     )
                   ],
@@ -91,7 +93,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
                 Text(
                   "${widget.testimonial.clientCompany}",
                   style: TextStyle(
-                      fontSize: 24, color: AppSettings.primaryColor),
+                      fontSize: 24, color: generalCont.primaryColor),
                 )
               ],
             ),
@@ -103,7 +105,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
                     style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w200,
-                        color: AppSettings.whiteColor,
+                        color: generalCont.whiteColor,
                         letterSpacing: 2),
                   )
           ],

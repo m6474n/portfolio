@@ -53,7 +53,7 @@ class _ServiceSectionState extends State<ServiceSection> {
               Text(
                 "My Specialization",
                 style: TextStyle(
-                    color: AppSettings.whiteColor,
+                    color: cont.generalCont.whiteColor,
                     fontSize: 72,
                     fontWeight: FontWeight.w200,
                     letterSpacing: 4,
