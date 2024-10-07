@@ -5,6 +5,8 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:portfolio/components/outlineButton.dart';
 import 'package:portfolio/components/testimonialCard.dart';
 import 'package:portfolio/controllers/contact_controller.dart';
+import 'package:portfolio/controllers/testimonial_controller.dart';
+import 'package:portfolio/models/testimonial.dart';
 import 'package:portfolio/utility/appsettings.dart';
 
 class TestimonialSection extends StatefulWidget {
@@ -38,8 +40,8 @@ class _TestimonialSectionState extends State<TestimonialSection> {
       opacity: _opacity,
       duration: Duration(seconds: 1), // Duration of the fade-in animation
       curve: Curves.easeInOut, // Curve for the animation
-      child: GetBuilder<ContactController>(
-        init: ContactController(),
+      child: GetBuilder<TestimonialController>(
+        init: TestimonialController(),
         builder: (cont) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -65,7 +67,7 @@ class _TestimonialSectionState extends State<TestimonialSection> {
                 height: 20,
               ),
               Container(
-                height: height * 0.37,
+                height: height * 0.4,
                 width: width * 0.5,
                 child: Column(
                   children: [
@@ -74,9 +76,11 @@ class _TestimonialSectionState extends State<TestimonialSection> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 18.0),
                         child: PageView.builder(
-                          itemCount: 3,
+                          physics: NeverScrollableScrollPhysics(),
+                          controller:cont.testimonialController ,
+                          itemCount: cont.testimonials.length,
                           itemBuilder: (context, index) {
-                            return TestimonialCard();
+                            return TestimonialCard(testimonial: Testimonial.fromJson(cont.testimonials[index]),);
                           },
                         ),
                       ),
@@ -91,14 +95,16 @@ class _TestimonialSectionState extends State<TestimonialSection> {
                 children: [
                   CircularIconButton(
                     icon: HugeIcons.strokeRoundedArrowLeft01,
-                    onTap: () {},
+                    onTap: () {
+                      cont.goBack()
+;                    },
                   ),
                   SizedBox(
                     width: 18,
                   ),
                   RichText(
                       text: TextSpan(
-                          text: '1',
+                          text: '${cont.currentIndex+1}',
                           style: TextStyle(
                               fontSize: 24,
                               color: AppSettings.primaryColor,
@@ -112,7 +118,7 @@ class _TestimonialSectionState extends State<TestimonialSection> {
                               fontWeight: FontWeight.w200),
                         ),
                         TextSpan(
-                          text: '3',
+                          text: '${cont.testimonials.length}',
                           style: TextStyle(
                               fontSize: 18,
                               color: AppSettings.borderColor,
@@ -124,7 +130,9 @@ class _TestimonialSectionState extends State<TestimonialSection> {
                   ),
                   CircularIconButton(
                     icon: HugeIcons.strokeRoundedArrowRight01,
-                    onTap: () {},
+                    onTap: () {
+                      cont.goNext()
+;                    },
                   )
                 ],
               )
