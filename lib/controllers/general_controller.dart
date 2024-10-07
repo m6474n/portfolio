@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:portfolio/components/floatingNavBar.dart';
 import 'package:portfolio/components/socialIcon.dart';
+import 'package:portfolio/utility/appsettings.dart';
 import 'package:portfolio/view/sections/about_section.dart';
 import 'package:portfolio/view/sections/contact_section.dart';
 import 'package:portfolio/view/sections/hero_section.dart';
@@ -13,13 +14,38 @@ import 'package:portfolio/view/sections/skill_section.dart';
 import 'package:portfolio/view/sections/testimonial_section.dart';
 
 class GeneralController extends GetxController {
+  bool isLightTheme = false;
+
+// void toggleTheme() {
+//     isLightTheme = !isLightTheme;
+//     Get.changeTheme(isLightTheme ? ThemeData(scaffoldBackgroundColor: Colors.white): ThemeData(scaffoldBackgroundColor: Colors.white));
+//     update();
+//   }
+  changeTheme(val) {
+    isLightTheme = val;
+
+    if (val) {
+      // Colors.white = Colors.white;
+      AppSettings.borderColor = Colors.black87;
+      AppSettings.whiteColor = Colors.black;
+      update();
+    } else {
+      // AppSettings.primaryColor = Color(0xFFcc4499);
+      // Colors.white = Color(0xff1f1f1f);
+      AppSettings.borderColor = Color.fromARGB(255, 119, 119, 119);
+
+      AppSettings.whiteColor = Color(0xFFFFFFFF);
+      update();
+    }
+    update();
+  }
 
   bool showSettings = false;
 
-handleSetting(){
-  showSettings  = !showSettings;
-  update();
-}
+  handleSetting() {
+    showSettings = !showSettings;
+    update();
+  }
 
   final PageController pageController = PageController();
   int currentIndex = 0;
@@ -60,11 +86,11 @@ handleSetting(){
     update();
   }
 
-changePage(int index){
-  pageController.animateToPage(index, duration: Duration(milliseconds: 900), curve: Curves.easeInOut);
-  update();
-}
-
+  changePage(int index) {
+    pageController.animateToPage(index,
+        duration: Duration(milliseconds: 900), curve: Curves.easeInOut);
+    update();
+  }
 
   @override
   void onInit() {

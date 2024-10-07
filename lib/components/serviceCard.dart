@@ -44,7 +44,7 @@ class _ServiceCardState extends State<ServiceCard> {
                  children: [
           Text(
                         widget.title,
-                        style: TextStyle(fontSize: 32, fontWeight: FontWeight.w200),
+                        style: TextStyle(fontSize: 32, fontWeight: FontWeight.w200, color: AppSettings.whiteColor),
                       ) ,
                Icon(widget.icon, size: 42,color: AppSettings.primaryColor),
                  ],

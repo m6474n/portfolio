@@ -22,7 +22,9 @@ class MyApp extends StatelessWidget {
       title: "Mosen's Portfolio",
       theme: ThemeData(
        fontFamily: 'Inter',
+       scaffoldBackgroundColor: AppSettings.borderColor,
        textTheme: TextTheme(
+
         displayLarge: TextStyle(color: AppSettings.whiteColor),
         displayMedium: TextStyle(color: AppSettings.whiteColor),
         displaySmall: TextStyle(color: AppSettings.whiteColor),
@@ -39,8 +41,7 @@ class MyApp extends StatelessWidget {
         labelMedium: TextStyle(color: AppSettings.whiteColor),
         labelSmall: TextStyle(color: AppSettings.whiteColor),
        ),
-       scaffoldBackgroundColor: AppSettings.bgColor,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppSettings.primaryColor),
         useMaterial3: true,
       ),
       // home: Home(),

@@ -85,7 +85,7 @@ goBack(){
       'client_country': 'Pakistan',
       'client_company': 'PakRishteNaate',
       'client_testimonials':
-          'I recently had the pleasure of working with an incredibly talented and professional this web developer, and I must say that my experience exceeded all expectations. From start to finish, his expertise and dedication to delivering a top-notch website truly impressed me. His Delivery timing ,communication , work is excellent. Highly Recommended. Thank you so much Mosen_dev55 . you are incredibly talented.'
+          'I recently had the pleasure of working with an incredibly talented and professional this web developer, and I must say that my experience exceeded all expectations. From start to finish, his expertise and dedication to delivering a top-notch website truly impressed me. His Delivery timing ,communication , work is excellent. Highly Recommended. Thank you so much Mohsin. You are incredibly talented.'
     },
     {
       'image': '',

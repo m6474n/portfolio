@@ -32,7 +32,7 @@ class _SkillCardState extends State<SkillCard> {
                 Column(children: [
                   SvgPicture.asset(widget.icon, height: 50, color: !isHover? AppSettings.borderColor : AppSettings.primaryColor,),
                   SizedBox(height: 12,)
-      ,                Text(widget.title)
+      ,                Text(widget.title, style: TextStyle(color: AppSettings.whiteColor),)
                 ],),
               ),
         ),

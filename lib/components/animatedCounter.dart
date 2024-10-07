@@ -10,6 +10,7 @@ class AnimatedCounter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppSettings.bgColor,
       body: TweenAnimationBuilder<int>(
         tween: IntTween(begin: 0, end: endValue),
         duration: Duration(seconds: 3), // Duration of the animation

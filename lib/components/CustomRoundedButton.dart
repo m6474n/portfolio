@@ -6,12 +6,16 @@ import 'package:portfolio/utility/appsettings.dart';
 
 class CustomRoundedButton extends StatefulWidget {
   final String label;
+  final IconData? icon;
+  final bool isRounded;
   final VoidCallback onTap;
   final Color? bgColor;
 
   const CustomRoundedButton({
     super.key,
     required this.label,
+     this.icon,
+     this.isRounded = false,
     required this.onTap,
     this.bgColor,
   });
@@ -39,19 +43,15 @@ class _CustomRoundedButtonState extends State<CustomRoundedButton> {
               color: !isHover ? Colors.transparent : AppSettings.primaryColor,
             ),
             color: !isHover ? AppSettings.primaryColor : null,
-            borderRadius: BorderRadius.circular(36),
+            borderRadius:widget.isRounded? BorderRadius.circular(36):BorderRadius.circular(12),
           ),
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-              Icon(
-                  Icons.email_outlined,
-                  color: !isHover? AppSettings.whiteColor : AppSettings.primaryColor,
-                  size: 32,
-                ),
-                SizedBox(width: 12),
+              widget.icon != null ?Icon(widget.icon, color: isHover? AppSettings.primaryColor : AppSettings.whiteColor,) :Container(),
+            widget.icon!=null?    SizedBox(width: 12) :Container(),
           Text(
                   widget.label,
                   style: TextStyle(

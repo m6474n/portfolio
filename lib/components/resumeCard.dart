@@ -38,7 +38,7 @@ class _ResumeCardState extends State<ResumeCard> {
                    widget.experience.time,
                     style: TextStyle(
                         fontSize: 12,
-                        color: isHover ? AppSettings.primaryColor : null,
+                        color: isHover ? AppSettings.primaryColor : AppSettings.whiteColor,
                         fontWeight: FontWeight.w400,
                         letterSpacing: 2),
                   ),

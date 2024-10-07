@@ -29,6 +29,7 @@ class _AboutSectionState extends State<AboutSection> {
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
+      
       opacity: _opacity,
       duration: Duration(seconds: 1), // Duration of the fade-in animation
       curve: Curves.easeInOut, // Curve for the animation

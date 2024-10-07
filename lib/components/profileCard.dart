@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:portfolio/components/CustomRoundedButton.dart';
 import 'package:portfolio/components/mask.dart';
 import 'package:portfolio/components/socialIcon.dart';
@@ -35,23 +36,23 @@ class ProfileCard extends StatelessWidget {
                       Row(
                         children: [
                           Expanded(
-                            flex: 1,
+                              flex: 1,
                               child: Text("Mosen",
                                   style: TextStyle(
                                       color: AppSettings.whiteColor,
                                       fontWeight: FontWeight.w800,
-                                    
                                       fontSize: 38))),
                           Expanded(
-                            flex: 1,
+                              flex: 1,
                               child: Text(
-                            "Flutter Developer / \nFull Stack Developer",
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w300,
-                                color: AppSettings.whiteColor, letterSpacing: 2),
-                            textAlign: TextAlign.end,
-                          ))
+                                "Flutter Developer / \nFull Stack Developer",
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w300,
+                                    color: AppSettings.whiteColor,
+                                    letterSpacing: 2),
+                                textAlign: TextAlign.end,
+                              ))
                         ],
                       ),
                       SizedBox(
@@ -77,7 +78,7 @@ class ProfileCard extends StatelessWidget {
                       ),
                       Text(
                         "Muhammad Mohsin",
-                        style: TextStyle(fontSize: 32),
+                        style: TextStyle(fontSize: 32, color: AppSettings.whiteColor),
                       ),
                       SizedBox(height: 12),
                       Text(
@@ -93,7 +94,8 @@ class ProfileCard extends StatelessWidget {
                         "m.mohsin2055@gmail.com",
                         style: TextStyle(
                             fontSize: 16,
-                            letterSpacing: 3,
+                            color: AppSettings.whiteColor
+,                            letterSpacing: 3,
                             fontWeight: FontWeight.w300),
                       ),
                       SizedBox(height: 18),
@@ -115,13 +117,19 @@ class ProfileCard extends StatelessWidget {
                           ),
                           SocialIcon(
                             icon: FontAwesomeIcons.linkedin,
-                            link: "https://www.linkedin.com/in/muhammad--mohsin/",
+                            link:
+                                "https://www.linkedin.com/in/muhammad--mohsin/",
                           ),
                         ],
                       ),
                       SizedBox(height: 18),
                       // Container(height: 30,child: HoverButtonDemo())
-                      CustomRoundedButton(label: "Hire Me", onTap: () {}),
+                      CustomRoundedButton(
+                        label: "Hire Me",
+                        onTap: () {},
+                        icon: HugeIcons.strokeRoundedFilterMailSquare,
+                        isRounded: true,
+                      ),
                       SizedBox(height: 32),
                       Text(
                         "©2024, All Right Reserved.",
@@ -134,7 +142,6 @@ class ProfileCard extends StatelessWidget {
                   ),
                 ),
               ),
-            
               Positioned(
                 top: 0,
                 left: 0,
@@ -142,22 +149,41 @@ class ProfileCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(52),
                   child: BackdropFilter(
-                    
-                    filter: ImageFilter.blur(sigmaX: 15,sigmaY: 15),
-                    child: AnimatedContainer(duration: Duration(milliseconds: 700),
-                     height:cont.showSettings? height * 0.8 : 0,
-                     width: 350,
+                    filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 700),
+                      height: cont.showSettings ? height * 0.8 : 0,
+                      width: 350,
                       decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(52),
-                      color: Colors.black54,
-                      border: Border.all(width: 1,color: AppSettings.borderColor)
+                          borderRadius: BorderRadius.circular(52),
+                          color: Colors.black54,
+                          border: Border.all(
+                              width: 1, color: AppSettings.borderColor)),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 42,
+                            ),
+                            Text(
+                              "Settings",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w200,
+                                  fontSize: 32),
+                            ), SizedBox(height: 32,),
+                            ReusableRow(title: "Theme Setting", child: Switch(value: cont.isLightTheme, onChanged: (newVal){
+                              cont.changeTheme(newVal);
+                            }))
+                          ],
                         ),
-                    
-                    child: Column(children: [],),),
+                      ),
+                    ),
                   ),
                 ),
               ),
-                Container(
+              Container(
                 height: 40,
                 width: 40,
                 decoration: BoxDecoration(
@@ -167,22 +193,20 @@ class ProfileCard extends StatelessWidget {
                   onEnter: (_) => cont.onSettingHover(true),
                   onExit: (_) => cont.onSettingHover(false),
                   child: GestureDetector(
-                    onTap: (){
-cont.handleSetting();
+                    onTap: () {
+                      cont.handleSetting();
                     },
                     child: AnimatedRotation(
                       duration: Duration(milliseconds: 1200),
                       turns: cont.isSettingHover
                           ? 0.5
                           : 0.0, // Rotate 180 degrees on hover
-                    
-                    
-                        child: Icon(
-                          FontAwesomeIcons.gear,
-                          color: AppSettings.primaryColor,
-                          size: 32,
-                        ),
-                      
+
+                      child: Icon(
+                        FontAwesomeIcons.gear,
+                        color: AppSettings.primaryColor,
+                        size: 32,
+                      ),
                     ),
                   ),
                 ),
@@ -190,5 +214,30 @@ cont.handleSetting();
             ],
           );
         });
+  }
+}
+
+class ReusableRow extends StatelessWidget {
+  final String title;
+  final Widget child;
+  const ReusableRow({super.key, required this.title, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            '$title',
+            style: TextStyle(
+                color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400),
+          ),
+          child
+        ],
+      ),
+    );
   }
 }
