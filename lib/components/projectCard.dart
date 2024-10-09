@@ -32,7 +32,7 @@ class _ProjectCardState extends State<ProjectCard> {
       onExit: (_) => onHover(false),
       child: Container(
         height: height,
-        width: 500,
+        
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(widget.image), fit: BoxFit.cover),

@@ -43,100 +43,102 @@ class _TestimonialSectionState extends State<TestimonialSection> {
       child: GetBuilder<TestimonialController>(
         init: TestimonialController(),
         builder: (cont) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 100,
-              ),
-              CustomOutlineButton(title: "Testimonials", onTap: () {}),
-              SizedBox(
-                height: 12,
-              ),
-              Text(
-                "Trusted By",
-                style: TextStyle(
-                    color: cont.generalCont.whiteColor,
-                    fontSize: 72,
-                    fontWeight: FontWeight.w200,
-                    letterSpacing: 4,
-                    height: 1.2),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                height: height * 0.4,
-                width: width * 0.5,
-                child: Column(
-                  children: [
-                    Expanded(
-                      // Use Expanded to ensure PageView takes available space
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 18.0),
-                        child: PageView.builder(
-                          physics: NeverScrollableScrollPhysics(),
-                          controller:cont.testimonialController ,
-                          itemCount: cont.testimonials.length,
-                          itemBuilder: (context, index) {
-                            return TestimonialCard(testimonial: Testimonial.fromJson(cont.testimonials[index]),);
-                          },
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 100,
+                ),
+                CustomOutlineButton(title: "Testimonials", onTap: () {}),
+                SizedBox(
+                  height: 12,
+                ),
+                Text(
+                  "Trusted By",
+                  style: TextStyle(
+                      color: cont.generalCont.whiteColor,
+                  fontSize: width >800 ? 72: width *0.1,
+                      fontWeight: FontWeight.w200,
+                      letterSpacing: 4,
+                      height: 1.2),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  height:width > 500 ?height * 0.4: height *0.6,
+                  width:width > 500 ? width * 0.5:width,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        // Use Expanded to ensure PageView takes available space
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 18.0),
+                          child: PageView.builder(
+                            physics: NeverScrollableScrollPhysics(),
+                            controller:cont.testimonialController ,
+                            itemCount: cont.testimonials.length,
+                            itemBuilder: (context, index) {
+                              return TestimonialCard(testimonial: Testimonial.fromJson(cont.testimonials[index]),);
+                            },
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 24,
-              ),
-              Row(
-                children: [
-                  CircularIconButton(
-                    icon: HugeIcons.strokeRoundedArrowLeft01,
-                    onTap: () {
-                      cont.goBack()
-;                    },
-                  ),
-                  SizedBox(
-                    width: 18,
-                  ),
-                  RichText(
-                      text: TextSpan(
-                          text: '${cont.currentIndex+1}',
-                          style: TextStyle(
-                              fontSize: 24,
-                              color: cont.generalCont.primaryColor,
-                              fontWeight: FontWeight.w200),
-                          children: [
-                        TextSpan(
-                          text: ' / ',
-                          style: TextStyle(
-                              fontSize: 24,
-                              color: cont.generalCont.whiteColor,
-                              fontWeight: FontWeight.w200),
-                        ),
-                        TextSpan(
-                          text: '${cont.testimonials.length}',
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: cont.generalCont.borderColor,
-                              fontWeight: FontWeight.w400),
-                        )
-                      ])),
-                  SizedBox(
-                    width: 18,
-                  ),
-                  CircularIconButton(
-                    icon: HugeIcons.strokeRoundedArrowRight01,
-                    onTap: () {
-                      cont.goNext()
-;                    },
-                  )
-                ],
-              )
-            ],
+                SizedBox(
+                  height: 24,
+                ),
+                Row(
+                  children: [
+                    CircularIconButton(
+                      icon: HugeIcons.strokeRoundedArrowLeft01,
+                      onTap: () {
+                        cont.goBack()
+            ;                    },
+                    ),
+                    SizedBox(
+                      width: 18,
+                    ),
+                    RichText(
+                        text: TextSpan(
+                            text: '${cont.currentIndex+1}',
+                            style: TextStyle(
+                                fontSize: 24,
+                                color: cont.generalCont.primaryColor,
+                                fontWeight: FontWeight.w200),
+                            children: [
+                          TextSpan(
+                            text: ' / ',
+                            style: TextStyle(
+                                fontSize: 24,
+                                color: cont.generalCont.whiteColor,
+                                fontWeight: FontWeight.w200),
+                          ),
+                          TextSpan(
+                            text: '${cont.testimonials.length}',
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: cont.generalCont.borderColor,
+                                fontWeight: FontWeight.w400),
+                          )
+                        ])),
+                    SizedBox(
+                      width: 18,
+                    ),
+                    CircularIconButton(
+                      icon: HugeIcons.strokeRoundedArrowRight01,
+                      onTap: () {
+                        cont.goNext()
+            ;                    },
+                    )
+                  ],
+                )
+              ],
+            ),
           );
         },
       ),

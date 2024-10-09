@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
           body: PageView(
                 controller: cont.pageController,
                 scrollDirection:Axis.vertical,
-                physics: NeverScrollableScrollPhysics(), 
+                physics: ScrollPhysics(), 
                 children: cont.sectionList
               ),);
       }

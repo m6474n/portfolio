@@ -14,7 +14,7 @@ class TestimonialCard extends StatefulWidget {
 }
 
 class _TestimonialCardState extends State<TestimonialCard> {
-   final ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
   final double _scrollSpeed = 50.0; // Pixels per second
 
   @override
@@ -24,90 +24,144 @@ class _TestimonialCardState extends State<TestimonialCard> {
       _startAutoScroll();
     });
   }
+
   final generalCont = Get.find<GeneralController>();
 
   void _startAutoScroll() {
     Future.delayed(Duration(milliseconds: 0), () {
       if (_scrollController.hasClients) {
-        final double maxScrollExtent = _scrollController.position.maxScrollExtent;
+        final double maxScrollExtent =
+            _scrollController.position.maxScrollExtent;
         final double currentScrollPosition = _scrollController.position.pixels;
 
         if (currentScrollPosition < maxScrollExtent) {
-          _scrollController.animateTo(
-            currentScrollPosition + _scrollSpeed,
-            duration: Duration(seconds: 1),
-            curve: Curves.linear,
-          ).then((_) => _startAutoScroll());
+          _scrollController
+              .animateTo(
+                currentScrollPosition + _scrollSpeed,
+                duration: Duration(seconds: 1),
+                curve: Curves.linear,
+              )
+              .then((_) => _startAutoScroll());
         }
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
-  
+    double width = MediaQuery.of(context).size.width;
     return Container(
-          padding: EdgeInsets.all(42),
+      padding: EdgeInsets.all(42),
       decoration: BoxDecoration(
           border: Border.all(
             width: 1,
             color: generalCont.borderColor,
           ),
           borderRadius: BorderRadius.circular(32)),
-    child:  SingleChildScrollView(
-            controller: _scrollController,
+      child: SingleChildScrollView(
+        controller: _scrollController,
         child: Column(
           children: [
-            Row(
-              children: [
-                CircleAvatar(
-                    radius: 32,
-                    backgroundColor: generalCont.borderColor,
-                    child: HugeIcon(
-                        icon: HugeIcons.strokeRoundedUser,
-                        color: generalCont.whiteColor)),
-                SizedBox(
-                  width: 24,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.testimonial.clientName,
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w300,
-                          color: generalCont.whiteColor),
-                    ),
-                    Text(
-                      widget.testimonial.clientCountry,
-                      style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
-                          color: generalCont.borderColor,
-                          letterSpacing: 2),
-                    )
-                  ],
-                ),
-                Spacer(),
-                Text(
-                  "${widget.testimonial.clientCompany}",
-                  style: TextStyle(
-                      fontSize: 24, color: generalCont.primaryColor),
-                )
-              ],
-            ),
-            SizedBox(height: 24),
-          
-             
-                  Text(
-                    '"${widget.testimonial.message}"',
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w200,
-                        color: generalCont.whiteColor,
-                        letterSpacing: 2),
+            width > 500
+                ? Row(
+                    children: [
+                      CircleAvatar(
+                          radius: 32,
+                          backgroundColor: generalCont.borderColor,
+                          child: HugeIcon(
+                              icon: HugeIcons.strokeRoundedUser,
+                              color: generalCont.whiteColor)),
+                      SizedBox(
+                        width: 24,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.testimonial.clientName,
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w300,
+                                color: generalCont.whiteColor),
+                          ),
+                          Text(
+                            widget.testimonial.clientCountry,
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400,
+                                color: generalCont.borderColor,
+                                letterSpacing: 2),
+                          )
+                        ],
+                      ),
+                      Spacer(),
+                      Text(
+                        "${widget.testimonial.clientCompany}",
+                        style: TextStyle(
+                            fontSize: 24, color: generalCont.primaryColor),
+                      )
+                    ],
                   )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${widget.testimonial.clientCompany}",
+                        style: TextStyle(
+                            fontSize: 24, color: generalCont.primaryColor),
+                      ),
+                      SizedBox(
+                        height: 18,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                              radius: 32,
+                              backgroundColor: generalCont.borderColor,
+                              child: HugeIcon(
+                                  icon: HugeIcons.strokeRoundedUser,
+                                  color: generalCont.whiteColor)),
+                          SizedBox(
+                            width: 12,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                widget.testimonial.clientName,
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w300,
+                                    color: generalCont.whiteColor),
+                              ),
+                              Text(
+                                widget.testimonial.clientCountry,
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400,
+                                    color: generalCont.borderColor,
+                                    letterSpacing: 2),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+            SizedBox(height: 24),
+            Text(
+              '"${widget.testimonial.message}"',
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w200,
+                  color: generalCont.whiteColor,
+                  letterSpacing: 2),
+            )
           ],
         ),
       ),

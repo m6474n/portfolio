@@ -42,7 +42,7 @@ class _ServiceCardState extends State<ServiceCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                
-               Row(
+           width >500 ?  Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                  children: [
@@ -52,7 +52,19 @@ class _ServiceCardState extends State<ServiceCard> {
                       ) ,
                Icon(widget.icon, size: 42,color: generalCont.primaryColor),
                  ],
+               ):  Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+
+                 children: [
+          Icon(widget.icon, size: 72,color: generalCont.primaryColor), Text(
+                        widget.title,
+                        style: TextStyle(fontSize: 32, fontWeight: FontWeight.w200, color: generalCont.whiteColor),
+                      ) ,
+              
+                 ],
                ),
+            
                 SizedBox(height: 6,),
                  Text(
                  widget.description,

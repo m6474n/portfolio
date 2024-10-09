@@ -7,7 +7,7 @@ final generalCont = Get.find<GeneralController>();
     {
       'title': 'Project 1',
       'description': 'Project 1 is an innovative real estate platform designed to simplify the home buying and selling process.',
-      'image': '../../assets/images/projects/portfolio1.jpg',
+      'image': 'assets/images/portfolio1.jpg',
       'tech':[
         'Figma',
         'WordPress',
@@ -17,7 +17,7 @@ final generalCont = Get.find<GeneralController>();
      {
       'title': 'Project 2',
       'description': 'Project 2 is an innovative real estate platform designed to simplify the home buying and selling process.',
-      'image': '../../assets/images/projects/portfolio3.jpg',
+      'image': 'assets/images/portfolio3.jpg',
       'tech':[
         'Figma',
         'Next Js',
@@ -27,7 +27,7 @@ final generalCont = Get.find<GeneralController>();
     }, {
       'title': 'Project 3',
       'description': 'Project 3 is an innovative real estate platform designed to simplify the home buying and selling process.',
-      'image': '../../assets/images/projects/portfolio5.jpg',
+      'image': 'assets/images/portfolio5.jpg',
       'tech':[
         'Figma',
         'WordPress',

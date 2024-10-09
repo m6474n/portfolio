@@ -41,68 +41,107 @@ class _PortfolioSectionState extends State<PortfolioSection> {
       child: GetBuilder(
           init: ProjectController(),
           builder: (cont) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 100,
-                ),
-                CustomOutlineButton(title: "Portfolio", onTap: () {}),
-                SizedBox(
-                  height: 12,
-                ),
-                Text(
-                  "Featured Projects",
-                  style: TextStyle(
-                      color: cont.generalCont.whiteColor,
-                      fontSize: 72,
-                      fontWeight: FontWeight.w200,
-                      letterSpacing: 4,
-                      height: 1.2),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: height * 0.635,
-                  width: width,
-                  child: Row(
-                    children: [
-                      Expanded(
-                          child: ProjectCard(
-                        title: cont.projects[0]['title'],
-                        description: cont.projects[0]['description'],
-                        tech: cont.projects[0]['tech'],
-                        image: cont.projects[0]['image'],
-                      )),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 18.0),
-                        child: Column(
-                          children: [
-                             Expanded(
-                          child: ProjectCard(
-                        title: cont.projects[1]['title'],
-                        description: cont.projects[1]['description'],
-                        tech: cont.projects[1]['tech'],
-                        image: cont.projects[1]['image'],
-                      )),
-                            SizedBox(
-                              height: 18,
-                            ),
-    Expanded(
-                          child: ProjectCard(
-                        title: cont.projects[2]['title'],
-                        description: cont.projects[2]['description'],
-                        tech: cont.projects[2]['tech'],
-                        image: cont.projects[2]['image'],
-                      )),                          ],
-                        ),
-                      )
-                    ],
+            return SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 100,
                   ),
-                )
-              ],
+                  CustomOutlineButton(title: "Portfolio", onTap: () {}),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    "Featured Projects",
+                    style: TextStyle(
+                        color: cont.generalCont.whiteColor,
+                  fontSize: width >800 ? 72: width *0.1,
+                        fontWeight: FontWeight.w200,
+                        letterSpacing: 4,
+                        height: 1.2),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    height: width > 500 ? height * 0.635 :height*1.4,
+                    width: width,
+                    child: width < 1100
+                        ? Column(
+                            children: [
+                              Expanded(
+                                  child: ProjectCard(
+                                title: cont.projects[0]['title'],
+                                description: cont.projects[0]['description'],
+                                tech: cont.projects[0]['tech'],
+                                image: cont.projects[0]['image'],
+                              )),
+                              SizedBox(
+                                height: 18,
+                              ),
+                              Expanded(
+                                  child: ProjectCard(
+                                title: cont.projects[1]['title'],
+                                description: cont.projects[1]['description'],
+                                tech: cont.projects[1]['tech'],
+                                image: cont.projects[1]['image'],
+                              )),
+                              SizedBox(
+                                height: 18,
+                              ),
+                              Expanded(
+                                  child: ProjectCard(
+                                title: cont.projects[2]['title'],
+                                description: cont.projects[2]['description'],
+                                tech: cont.projects[2]['tech'],
+                                image: cont.projects[2]['image'],
+                              ))
+                            ],
+                          )
+                        : Row(
+                            children: [
+                              Expanded(
+                                  child: ProjectCard(
+                                title: cont.projects[0]['title'],
+                                description: cont.projects[0]['description'],
+                                tech: cont.projects[0]['tech'],
+                                image: cont.projects[0]['image'],
+                              )),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 18.0),
+                                  child: Column(
+                                    children: [
+                                      Expanded(
+                                          child: ProjectCard(
+                                        title: cont.projects[1]['title'],
+                                        description: cont.projects[1]
+                                            ['description'],
+                                        tech: cont.projects[1]['tech'],
+                                        image: cont.projects[1]['image'],
+                                      )),
+                                      SizedBox(
+                                        height: 18,
+                                      ),
+                                      Expanded(
+                                          child: ProjectCard(
+                                        title: cont.projects[2]['title'],
+                                        description: cont.projects[2]
+                                            ['description'],
+                                        tech: cont.projects[2]['tech'],
+                                        image: cont.projects[2]['image'],
+                                      )),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                  )
+                ],
+              ),
             );
           }),
     );

@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
        fontFamily: 'Inter',
        scaffoldBackgroundColor: generalCont.borderColor,
        textTheme: TextTheme(
-
         displayLarge: TextStyle(color: generalCont.whiteColor),
         displayMedium: TextStyle(color: generalCont.whiteColor),
         displaySmall: TextStyle(color: generalCont.whiteColor),

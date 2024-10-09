@@ -30,6 +30,7 @@ class _SkillsSectionState extends State<SkillsSection> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return AnimatedOpacity(
       opacity: _opacity,
       duration: Duration(seconds: 1), // Duration of the fade-in animation
@@ -37,32 +38,34 @@ class _SkillsSectionState extends State<SkillsSection> {
       child: GetBuilder(
         init: SkillController(),
         builder: (cont) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 100,
-              ),
-              CustomOutlineButton(title: "Skills", onTap: () {}),
-              SizedBox(
-                height: 12,
-              ),
-              Text(
-                "My Advantages",
-                style: TextStyle(
-                    color: cont.generalCont.whiteColor,
-                    fontSize: 72,
-                    fontWeight: FontWeight.w200,
-                    letterSpacing: 4,
-                    height: 1.2),
-              ),
-              SizedBox(height: 20,),
-             Wrap(direction: Axis.horizontal,children: List.generate(cont.skills.length, (index){
-              return  SkillCard(title: cont.skills[index]['title'],icon: cont.skills[index]['icon'],);
-             }),)
-          
-            ],
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 100,
+                ),
+                CustomOutlineButton(title: "Skills", onTap: () {}),
+                SizedBox(
+                  height: 12,
+                ),
+                Text(
+                  "My Advantages",
+                  style: TextStyle(
+                      color: cont.generalCont.whiteColor,
+                  fontSize: width >800 ? 72: width *0.1,
+                      fontWeight: FontWeight.w200,
+                      letterSpacing: 4,
+                      height: 1.2),
+                ),
+                SizedBox(height: 20,),
+               Wrap(direction: Axis.horizontal,children: List.generate(cont.skills.length, (index){
+                return  SkillCard(title: cont.skills[index]['title'],icon: cont.skills[index]['icon'],);
+               }),)
+            
+              ],
+            ),
           );
         }
       ),

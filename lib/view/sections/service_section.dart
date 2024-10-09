@@ -32,40 +32,45 @@ class _ServiceSectionState extends State<ServiceSection> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedOpacity(
+    double width = MediaQuery.of(context).size.width
+;    return AnimatedOpacity(
       opacity: _opacity,
       duration: Duration(seconds: 1), // Duration of the fade-in animation
       curve: Curves.easeInOut, // Curve for the animation
       child: GetBuilder(
         init: ServiceController(),
         builder: (cont) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 100,
-              ),
-              CustomOutlineButton(title: "Services", onTap: () {}),
-              SizedBox(
-                height: 12,
-              ),
-              Text(
-                "My Specialization",
-                style: TextStyle(
-                    color: cont.generalCont.whiteColor,
-                    fontSize: 72,
-                    fontWeight: FontWeight.w200,
-                    letterSpacing: 4,
-                    height: 1.2),
-              ),
-              SizedBox(height: 20,),
-            ...List.generate(cont.services.length, (index){
-              var service = Service.fromMap(cont.services[index]);
-              return ServiceCard(title: service.title, description: service.description, icon: service.icon, tech: service.tech);
-            })
-            
-            ],
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 100,
+                ),
+                CustomOutlineButton(title: "Services", onTap: () {}),
+                SizedBox(
+                  height: 12,
+                ),
+                Text(
+                  "My Specialization",
+                  style: TextStyle(
+                      color: cont.generalCont.whiteColor,
+                      // fontSize: 72,
+                                        fontSize: width >800 ? 72: width *0.1,
+
+                      fontWeight: FontWeight.w200,
+                      letterSpacing: 4,
+                      height: 1.2),
+                ),
+                SizedBox(height: 20,),
+              ...List.generate(cont.services.length, (index){
+                var service = Service.fromMap(cont.services[index]);
+                return ServiceCard(title: service.title, description: service.description, icon: service.icon, tech: service.tech);
+              })
+              
+              ],
+            ),
           );
         }
       ),
