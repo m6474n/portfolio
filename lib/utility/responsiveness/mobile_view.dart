@@ -16,7 +16,7 @@ final generalCont = Get.find<GeneralController>();
     return Scaffold(
         backgroundColor: generalCont.bgColor,
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 60.0),
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
           child: SingleChildScrollView(
             child: Column(
               children: [

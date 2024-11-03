@@ -23,7 +23,7 @@ class ProfileCard extends StatelessWidget {
           return Stack(
             children: [
               Container(
-                width: width < AppSettings.mobileWidth ? width : 350,
+                width: width < AppSettings.mobileWidth ? width : 400,
                 // height: width < AppSettings.mobileWidth ? 350 : height * 0.8,
                 constraints: BoxConstraints(minWidth: 400),
                 padding: EdgeInsets.all(42),
