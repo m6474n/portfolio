@@ -1,6 +1,7 @@
 # portfolio
 
 A new Flutter project.
+![App Screenshot](https://raw.githubusercontent.com/m6474n/portfolio/refs/heads/main/assets/banner.png)
 
 ## Getting Started
 
