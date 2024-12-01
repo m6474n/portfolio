@@ -1,5 +1,5 @@
 <a href="https://m6474n.github.io/">
-  <img alt="Moden & Minial Portfolio Website in Flutter" src="https://raw.githubusercontent.com/m6474n/portfolio/refs/heads/main/assets/banner.png">
+  <img alt="Moden & Minimal Portfolio Website in Flutter" src="https://raw.githubusercontent.com/m6474n/portfolio/refs/heads/main/assets/banner.png">
   <h1 align="center">Moden & Minial Flutter Portfolio </h1>
 </a>
 
