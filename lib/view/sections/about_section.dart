@@ -68,26 +68,7 @@ class _AboutSectionState extends State<AboutSection> {
             SizedBox(
               height: 32,
             ),
-            Text(
-              "Lifelong Learner",
-              style: TextStyle(
-                  color: generalCont.whiteColor,
-                  fontSize: 32,
-                  fontWeight: FontWeight.w200,
-                  letterSpacing: 4,
-                  height: 1.2),
-            ),
-            SizedBox(
-              height: 12,
-            ),
-            Text(
-              "In the ever-evolving world of technology, I am committed to continuous learning and growth. I am always on the lookout for new tools, techniques, and methodologies that can enhance my skills and contribute to the success of my projects. My curiosity and passion for learning drive me to explore inventive ways to make projects succeed.",
-              style: TextStyle(
-                  color: generalCont.whiteColor,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w200,
-                  letterSpacing: 4),
-            ),
+           
           ],
         ),
       ),

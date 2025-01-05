@@ -5,8 +5,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:portfolio/components/CustomRoundedButton.dart';
+import 'package:portfolio/components/customInputfield.dart';
 import 'package:portfolio/components/mask.dart';
 import 'package:portfolio/components/socialIcon.dart';
+import 'package:portfolio/components/transparentButton.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 import 'package:portfolio/utility/appsettings.dart';
 
@@ -160,31 +162,86 @@ class ProfileCard extends StatelessWidget {
                           border:
                               Border.all(width: 1, color: cont.borderColor)),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                        child: Column(
-                          children: [
-                            // SizedBox(
-                            //   height: 42,
-                            // ),
-                            // Text(
-                            //   "Settings",
-                            //   style: TextStyle(
-                            //       color: Colors.white,
-                            //       fontWeight: FontWeight.w200,
-                            //       fontSize: 32),
-                            // ), SizedBox(height: 32,),
-                            // ReusableRow(title: "Color", child: Row(children: List.generate(cont.colors.length, (index){
-                            //   return Padding(
-                            //     padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                            //     child: GestureDetector(
-                            //       onTap: (){
-                            //         // cont.changeColor(cont.colors[index]);
-                            //       },
-                            //       child: Container(height: 30,width: 30 ,decoration: BoxDecoration(color:cont.colors[index],borderRadius: BorderRadius.circular(50)))),
-                            //   );
-                            // }),)
-                            // )
-                          ],
+                        padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 32),
+                        child: Form(
+                          child: Column(
+                            children: [
+                              Text("Welcome Back!", style: TextStyle(color: generalCont.primaryColor, fontSize: 32, fontWeight: FontWeight.bold),),
+                              Text("Enter your crendentials to continue", style: TextStyle(color: Colors.white, fontSize: 16,  ),),
+                          SizedBox(height: 18,),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4),
+                                child: TextFormField(
+                                  cursorColor: generalCont.primaryColor,
+                                  decoration: InputDecoration(
+                                    
+                                    filled: true,
+                                    enabledBorder: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(12)),
+                                    focusedBorder: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(12)),
+                                    disabledBorder: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(12)),
+                                    errorBorder: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(12)),
+                                    hintText: "Enter Email",
+                                    hintStyle: TextStyle(fontSize: 14),
+                                    fillColor: Colors.white,
+                                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),
+                                    
+                                    )
+                                
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4),
+                                child: TextFormField(
+                                  cursorColor: generalCont.primaryColor,
+                                  decoration: InputDecoration(
+                                    
+                                    filled: true,
+                                    enabledBorder: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(12)),
+                                    focusedBorder: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(12)),
+                                    disabledBorder: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(12)),
+                                    errorBorder: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(12)),
+                                    hintText: "Enter Password",
+                                     hintStyle: TextStyle(fontSize: 14),
+                                    fillColor: Colors.white,
+                                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),
+                                    
+                                    )
+                                
+                                  ),
+                                ),
+                              )
+                              
+                              ,Container(
+                                height: 50,
+                                margin: EdgeInsets.only(top: 12),
+                                padding: EdgeInsets.symmetric(horizontal: 12),
+                                child: TransparentButton(label: "Login", onTap: (){}))
+                              
+                              // CustomInputField(title: "title", placeholder: "placeholder", controller: TextEditingController())
+                              // SizedBox(
+                              //   height: 42,
+                              // ),
+                              // Text(
+                              //   "Settings",
+                              //   style: TextStyle(
+                              //       color: Colors.white,
+                              //       fontWeight: FontWeight.w200,
+                              //       fontSize: 32),
+                              // ), SizedBox(height: 32,),
+                              // ReusableRow(title: "Color", child: Row(children: List.generate(cont.colors.length, (index){
+                              //   return Padding(
+                              //     padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                              //     child: GestureDetector(
+                              //       onTap: (){
+                              //         // cont.changeColor(cont.colors[index]);
+                              //       },
+                              //       child: Container(height: 30,width: 30 ,decoration: BoxDecoration(color:cont.colors[index],borderRadius: BorderRadius.circular(50)))),
+                              //   );
+                              // }),)
+                              // )
+                            ],
+                          ),
                         ),
                       ),
                     ),

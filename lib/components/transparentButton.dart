@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 
-class CustomRoundedButton extends StatefulWidget {
+class TransparentButton extends StatefulWidget {
   final String label;
   final IconData? icon;
   final bool isRounded;
   final VoidCallback onTap;
   final Color? bgColor, hoverColor;
 
-  const CustomRoundedButton({
+  const TransparentButton({
     super.key,
     required this.label,
      this.icon,
@@ -20,10 +20,10 @@ class CustomRoundedButton extends StatefulWidget {
   });
 
   @override
-  State<CustomRoundedButton> createState() => _CustomRoundedButtonState();
+  State<TransparentButton> createState() => _TransparentButtonState();
 }
 
-class _CustomRoundedButtonState extends State<CustomRoundedButton> {
+class _TransparentButtonState extends State<TransparentButton> {
   bool isHover = false;
   final generalCont = Get.find<GeneralController>();
 
@@ -36,13 +36,13 @@ class _CustomRoundedButtonState extends State<CustomRoundedButton> {
         onTap: widget.onTap,
         child: AnimatedContainer(
           duration: Duration(milliseconds: 200),
-          padding: EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+          padding: EdgeInsets.symmetric(horizontal: 18, vertical: 6),
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: !isHover ? Colors.transparent : generalCont.primaryColor,
+              color: isHover ? Colors.transparent : generalCont.primaryColor,
             ),
-            color: !isHover ? generalCont.primaryColor : null,
+            color: isHover ? generalCont.primaryColor : null,
             borderRadius:widget.isRounded? BorderRadius.circular(36):BorderRadius.circular(12),
           ),
           child: Center(
@@ -50,13 +50,13 @@ class _CustomRoundedButtonState extends State<CustomRoundedButton> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-              widget.icon != null ?Icon(widget.icon, color: isHover? generalCont.primaryColor : generalCont.whiteColor,) :Container(),
+              widget.icon != null ?Icon(widget.icon, color: !isHover? generalCont.primaryColor : generalCont.whiteColor,) :Container(),
             widget.icon!=null?    SizedBox(width: 12) :Container(),
           Text(
                   widget.label,
                   style: TextStyle(
-                    fontSize: 22,
- color: !isHover? generalCont.whiteColor : generalCont.primaryColor,                  ),
+                    fontSize: 18,
+ color: isHover? generalCont.whiteColor : generalCont.primaryColor,                  ),
                 )   
                 
               ],

@@ -56,7 +56,7 @@ final generalCont = Get.find<GeneralController>();
                     child: Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage('assets/images/round-text.png')),
+                            image: AssetImage('assets/images/round-text-1.png'),),
       
                         // borderRadius: BorderRadius.circular(100),
                       ),

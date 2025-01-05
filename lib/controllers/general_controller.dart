@@ -17,10 +17,13 @@ class GeneralController extends GetxController {
 // Colors.
   //  Color primaryColor= Color(0xFFcc4499);
    Color primaryColor= Color(0xff03dac5);
-   Color bgColor= Color(0xff1f1f1f);
-   Color borderColor= Color.fromARGB(255, 119, 119, 119);
+   Color bgColor= Color(0xffffffff);
+  //  Color bgColor= Color(0xff1f1f1f);
+  //  Color bgColor= Color(0xff1f1f1f);
+   Color borderColor= Color.fromARGB(255, 176, 176, 176);
 
-   Color whiteColor= Color(0xFFFFFFFF);
+   Color whiteColor= Color(0xFF000000);
+  //  Color whiteColor= Color(0xFFFFFFFF);
   // static Color grad1= Color(0xFFDB6885);
   // static Color grad2= Color(0xFF972239);
    Color grad1= Color(0xFF663dff);
