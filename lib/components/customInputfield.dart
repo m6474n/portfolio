@@ -42,6 +42,7 @@ final generalCont = Get.find<GeneralController>();
           height: 8,
         ),
         TextFormField(
+          controller: widget.controller,
           cursorColor: generalCont.primaryColor,
           cursorErrorColor: generalCont.primaryColor,
           maxLines: widget.maxLines,

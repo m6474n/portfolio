@@ -87,7 +87,7 @@ class _ContactSectionState extends State<ContactSection> {
                               child: CustomInputField(
                             title: "Name",
                             placeholder: "Your Full Name",
-                            controller: TextEditingController(),
+                            controller: cont.nameController,
                           )),
                           SizedBox(
                             width: 12,
@@ -96,7 +96,7 @@ class _ContactSectionState extends State<ContactSection> {
                               child: CustomInputField(
                             title: "Email",
                             placeholder: "Your Valid Email Address",
-                            controller: TextEditingController(),
+                            controller: cont.emailController,
                           ))
                         ],
                       ),
@@ -109,7 +109,7 @@ class _ContactSectionState extends State<ContactSection> {
                               child: CustomInputField(
                             title: "Phone",
                             placeholder: "Your Contact No.",
-                            controller: TextEditingController(),
+                            controller: cont.phoneController,
                           )),
                           SizedBox(
                             width: 12,
@@ -118,7 +118,7 @@ class _ContactSectionState extends State<ContactSection> {
                               child: CustomInputField(
                             title: "Subject",
                             placeholder: "Your Subject",
-                            controller: TextEditingController(),
+                            controller: cont.subjectController,
                           ))
                         ],
                       ),
@@ -128,7 +128,7 @@ class _ContactSectionState extends State<ContactSection> {
                       CustomInputField(
                         title: "Message",
                         placeholder: "Your Message here...",
-                        controller: TextEditingController(),
+                        controller: cont.messageController,
                         maxLines: 4,
                       ),
                       SizedBox(
@@ -139,9 +139,11 @@ class _ContactSectionState extends State<ContactSection> {
                         child: Container(
                           width: 250,
                           child: CustomRoundedButton(label: "Submit", onTap: () {
-                            if(cont.formKey.currentState!.validate()){
-                              print('helo');
-                            }
+                             cont.sendMessage();
+//                             if(cont.formKey.currentState!.validate()){
+//                               cont.sendMessage
+// ();                              print('helo');
+//                             }
                           })),
                       )
                     ],
