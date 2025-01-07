@@ -139,11 +139,10 @@ class _ContactSectionState extends State<ContactSection> {
                         child: Container(
                           width: 250,
                           child: CustomRoundedButton(label: "Submit", onTap: () {
-                             cont.sendMessage();
-//                             if(cont.formKey.currentState!.validate()){
-//                               cont.sendMessage
-// ();                              print('helo');
-//                             }
+                            if(cont.formKey.currentState!.validate()){
+                              cont.sendMessage
+();                              print('helo');
+                            }
                           })),
                       )
                     ],

@@ -11,6 +11,7 @@ import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/components/transparentButton.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 import 'package:portfolio/utility/appsettings.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileCard extends StatelessWidget {
   const ProfileCard({super.key});
@@ -437,7 +438,14 @@ class ProfileForMobile extends StatelessWidget {
                       // Container(height: 30,child: HoverButtonDemo())
                       CustomRoundedButton(
                         label: "Hire Me",
-                        onTap: () {},
+                        onTap: ()async {
+                          String url = "https://www.fiverr.com/mosen_dev55";
+                          // if(await canLaunchUrl(Uri.parse(url))){
+launchUrl(Uri.parse(url));
+                          // }
+                          print("object");
+
+                        },
                         icon: HugeIcons.strokeRoundedFilterMailSquare,
                         isRounded: true,
                       ),

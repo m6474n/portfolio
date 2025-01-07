@@ -32,7 +32,8 @@ class _CustomRoundedButtonState extends State<CustomRoundedButton> {
     return MouseRegion(
       onEnter: (_) => onHover(true),
       onExit: (_) => onHover(false),
-      child: GestureDetector(
+      child: InkWell(
+        splashColor: Colors.transparent,
         onTap: widget.onTap,
         child: AnimatedContainer(
           duration: Duration(milliseconds: 200),
