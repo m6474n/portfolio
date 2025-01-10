@@ -16,7 +16,7 @@ import 'package:portfolio/view/sections/testimonial_section.dart';
 class GeneralController extends GetxController {
 // Colors.
   //  Color primaryColor= Color(0xFFcc4499);
-   Color primaryColor= Color(0xff03dac5);
+   Color primaryColor= Color(0xFF03DAC5);
    Color bgColor= Color(0xffffffff);
   //  Color bgColor= Color(0xff1f1f1f);
   //  Color bgColor= Color(0xff1f1f1f);

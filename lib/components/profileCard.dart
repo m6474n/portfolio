@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -9,12 +11,22 @@ import 'package:portfolio/components/customInputfield.dart';
 import 'package:portfolio/components/mask.dart';
 import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/components/transparentButton.dart';
+import 'package:portfolio/controllers/auth_controller.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 import 'package:portfolio/utility/appsettings.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ProfileCard extends StatelessWidget {
+class ProfileCard extends StatefulWidget {
   const ProfileCard({super.key});
+
+  @override
+  State<ProfileCard> createState() => _ProfileCardState();
+}
+
+class _ProfileCardState extends State<ProfileCard> {
+  var auth = Get.put(AuthController());
+  var email =TextEditingController();
+  var pass=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,228 +37,234 @@ class ProfileCard extends StatelessWidget {
         builder: (cont) {
           return Stack(
             children: [
-              Container(
-                width: width < AppSettings.mobileWidth ? width : 400,
-                // height: width < AppSettings.mobileWidth ? 350 : height * 0.8,
-                constraints: BoxConstraints(minWidth: 400),
-                padding: EdgeInsets.all(42),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(52),
-                    border: Border.all(width: 1, color: cont.borderColor)),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                              flex: 1,
-                              child: Text("Mosen",
-                                  style: TextStyle(
-                                      color: cont.whiteColor,
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 38))),
-                          Expanded(
-                              flex: 1,
-                              child: Text(
-                                "Flutter Developer / \nFull Stack Developer",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w300,
-                                    color: cont.whiteColor,
-                                    letterSpacing: 2),
-                                textAlign: TextAlign.end,
-                              ))
-                        ],
-                      ),
-                      SizedBox(
-                        height: 32,
-                      ),
-                      Container(
-                        height: 250,
-                        width: 300,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 1,
-                              color: cont.borderColor,
-                            ),
-                            image: DecorationImage(
-                              image:
-                                  AssetImage('assets/images/profile-pic.png'),
-                              fit: BoxFit.cover,
-                            ),
-                            borderRadius: BorderRadius.circular(42)),
-                      ),
-                      SizedBox(
-                        height: 32,
-                      ),
-                      Text(
-                        "Muhammad Mohsin",
-                        style: TextStyle(fontSize: 32, color: cont.whiteColor),
-                      ),
-                      SizedBox(height: 12),
-                      Text(
-                        "G.T Road, Gujrat Pakistan",
-                        style: TextStyle(
-                            fontSize: 14,
-                            letterSpacing: 2,
-                            fontWeight: FontWeight.w300,
-                            color: cont.borderColor),
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        "m.mohsin2055@gmail.com",
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: cont.whiteColor,
-                            letterSpacing: 3,
-                            fontWeight: FontWeight.w300),
-                      ),
-                      SizedBox(height: 18),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SocialIcon(
-                            icon: FontAwesomeIcons.github,
-                            link: "https://github.com/m6474n",
-                          ),
-                          SocialIcon(
-                            icon: FontAwesomeIcons.instagram,
-                            link: "https://www.instagram.com/mosen_here/",
-                          ),
-                          SocialIcon(
-                            icon: FontAwesomeIcons.x,
-                            link: "https://x.com/mosen_here",
-                          ),
-                          SocialIcon(
-                            icon: FontAwesomeIcons.linkedin,
-                            link:
-                                "https://www.linkedin.com/in/muhammad--mohsin/",
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 18),
-                      // Container(height: 30,child: HoverButtonDemo())
-                      CustomRoundedButton(
-                        label: "Hire Me",
-                        onTap: () {},
-                        icon: HugeIcons.strokeRoundedFilterMailSquare,
-                        isRounded: true,
-                      ),
-                      SizedBox(height: 32),
-                      Text(
-                        "©2024, All Right Reserved.",
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w300,
-                            color: cont.borderColor),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 0,
-                left: 0,
-                right: 0,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(52),
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-                    child: AnimatedContainer(
-                      duration: Duration(milliseconds: 700),
-                      height: cont.showSettings ? height * 0.8 : 0,
-                      width: 350,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(52),
+                child: Stack(
+                  children: [
+                    Container(
+                      width: width < AppSettings.mobileWidth ? width : 400,
+                      // height: width < AppSettings.mobileWidth ? 350 : height * 0.8,
+                      constraints: BoxConstraints(minWidth: 400),
+                      padding: EdgeInsets.all(42),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(52),
-                          color: Colors.black54,
                           border:
                               Border.all(width: 1, color: cont.borderColor)),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 32),
-                        child: Form(
-                          child: Column(
-                            children: [
-                              Text("Welcome Back!", style: TextStyle(color: generalCont.primaryColor, fontSize: 32, fontWeight: FontWeight.bold),),
-                              Text("Enter your crendentials to continue", style: TextStyle(color: Colors.white, fontSize: 16,  ),),
-                          SizedBox(height: 18,),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4),
-                                child: TextFormField(
-                                  cursorColor: generalCont.primaryColor,
-                                  decoration: InputDecoration(
-                                    
-                                    filled: true,
-                                    enabledBorder: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(12)),
-                                    focusedBorder: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(12)),
-                                    disabledBorder: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(12)),
-                                    errorBorder: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(12)),
-                                    hintText: "Enter Email",
-                                    hintStyle: TextStyle(fontSize: 14),
-                                    fillColor: Colors.white,
-                                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),
-                                    
-                                    )
-                                
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                    flex: 1,
+                                    child: Text("Mosen",
+                                        style: TextStyle(
+                                            color: cont.whiteColor,
+                                            fontWeight: FontWeight.w800,
+                                            fontSize: 38))),
+                                Expanded(
+                                    flex: 1,
+                                    child: Text(
+                                      "Flutter Developer / \nFull Stack Developer",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w300,
+                                          color: cont.whiteColor,
+                                          letterSpacing: 2),
+                                      textAlign: TextAlign.end,
+                                    ))
+                              ],
+                            ),
+                            SizedBox(
+                              height: 32,
+                            ),
+                            Container(
+                              height: 250,
+                              width: 300,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 1,
+                                    color: cont.borderColor,
+                                  ),
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/profile-pic.png'),
+                                    fit: BoxFit.cover,
+                                  ),
+                                  borderRadius: BorderRadius.circular(42)),
+                            ),
+                            SizedBox(
+                              height: 32,
+                            ),
+                            Text(
+                              "Muhammad Mohsin",
+                              style: TextStyle(
+                                  fontSize: 32, color: cont.whiteColor),
+                            ),
+                            SizedBox(height: 12),
+                            Text(
+                              "G.T Road, Gujrat Pakistan",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  letterSpacing: 2,
+                                  fontWeight: FontWeight.w300,
+                                  color: cont.borderColor),
+                            ),
+                            SizedBox(height: 8),
+                            Text(
+                              "m.mohsin2055@gmail.com",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: cont.whiteColor,
+                                  letterSpacing: 3,
+                                  fontWeight: FontWeight.w300),
+                            ),
+                            SizedBox(height: 18),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SocialIcon(
+                                  icon: FontAwesomeIcons.github,
+                                  link: "https://github.com/m6474n",
+                                ),
+                                SocialIcon(
+                                  icon: FontAwesomeIcons.instagram,
+                                  link: "https://www.instagram.com/mosen_here/",
+                                ),
+                                SocialIcon(
+                                  icon: FontAwesomeIcons.x,
+                                  link: "https://x.com/mosen_here",
+                                ),
+                                SocialIcon(
+                                  icon: FontAwesomeIcons.linkedin,
+                                  link:
+                                      "https://www.linkedin.com/in/muhammad--mohsin/",
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 18),
+                            // Container(height: 30,child: HoverButtonDemo())
+                            CustomRoundedButton(
+                              label: "Hire Me",
+                              onTap: () async {
+                                String url =
+                                    "https://www.fiverr.com/mosen_dev55";
+                                if (await canLaunchUrl(Uri.parse(url))) {
+                                  launchUrl(Uri.parse(url));
+                                }
+                              },
+                              icon: HugeIcons.strokeRoundedFilterMailSquare,
+                              isRounded: true,
+                            ),
+                            SizedBox(height: 32),
+                            Text(
+                              "©2024, All Right Reserved.",
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w300,
+                                  color: cont.borderColor),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(52),
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                          child: AnimatedContainer(
+                            duration: Duration(milliseconds: 700),
+                            height: cont.showSettings ? height : 0,
+                            width: 350,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(52),
+                                color: Colors.black54,
+                                border: Border.all(
+                                    width: 1, color: cont.borderColor)),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 32.0, vertical: 32),
+                              child: AnimatedOpacity(
+                                opacity: cont.showSettings ? 1 : 0,
+                                duration: Duration(
+                                    milliseconds:
+                                        cont.showSettings ? 1200 : 200),
+                                child: Form(
+                                  key: auth.loginFormKey,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        "Welcome Back!",
+                                        style: TextStyle(
+                                            color: generalCont.primaryColor,
+                                            fontSize: 32,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                        "Enter your crendentials to continue",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 18,
+                                      ),
+                                      EmailField(
+                                          controller:email,
+                                          label: "Enter Email",
+                                          visibility: cont.showSettings),
+                                      PasswordField(
+                                          controller: pass,
+                                          label: "Enter Password",
+                                          visibility: cont.showSettings),
+                                      Container(
+                                          height: 50,
+                                          margin: EdgeInsets.only(top: 12),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 12),
+                                          child: TransparentButton(
+                                              isLoading: auth.isLoading,
+                                              label: "Login",
+                                              onTap: () {
+                                                setState(() {
+                                                  auth.isLoading = true;
+                                                });
+
+                                                if (auth
+                                                    .loginFormKey.currentState!
+                                                    .validate()) {
+                                                  FirebaseAuth.instance
+                                                      .signInWithEmailAndPassword(
+                                                          email: email.text,
+                                                          password: auth
+                                                              .passwordController
+                                                              .text)
+                                                      .then((v) {
+                                                    setState(() {
+                                                      auth.isLoading = false;
+                                                    });
+                                                  });
+                                                  // auth.login();
+                                                  print("Validate");
+                                                }
+                                              })),
+                                    ],
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4),
-                                child: TextFormField(
-                                  cursorColor: generalCont.primaryColor,
-                                  decoration: InputDecoration(
-                                    
-                                    filled: true,
-                                    enabledBorder: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(12)),
-                                    focusedBorder: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(12)),
-                                    disabledBorder: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(12)),
-                                    errorBorder: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(12)),
-                                    hintText: "Enter Password",
-                                     hintStyle: TextStyle(fontSize: 14),
-                                    fillColor: Colors.white,
-                                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12),
-                                    
-                                    )
-                                
-                                  ),
-                                ),
-                              )
-                              
-                              ,Container(
-                                height: 50,
-                                margin: EdgeInsets.only(top: 12),
-                                padding: EdgeInsets.symmetric(horizontal: 12),
-                                child: TransparentButton(label: "Login", onTap: (){}))
-                              
-                              // CustomInputField(title: "title", placeholder: "placeholder", controller: TextEditingController())
-                              // SizedBox(
-                              //   height: 42,
-                              // ),
-                              // Text(
-                              //   "Settings",
-                              //   style: TextStyle(
-                              //       color: Colors.white,
-                              //       fontWeight: FontWeight.w200,
-                              //       fontSize: 32),
-                              // ), SizedBox(height: 32,),
-                              // ReusableRow(title: "Color", child: Row(children: List.generate(cont.colors.length, (index){
-                              //   return Padding(
-                              //     padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                              //     child: GestureDetector(
-                              //       onTap: (){
-                              //         // cont.changeColor(cont.colors[index]);
-                              //       },
-                              //       child: Container(height: 30,width: 30 ,decoration: BoxDecoration(color:cont.colors[index],borderRadius: BorderRadius.circular(50)))),
-                              //   );
-                              // }),)
-                              // )
-                            ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ),
               Container(
@@ -383,8 +401,8 @@ class ProfileForMobile extends StatelessWidget {
                           ),
                           Expanded(
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 "Muhammad Mohsin",
@@ -410,45 +428,45 @@ class ProfileForMobile extends StatelessWidget {
                                     fontWeight: FontWeight.w300),
                               ),
 
-                      SizedBox(height: 18),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SocialIcon(
-                            icon: FontAwesomeIcons.github,
-                            link: "https://github.com/m6474n",
-                          ),
-                          SocialIcon(
-                            icon: FontAwesomeIcons.instagram,
-                            link: "https://www.instagram.com/mosen_here/",
-                          ),
-                          SocialIcon(
-                            icon: FontAwesomeIcons.x,
-                            link: "https://x.com/mosen_here",
-                          ),
-                          SocialIcon(
-                            icon: FontAwesomeIcons.linkedin,
-                            link:
-                                "https://www.linkedin.com/in/muhammad--mohsin/",
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 18),
-                      // Container(height: 30,child: HoverButtonDemo())
-                      CustomRoundedButton(
-                        label: "Hire Me",
-                        onTap: ()async {
-                          String url = "https://www.fiverr.com/mosen_dev55";
-                          // if(await canLaunchUrl(Uri.parse(url))){
-launchUrl(Uri.parse(url));
-                          // }
-                          print("object");
-
-                        },
-                        icon: HugeIcons.strokeRoundedFilterMailSquare,
-                        isRounded: true,
-                      ),
+                              SizedBox(height: 18),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SocialIcon(
+                                    icon: FontAwesomeIcons.github,
+                                    link: "https://github.com/m6474n",
+                                  ),
+                                  SocialIcon(
+                                    icon: FontAwesomeIcons.instagram,
+                                    link:
+                                        "https://www.instagram.com/mosen_here/",
+                                  ),
+                                  SocialIcon(
+                                    icon: FontAwesomeIcons.x,
+                                    link: "https://x.com/mosen_here",
+                                  ),
+                                  SocialIcon(
+                                    icon: FontAwesomeIcons.linkedin,
+                                    link:
+                                        "https://www.linkedin.com/in/muhammad--mohsin/",
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 18),
+                              // Container(height: 30,child: HoverButtonDemo())
+                              CustomRoundedButton(
+                                label: "Hire Me",
+                                onTap: () async {
+                                  String url =
+                                      "https://www.fiverr.com/mosen_dev55";
+                                  if (await canLaunchUrl(Uri.parse(url))) {
+                                    launchUrl(Uri.parse(url));
+                                  }
+                                },
+                                icon: HugeIcons.strokeRoundedFilterMailSquare,
+                                isRounded: true,
+                              ),
                             ],
                           )),
                         ],
@@ -546,5 +564,127 @@ launchUrl(Uri.parse(url));
             ],
           );
         });
+  }
+}
+
+Widget EmailField(
+    {required TextEditingController controller,
+    required String label,
+    bool? visibility}) {
+  return AnimatedOpacity(
+    opacity: visibility == true ? 1 : 0,
+    duration: Duration(milliseconds: 400),
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4),
+      child: TextFormField(
+        validator: (val) {
+          return val == null || val.isEmpty ? "Email can't be empty!" : null;
+        },
+        controller: controller,
+        cursorColor: generalCont.primaryColor,
+        decoration: InputDecoration(
+            errorStyle: TextStyle(color: Colors.white),
+            filled: true,
+            enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(12)),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(12)),
+            disabledBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(12)),
+            errorBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(12)),
+            hintText: label,
+            hintStyle: TextStyle(fontSize: 14),
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+            )),
+      ),
+    ),
+  );
+}
+
+class PasswordField extends StatefulWidget {
+  bool? visibility;
+  String label;
+  TextEditingController controller;
+  PasswordField(
+      {super.key,
+      required this.controller,
+      this.visibility,
+      required this.label});
+
+  @override
+  State<PasswordField> createState() => _PasswordFieldState();
+}
+
+class _PasswordFieldState extends State<PasswordField> {
+  // Declare the obscure state at the class level
+  bool obscure = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedOpacity(
+      opacity: widget.visibility == true ? 1 : 0,
+      duration: Duration(milliseconds: 400),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4),
+        child: TextFormField(
+          validator: (val) {
+            return val == null || val.isEmpty
+                ? "Password can't be empty!"
+                : null;
+          },
+          obscureText: obscure, // Use the class-level obscure variable
+          controller: widget.controller,
+          cursorColor: generalCont.primaryColor,
+          keyboardType: TextInputType.visiblePassword,
+          decoration: InputDecoration(
+            errorStyle: TextStyle(color: Colors.white),
+            filled: true,
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            disabledBorder: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            hintText: widget.label,
+            hintStyle: TextStyle(fontSize: 14),
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            suffixIcon: GestureDetector(
+              onTap: () {
+                setState(() {
+                  // Toggle the obscure value on tap
+                  obscure = !obscure;
+                });
+              },
+              child: HugeIcon(
+                icon: obscure
+                    ? HugeIcons.strokeRoundedViewOff
+                    : HugeIcons.strokeRoundedView,
+                color: generalCont.primaryColor,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

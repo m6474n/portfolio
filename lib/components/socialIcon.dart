@@ -29,7 +29,10 @@ class _SocialIconState extends State<SocialIcon> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
-        
+        // overlayColor: Colors.transparent,,
+        hoverColor: Colors.transparent,
+        focusColor:Colors.transparent,
+        highlightColor: Colors.transparent,
         splashColor: Colors.transparent,
         onHover: (val) {
           isHover = val;

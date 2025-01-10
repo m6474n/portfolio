@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 
@@ -8,6 +9,7 @@ class TransparentButton extends StatefulWidget {
   final bool isRounded;
   final VoidCallback onTap;
   final Color? bgColor, hoverColor;
+  final bool isLoading;
 
   const TransparentButton({
     super.key,
@@ -17,6 +19,7 @@ class TransparentButton extends StatefulWidget {
     required this.onTap,
     this.bgColor,
     this.hoverColor,
+   required this.isLoading,
   });
 
   @override
@@ -46,7 +49,7 @@ class _TransparentButtonState extends State<TransparentButton> {
             borderRadius:widget.isRounded? BorderRadius.circular(36):BorderRadius.circular(12),
           ),
           child: Center(
-            child: Row(
+            child:widget.isLoading? SpinKitWave(color:isHover? Colors.white:generalCont.primaryColor): Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [

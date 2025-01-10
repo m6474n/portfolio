@@ -6,10 +6,10 @@ class CustomRoundedButton extends StatefulWidget {
   final String label;
   final IconData? icon;
   final bool isRounded;
-  final VoidCallback onTap;
+   VoidCallback onTap;
   final Color? bgColor, hoverColor;
 
-  const CustomRoundedButton({
+   CustomRoundedButton({
     super.key,
     required this.label,
      this.icon,
@@ -33,8 +33,15 @@ class _CustomRoundedButtonState extends State<CustomRoundedButton> {
       onEnter: (_) => onHover(true),
       onExit: (_) => onHover(false),
       child: InkWell(
+         hoverColor: Colors.transparent,
+        focusColor:Colors.transparent,
+        highlightColor: Colors.transparent,
         splashColor: Colors.transparent,
-        onTap: widget.onTap,
+      
+        onTap:(){
+          print("button pressed");
+          widget.onTap();
+        },
         child: AnimatedContainer(
           duration: Duration(milliseconds: 200),
           padding: EdgeInsets.symmetric(horizontal: 18, vertical: 12),
