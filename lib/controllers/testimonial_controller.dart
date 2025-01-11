@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 
 class TestimonialController extends GetxController {
-final generalCont = Get.find<GeneralController>();
 PageController testimonialController = PageController();
 int currentIndex = 0;
 

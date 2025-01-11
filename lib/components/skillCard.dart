@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:portfolio/components/mask.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 
 class SkillCard extends StatefulWidget {
@@ -15,7 +16,6 @@ class SkillCard extends StatefulWidget {
 
 class _SkillCardState extends State<SkillCard> {
   bool isHover = false;
-  final generalCont = Get.find<GeneralController>();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,15 +26,15 @@ class _SkillCardState extends State<SkillCard> {
         child: AnimatedContainer(
           duration: Duration(milliseconds: 400),
           decoration: BoxDecoration(
-              border: Border.all(width: 1, color:isHover? generalCont.primaryColor :generalCont.borderColor), borderRadius: BorderRadius.circular(28)),
+              border: Border.all(width: 1, color:isHover? colorManager.primaryColor :colorManager.borderColor), borderRadius: BorderRadius.circular(28)),
               child: Padding(
                 padding: const EdgeInsets.all(28.0),
                 child:
               
                 Column(children: [
-                  SvgPicture.asset(widget.icon, height: 50, color: !isHover? generalCont.borderColor : generalCont.primaryColor,),
+                  SvgPicture.asset(widget.icon, height: 50, color: !isHover? colorManager.borderColor : colorManager.primaryColor,),
                   SizedBox(height: 12,)
-      ,                Text(widget.title, style: TextStyle(color: generalCont.whiteColor),)
+      ,                Text(widget.title, style: TextStyle(color: colorManager.textColor),)
                 ],),
               ),
         ),

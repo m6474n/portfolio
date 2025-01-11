@@ -4,6 +4,7 @@ import 'package:portfolio/components/circularTextButton.dart';
 import 'package:portfolio/components/floatingNavBar.dart';
 import 'package:portfolio/components/outlineButton.dart';
 import 'package:portfolio/components/profileCard.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/auth_controller.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 import 'package:portfolio/view/home.dart';
@@ -11,19 +12,18 @@ import 'package:portfolio/view/sections/hero_section.dart';
 
 class DesktopView extends StatelessWidget {
   DesktopView({super.key});
-  final generalCont = Get.find<GeneralController>();
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+ 
     return GetBuilder(
       init: AuthController(),
       builder: (cont) {
         return Scaffold(
-            backgroundColor: generalCont.bgColor,
+            backgroundColor: colorManager.bgColor,
             body: LayoutBuilder(
               builder: (context, constraints) {
-                return Stack(
+                double width = constraints.maxWidth
+;                return Stack(
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 60.0),
@@ -52,11 +52,12 @@ class DesktopView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    AnimatedContainer(
-                      height:cont.isLoggedin? constraints.maxHeight:0,
-                      width: constraints.maxWidth,
-                      duration: Duration(milliseconds: 600),
-                      decoration: BoxDecoration(color: generalCont.primaryColor),)
+                  //   AnimatedContainer(
+                  //     height:colorManager.isLoggedin? constraints.maxHeight:0,
+                  //     width: constraints.maxWidth,
+                  //     duration: Duration(milliseconds: 600),
+                  //     decoration: BoxDecoration(color: colorManager.bgColor),
+                  //  )
                   ],
                 );
               }

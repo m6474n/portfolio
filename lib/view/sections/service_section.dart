@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio/components/outlineButton.dart';
 import 'package:portfolio/components/serviceCard.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/service_controller.dart';
 import 'package:portfolio/models/service.dart';
 import 'package:portfolio/utility/appsettings.dart';
@@ -55,7 +56,7 @@ class _ServiceSectionState extends State<ServiceSection> {
                 Text(
                   "My Specialization",
                   style: TextStyle(
-                      color: cont.generalCont.whiteColor,
+                      color: colorManager.textColor,
                       // fontSize: 72,
                                         fontSize: width >800 ? 72: width *0.1,
 

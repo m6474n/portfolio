@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 import 'package:portfolio/models/testimonial.dart';
 
@@ -25,7 +26,6 @@ class _TestimonialCardState extends State<TestimonialCard> {
     });
   }
 
-  final generalCont = Get.find<GeneralController>();
 
   void _startAutoScroll() {
     Future.delayed(Duration(milliseconds: 0), () {
@@ -55,7 +55,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
       decoration: BoxDecoration(
           border: Border.all(
             width: 1,
-            color: generalCont.borderColor,
+            color: colorManager.borderColor,
           ),
           borderRadius: BorderRadius.circular(32)),
       child: SingleChildScrollView(
@@ -67,10 +67,10 @@ class _TestimonialCardState extends State<TestimonialCard> {
                     children: [
                       CircleAvatar(
                           radius: 32,
-                          backgroundColor: generalCont.borderColor,
+                          backgroundColor: colorManager.borderColor,
                           child: HugeIcon(
                               icon: HugeIcons.strokeRoundedUser,
-                              color: generalCont.whiteColor)),
+                              color: colorManager.textColor)),
                       SizedBox(
                         width: 24,
                       ),
@@ -83,14 +83,14 @@ class _TestimonialCardState extends State<TestimonialCard> {
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w300,
-                                color: generalCont.whiteColor),
+                                color: colorManager.textColor),
                           ),
                           Text(
                             widget.testimonial.clientCountry,
                             style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w400,
-                                color: generalCont.borderColor,
+                                color: colorManager.borderColor,
                                 letterSpacing: 2),
                           )
                         ],
@@ -99,7 +99,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
                       Text(
                         "${widget.testimonial.clientCompany}",
                         style: TextStyle(
-                            fontSize: 24, color: generalCont.primaryColor),
+                            fontSize: 24, color: colorManager.primaryColor),
                       )
                     ],
                   )
@@ -110,7 +110,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
                       Text(
                         "${widget.testimonial.clientCompany}",
                         style: TextStyle(
-                            fontSize: 24, color: generalCont.primaryColor),
+                            fontSize: 24, color: colorManager.primaryColor),
                       ),
                       SizedBox(
                         height: 18,
@@ -121,10 +121,10 @@ class _TestimonialCardState extends State<TestimonialCard> {
                         children: [
                           CircleAvatar(
                               radius: 32,
-                              backgroundColor: generalCont.borderColor,
+                              backgroundColor: colorManager.borderColor,
                               child: HugeIcon(
                                   icon: HugeIcons.strokeRoundedUser,
-                                  color: generalCont.whiteColor)),
+                                  color: colorManager.textColor)),
                           SizedBox(
                             width: 12,
                           ),
@@ -137,14 +137,14 @@ class _TestimonialCardState extends State<TestimonialCard> {
                                 style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w300,
-                                    color: generalCont.whiteColor),
+                                    color: colorManager.textColor),
                               ),
                               Text(
                                 widget.testimonial.clientCountry,
                                 style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.w400,
-                                    color: generalCont.borderColor,
+                                    color: colorManager.borderColor,
                                     letterSpacing: 2),
                               )
                             ],
@@ -159,7 +159,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
               style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w200,
-                  color: generalCont.whiteColor,
+                  color: colorManager.textColor,
                   letterSpacing: 2),
             )
           ],

@@ -3,7 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:portfolio/components/mask.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/general_controller.dart';
+import 'package:portfolio/controllers/theme_controller.dart';
 import 'package:portfolio/utility/appsettings.dart';
 
 class FloatingNavbar extends StatelessWidget {
@@ -12,7 +14,7 @@ class FloatingNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder(
-      init: GeneralController(),
+      init: ColorManager(),
       builder: (cont) {
         return Container(
           decoration: BoxDecoration(
@@ -43,14 +45,13 @@ final int index;
 
   @override
   Widget build(BuildContext context) {
-    final gencont = Get.find<GeneralController>();
-    return gencont.currentIndex == index ? Padding(
+    return colorManager.currentIndex == index ? Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
      
         child: Icon(
           icon,
           size: 24,
-          color: Get.find<GeneralController>().primaryColor,
+          color:colorManager.primaryColor,
         
       ),
     ):GestureDetector(
@@ -60,7 +61,7 @@ final int index;
           child: Icon(
             icon,
             size: 24,
-            color: Get.find<GeneralController>().borderColor,
+            color: colorManager.borderColor,
           ),
         ));
   }

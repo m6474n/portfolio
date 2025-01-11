@@ -7,7 +7,6 @@ import 'package:portfolio/models/contact.dart';
 class ContactController extends GetxController{
   var contactDB = FirebaseFirestore.instance.collection("contact");
   // FirebaseFirestore
-var generalCont = Get.find<GeneralController>();
   String email = "m.mohsin2055@gmail.com";
   final GlobalKey<FormState> formKey= GlobalKey<FormState>();
 

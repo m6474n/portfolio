@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 import 'package:portfolio/models/experience.dart';
 
@@ -13,7 +14,6 @@ class ResumeCard extends StatefulWidget {
 
 class _ResumeCardState extends State<ResumeCard> {
   bool isHover  = false;
-  final generalCont= Get.find<GeneralController>();
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
@@ -30,7 +30,7 @@ class _ResumeCardState extends State<ResumeCard> {
               padding: EdgeInsets.only(left: 32),
               decoration: BoxDecoration(
                 border: Border(
-                    left: BorderSide(width: 1, color: generalCont.borderColor)),
+                    left: BorderSide(width: 1, color: colorManager.borderColor)),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -40,7 +40,7 @@ class _ResumeCardState extends State<ResumeCard> {
                    widget.experience.time,
                     style: TextStyle(
                         fontSize: 12,
-                        color: isHover ? generalCont.primaryColor : generalCont.whiteColor,
+                        color: isHover ? colorManager.primaryColor : colorManager.textColor,
                         fontWeight: FontWeight.w400,
                         letterSpacing: 2),
                   ),
@@ -63,7 +63,7 @@ class _ResumeCardState extends State<ResumeCard> {
                   width: 10,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-                      color:isHover ? generalCont.primaryColor :generalCont.borderColor),
+                      color:isHover ? colorManager.primaryColor :colorManager.borderColor),
                 ))
             //
           ],
@@ -94,14 +94,14 @@ class ReusableExperienceCard extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.w200,
-                        color: Get.find<GeneralController>().whiteColor),
+                        color:colorManager.textColor),
                   ),
                   Text(
                     "${company??""} ${address??""}",
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
-                        color: Get.find<GeneralController>().borderColor, letterSpacing: 3),
+                        color: colorManager.borderColor, letterSpacing: 3),
                   ),
                   SizedBox(height: 10,),],);
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio/components/mask.dart';
 import 'package:portfolio/controllers/general_controller.dart';
+import 'package:portfolio/controllers/theme_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SocialIcon extends StatefulWidget {
@@ -17,12 +18,11 @@ class SocialIcon extends StatefulWidget {
   @override
   State<SocialIcon> createState() => _SocialIconState();
 }
-final generalCont=Get.find<GeneralController>();
 
-
+var colorManager = Get.put(ColorManager());
 
 class _SocialIconState extends State<SocialIcon> {
-  Color inactiveColor = generalCont.borderColor;
+  Color inactiveColor = colorManager.borderColor;
   bool isHover = false;
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class _SocialIconState extends State<SocialIcon> {
           child: Center(
               child:  Icon(
                       widget.icon,
-                      color: !isHover? generalCont.borderColor : generalCont.primaryColor,
+                      color: !isHover? colorManager.borderColor : colorManager.primaryColor,
                     )),
         ),
       ),

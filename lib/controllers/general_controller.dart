@@ -49,7 +49,7 @@ static double mobileWidth = 1220;
 // changeColor(Color newColor)
 // {
 //   primaryColor = newColor;
-//   GeneralController().update();
+//   colorManagerroller().update();
 //   update();
 // }
   bool showSettings = false;

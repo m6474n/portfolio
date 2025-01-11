@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 
 class RotatingContainer extends StatefulWidget {
@@ -31,7 +32,6 @@ class _RotatingContainerState extends State<RotatingContainer>
   }
 
   bool isHover = false;
-final generalCont = Get.find<GeneralController>();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -40,7 +40,7 @@ final generalCont = Get.find<GeneralController>();
         onEnter: (_) => _onHover(true),
         onExit: (_) => _onHover(false),
         child: Container(
-          decoration: BoxDecoration(border: Border.all(width: 1,color: generalCont.borderColor), borderRadius: BorderRadius.circular(500)),
+          decoration: BoxDecoration(border: Border.all(width: 1,color: colorManager.borderColor), borderRadius: BorderRadius.circular(500)),
           height: 160,
           width: 160,
           padding: EdgeInsets.all(12),
@@ -69,7 +69,7 @@ final generalCont = Get.find<GeneralController>();
                 HugeIcons.strokeRoundedArrowDown02,
                 size: 42,
                 color:
-                    isHover ? generalCont.primaryColor : generalCont.borderColor,
+                    isHover ? colorManager.primaryColor : colorManager.borderColor,
               )
             ],
           ),

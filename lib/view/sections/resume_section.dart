@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio/components/outlineButton.dart';
 import 'package:portfolio/components/resumeCard.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/experience_controller.dart';
 import 'package:portfolio/models/experience.dart';
 
@@ -53,7 +54,7 @@ class _ResumeSectionState extends State<ResumeSection> {
                   Text(
                     "Education and Experience",
                     style: TextStyle(
-                        color: cont.generalCont.whiteColor,
+                        color: colorManager.textColor,
                         fontSize: width > 800 ? 72 : width * 0.1,
                         fontWeight: FontWeight.w200,
                         letterSpacing: 4,
@@ -111,7 +112,7 @@ class _ResumeSectionState extends State<ResumeSection> {
                     width > 500? Container():       Text(
                               "Experience",
                               style: TextStyle(
-                                  color: cont.generalCont.whiteColor,
+                                  color: colorManager.textColor,
                                   fontSize: 32,
                                   fontWeight: FontWeight.w200,
                                   letterSpacing: 4,

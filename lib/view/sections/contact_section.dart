@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:portfolio/components/CustomRoundedButton.dart';
 import 'package:portfolio/components/customInputfield.dart';
 import 'package:portfolio/components/outlineButton.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/contact_controller.dart';
 
 class ContactSection extends StatefulWidget {
@@ -54,7 +55,7 @@ class _ContactSectionState extends State<ContactSection> {
                   Text(
                     "Let's Work Together",
                     style: TextStyle(
-                        color: cont.generalCont.whiteColor,
+                        color: colorManager.textColor,
                                       fontSize: width >800 ? 72: width *0.1,
 
                         fontWeight: FontWeight.w200,
@@ -69,7 +70,7 @@ class _ContactSectionState extends State<ContactSection> {
                     style: TextStyle(
                         fontSize:width>500? 32:22,
                         letterSpacing: width > 500 ?5 :2,
-                        color: cont.generalCont.whiteColor,
+                        color: colorManager.textColor,
                         fontWeight: FontWeight.w200),
                   ),
                   SizedBox(
@@ -84,7 +85,7 @@ class _ContactSectionState extends State<ContactSection> {
                       Row(
                         children: [
                           Expanded(
-                              child: CustomInputField(
+                              child: CustomInput(
                             title: "Name",
                             placeholder: "Your Full Name",
                             controller: cont.nameController,
@@ -93,7 +94,7 @@ class _ContactSectionState extends State<ContactSection> {
                             width: 12,
                           ),
                           Expanded(
-                              child: CustomInputField(
+                              child: CustomInput(
                             title: "Email",
                             placeholder: "Your Valid Email Address",
                             controller: cont.emailController,
@@ -106,7 +107,7 @@ class _ContactSectionState extends State<ContactSection> {
                       Row(
                         children: [
                           Expanded(
-                              child: CustomInputField(
+                              child: CustomInput(
                             title: "Phone",
                             placeholder: "Your Contact No.",
                             controller: cont.phoneController,
@@ -115,7 +116,7 @@ class _ContactSectionState extends State<ContactSection> {
                             width: 12,
                           ),
                           Expanded(
-                              child: CustomInputField(
+                              child: CustomInput(
                             title: "Subject",
                             placeholder: "Your Subject",
                             controller: cont.subjectController,
@@ -125,7 +126,7 @@ class _ContactSectionState extends State<ContactSection> {
                       SizedBox(
                         height: 12,
                       ),
-                      CustomInputField(
+                      CustomInput(
                         title: "Message",
                         placeholder: "Your Message here...",
                         controller: cont.messageController,

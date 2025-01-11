@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 
 class SkillController extends GetxController {
-  final generalCont = Get.find<GeneralController>();
   List<Map<String, dynamic>> skills = [
     {'title': 'HTML', 'icon': 'assets/images/html.svg'},
     {'title': 'CSS', 'icon': 'assets/images/css.svg'},

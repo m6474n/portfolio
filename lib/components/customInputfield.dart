@@ -2,13 +2,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 
-class CustomInputField extends StatefulWidget {
+class CustomInput extends StatefulWidget {
   final String title, placeholder;
   final TextEditingController controller;
   final int maxLines;
-  const CustomInputField({
+  const CustomInput({
     super.key,
     required this.title,
     this.maxLines = 1,
@@ -17,13 +18,12 @@ class CustomInputField extends StatefulWidget {
   });
 
   @override
-  State<CustomInputField> createState() => _CustomInputFieldState();
+  State<CustomInput> createState() => _CustomInputState();
 }
 
 
-class _CustomInputFieldState extends State<CustomInputField> {
+class _CustomInputState extends State<CustomInput> {
 
-final generalCont = Get.find<GeneralController>();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ final generalCont = Get.find<GeneralController>();
           "${widget.title}",
           style: TextStyle(
               fontSize: 24,
-              color: generalCont.whiteColor,
+              color: colorManager.textColor,
               fontWeight: FontWeight.w200),
         ),
         SizedBox(
@@ -43,8 +43,8 @@ final generalCont = Get.find<GeneralController>();
         ),
         TextFormField(
           controller: widget.controller,
-          cursorColor: generalCont.primaryColor,
-          cursorErrorColor: generalCont.primaryColor,
+          cursorColor: colorManager.primaryColor,
+          cursorErrorColor: colorManager.primaryColor,
           maxLines: widget.maxLines,
           validator: (value) {
             return value == null || value.isEmpty
@@ -58,7 +58,7 @@ final generalCont = Get.find<GeneralController>();
               hintStyle: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w400,
-                  color: generalCont.borderColor),
+                  color: colorManager.borderColor),
                   border: OutlineInputBorder(borderSide: BorderSide.none))
              
         ),

@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio/components/floatingNavBar.dart';
 import 'package:portfolio/components/profileCard.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/view/home.dart';
 
 import '../../controllers/general_controller.dart';
 
 class MobileView extends StatelessWidget {
    MobileView({super.key});
-final generalCont = Get.find<GeneralController>();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-        backgroundColor: generalCont.bgColor,
+        backgroundColor: colorManager.bgColor,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12.0),
           child: SingleChildScrollView(
@@ -27,8 +27,8 @@ final generalCont = Get.find<GeneralController>();
                   width: width * 0.04,
                 ),
 
-                ...List.generate(generalCont.sectionList.length, (index){
-                  return generalCont.sectionList[index];
+                ...List.generate(colorManager.sectionList.length, (index){
+                  return colorManager.sectionList[index];
                 })
                 // Web View
                 // Expanded(

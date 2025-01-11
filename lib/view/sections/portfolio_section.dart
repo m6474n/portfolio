@@ -1,8 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:portfolio/components/outlineButton.dart';
 import 'package:portfolio/components/projectCard.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/contact_controller.dart';
 import 'package:portfolio/controllers/project_controller.dart';
 import 'package:portfolio/utility/appsettings.dart';
@@ -53,14 +55,21 @@ class _PortfolioSectionState extends State<PortfolioSection> {
                   SizedBox(
                     height: 12,
                   ),
-                  Text(
-                    "Featured Projects",
-                    style: TextStyle(
-                        color: cont.generalCont.whiteColor,
-                  fontSize: width >800 ? 72: width *0.1,
-                        fontWeight: FontWeight.w200,
-                        letterSpacing: 4,
-                        height: 1.2),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Featured Projects",
+                        style: TextStyle(
+                            color: colorManager.textColor,
+                      fontSize: width >800 ? 72: width *0.1,
+                            fontWeight: FontWeight.w200,
+                            letterSpacing: 4,
+                            height: 1.2),
+                      ),
+                      Container(child: Row(children: [Text("View More"), HugeIcon(icon: HugeIcons.strokeRoundedArrowRight01, color: colorManager.primaryColor)],),)
+                    ],
                   ),
                   SizedBox(
                     height: 20,

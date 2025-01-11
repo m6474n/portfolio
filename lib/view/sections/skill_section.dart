@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio/components/outlineButton.dart';
 import 'package:portfolio/components/skillCard.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/skill_controller.dart';
 import 'package:portfolio/utility/appsettings.dart';
 
@@ -53,7 +54,7 @@ class _SkillsSectionState extends State<SkillsSection> {
                 Text(
                   "My Advantages",
                   style: TextStyle(
-                      color: cont.generalCont.whiteColor,
+                      color: colorManager.textColor,
                   fontSize: width >800 ? 72: width *0.1,
                       fontWeight: FontWeight.w200,
                       letterSpacing: 4,

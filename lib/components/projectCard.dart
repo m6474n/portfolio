@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio/components/outlineButton.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 
 class ProjectCard extends StatefulWidget {
@@ -22,7 +23,6 @@ class ProjectCard extends StatefulWidget {
 class _ProjectCardState extends State<ProjectCard> {
   bool isHover = false;
   bool showContent = false;
-  final generalCont = Get.find<GeneralController>();
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -36,7 +36,7 @@ class _ProjectCardState extends State<ProjectCard> {
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(widget.image), fit: BoxFit.cover),
-            border: Border.all(width: 1, color: generalCont.borderColor),
+            border: Border.all(width: 1, color: colorManager.borderColor),
             borderRadius: BorderRadius.circular(32)),
         child: Stack(
           children: [
@@ -69,7 +69,7 @@ class _ProjectCardState extends State<ProjectCard> {
                                         style: TextStyle(
                                             fontSize: 32,
                                             fontWeight: FontWeight.w300,
-                                            color: generalCont.whiteColor),
+                                            color: colorManager.whiteColor),
                                       ),
                                       SizedBox(
                                         height: 12,
@@ -79,7 +79,7 @@ class _ProjectCardState extends State<ProjectCard> {
                                         style: TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w200,
-                                            color: generalCont.whiteColor,
+                                            color: colorManager.whiteColor,
                                             letterSpacing: 2),
                                       ),
                                       SizedBox(
@@ -93,6 +93,7 @@ class _ProjectCardState extends State<ProjectCard> {
                                             padding: EdgeInsets.only(
                                                 right: 8, bottom: 8),
                                             child: CustomOutlineButton(
+                                              color: colorManager.whiteColor,
                                                 title: widget.tech[index],
                                                 onTap: () {}),
                                           );

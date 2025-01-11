@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 
 class TransparentButton extends StatefulWidget {
@@ -28,7 +29,6 @@ class TransparentButton extends StatefulWidget {
 
 class _TransparentButtonState extends State<TransparentButton> {
   bool isHover = false;
-  final generalCont = Get.find<GeneralController>();
 
   @override
   Widget build(BuildContext context) {
@@ -43,23 +43,23 @@ class _TransparentButtonState extends State<TransparentButton> {
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: isHover ? Colors.transparent : generalCont.primaryColor,
+              color: isHover ? Colors.transparent : colorManager.primaryColor,
             ),
-            color: isHover ? generalCont.primaryColor : null,
+            color: isHover ? colorManager.primaryColor : null,
             borderRadius:widget.isRounded? BorderRadius.circular(36):BorderRadius.circular(12),
           ),
           child: Center(
-            child:widget.isLoading? SpinKitWave(color:isHover? Colors.white:generalCont.primaryColor): Row(
+            child:widget.isLoading? SpinKitWave(color:isHover? Colors.white:colorManager.primaryColor): Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-              widget.icon != null ?Icon(widget.icon, color: !isHover? generalCont.primaryColor : generalCont.whiteColor,) :Container(),
+              widget.icon != null ?Icon(widget.icon, color: !isHover? colorManager.primaryColor : colorManager.textColor,) :Container(),
             widget.icon!=null?    SizedBox(width: 12) :Container(),
           Text(
                   widget.label,
                   style: TextStyle(
                     fontSize: 18,
- color: isHover? generalCont.whiteColor : generalCont.primaryColor,                  ),
+ color: isHover? colorManager.textColor : colorManager.primaryColor,                  ),
                 )   
                 
               ],

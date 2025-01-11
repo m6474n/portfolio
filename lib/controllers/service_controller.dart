@@ -3,7 +3,6 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 
 class ServiceController extends GetxController {
-  final generalCont = Get.find<GeneralController>();
   List<Map<String, dynamic>> services = [
     {
       'icon': HugeIcons.strokeRoundedCompass01 ,

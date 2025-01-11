@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:portfolio/components/CustomInputField%20copy.dart';
 import 'package:portfolio/components/CustomRoundedButton.dart';
 import 'package:portfolio/components/customInputfield.dart';
 import 'package:portfolio/components/mask.dart';
@@ -13,7 +14,9 @@ import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/components/transparentButton.dart';
 import 'package:portfolio/controllers/auth_controller.dart';
 import 'package:portfolio/controllers/general_controller.dart';
+import 'package:portfolio/controllers/theme_controller.dart';
 import 'package:portfolio/utility/appsettings.dart';
+import 'package:portfolio/view/LoginForm.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProfileCard extends StatefulWidget {
@@ -24,16 +27,17 @@ class ProfileCard extends StatefulWidget {
 }
 
 class _ProfileCardState extends State<ProfileCard> {
-  var auth = Get.put(AuthController());
+
   var email =TextEditingController();
   var pass=TextEditingController();
-
+var auth = Get.put(AuthController()
+);
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return GetBuilder(
-        init: GeneralController(),
+        init: ColorManager(),
         builder: (cont) {
           return Stack(
             children: [
@@ -49,7 +53,7 @@ class _ProfileCardState extends State<ProfileCard> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(52),
                           border:
-                              Border.all(width: 1, color: cont.borderColor)),
+                              Border.all(width: 1, color: colorManager.borderColor)),
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
@@ -59,7 +63,7 @@ class _ProfileCardState extends State<ProfileCard> {
                                     flex: 1,
                                     child: Text("Mosen",
                                         style: TextStyle(
-                                            color: cont.whiteColor,
+                                            color: colorManager.textColor,
                                             fontWeight: FontWeight.w800,
                                             fontSize: 38))),
                                 Expanded(
@@ -69,7 +73,7 @@ class _ProfileCardState extends State<ProfileCard> {
                                       style: TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.w300,
-                                          color: cont.whiteColor,
+                                          color: colorManager.textColor,
                                           letterSpacing: 2),
                                       textAlign: TextAlign.end,
                                     ))
@@ -84,7 +88,7 @@ class _ProfileCardState extends State<ProfileCard> {
                               decoration: BoxDecoration(
                                   border: Border.all(
                                     width: 1,
-                                    color: cont.borderColor,
+                                    color: colorManager.borderColor,
                                   ),
                                   image: DecorationImage(
                                     image: AssetImage(
@@ -99,7 +103,7 @@ class _ProfileCardState extends State<ProfileCard> {
                             Text(
                               "Muhammad Mohsin",
                               style: TextStyle(
-                                  fontSize: 32, color: cont.whiteColor),
+                                  fontSize: 32, color: colorManager.textColor),
                             ),
                             SizedBox(height: 12),
                             Text(
@@ -108,14 +112,14 @@ class _ProfileCardState extends State<ProfileCard> {
                                   fontSize: 14,
                                   letterSpacing: 2,
                                   fontWeight: FontWeight.w300,
-                                  color: cont.borderColor),
+                                  color: colorManager.borderColor),
                             ),
                             SizedBox(height: 8),
                             Text(
                               "m.mohsin2055@gmail.com",
                               style: TextStyle(
                                   fontSize: 16,
-                                  color: cont.whiteColor,
+                                  color: colorManager.textColor,
                                   letterSpacing: 3,
                                   fontWeight: FontWeight.w300),
                             ),
@@ -163,7 +167,7 @@ class _ProfileCardState extends State<ProfileCard> {
                               style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w300,
-                                  color: cont.borderColor),
+                                  color: colorManager.borderColor),
                             ),
                           ],
                         ),
@@ -179,85 +183,91 @@ class _ProfileCardState extends State<ProfileCard> {
                           filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
                           child: AnimatedContainer(
                             duration: Duration(milliseconds: 700),
-                            height: cont.showSettings ? height : 0,
+                            height: colorManager.showSettings ? height : 0,
                             width: 350,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(52),
                                 color: Colors.black54,
                                 border: Border.all(
-                                    width: 1, color: cont.borderColor)),
+                                    width: 1, color: colorManager.borderColor)),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 32.0, vertical: 32),
                               child: AnimatedOpacity(
-                                opacity: cont.showSettings ? 1 : 0,
+                                opacity: colorManager.showSettings ? 1 : 0,
                                 duration: Duration(
                                     milliseconds:
-                                        cont.showSettings ? 1200 : 200),
-                                child: Form(
-                                  key: auth.loginFormKey,
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        "Welcome Back!",
-                                        style: TextStyle(
-                                            color: generalCont.primaryColor,
-                                            fontSize: 32,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        "Enter your crendentials to continue",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 18,
-                                      ),
-                                      EmailField(
-                                          controller:email,
-                                          label: "Enter Email",
-                                          visibility: cont.showSettings),
-                                      PasswordField(
-                                          controller: pass,
-                                          label: "Enter Password",
-                                          visibility: cont.showSettings),
-                                      Container(
-                                          height: 50,
-                                          margin: EdgeInsets.only(top: 12),
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 12),
-                                          child: TransparentButton(
-                                              isLoading: auth.isLoading,
-                                              label: "Login",
-                                              onTap: () {
-                                                setState(() {
-                                                  auth.isLoading = true;
-                                                });
+                                        colorManager.showSettings ? 1200 : 200),
+                                      //  child: LoginForm(),
+//                                 child: Form(
+//                                   key: auth.loginFormKey,
+//                                   child: Column(
+//                                     mainAxisSize: MainAxisSize.min,
+//                                     children: [
+//                                       Text(
+//                                         "Welcome Back!",
+//                                         style: TextStyle(
+//                                             color: colorManager.primaryColor,
+//                                             fontSize: 32,
+//                                             fontWeight: FontWeight.bold),
+//                                       ),
+//                                       Text(
+//                                         "Enter your crendentials to continue",
+//                                         style: TextStyle(
+//                                           color: Colors.white,
+//                                           fontSize: 16,
+//                                         ),
+//                                       ),
+//                                       SizedBox(
+//                                         height: 18,
+//                                       ),
+//                                       EmailField(
+//                                           controller:email,
+//                                           label: "Enter Email",
+//                                           visibility: colorManager.showSettings),
+//                                       PasswordField(
+//                                           controller: pass,
+//                                           label: "Enter Password",
+//                                           visibility: colorManager.showSettings),
+//                                       Container(
+//                                           height: 50,
+//                                           margin: EdgeInsets.only(top: 12),
+//                                           padding: EdgeInsets.symmetric(
+//                                               horizontal: 12),
+//                                           child: TransparentButton(
+//                                               isLoading: auth.isLoading,
+//                                               label: "Login",
+//                                               onTap: ()async {
+//                                                 setState(() {
+//                                                   auth.isLoading = true;
+//                                                 });
 
-                                                if (auth
-                                                    .loginFormKey.currentState!
-                                                    .validate()) {
-                                                  FirebaseAuth.instance
-                                                      .signInWithEmailAndPassword(
-                                                          email: email.text,
-                                                          password: auth
-                                                              .passwordController
-                                                              .text)
-                                                      .then((v) {
-                                                    setState(() {
-                                                      auth.isLoading = false;
-                                                    });
-                                                  });
-                                                  // auth.login();
-                                                  print("Validate");
-                                                }
-                                              })),
-                                    ],
-                                  ),
-                                ),
+//                                                 if (auth
+//                                                     .loginFormKey.currentState!
+//                                                     .validate()) {
+//                                            try{
+//                                              await       FirebaseAuth.instance
+//                                                       .signInWithEmailAndPassword(
+//                                                           email: email.text,
+//                                                           password: 
+//                                                               pass
+//                                                               .text)
+//                                                       .then((v) {
+//                                                    print("Login Successfully! ${v.user!.email}")
+// ;                                                  });
+//                                            }catch(E){
+// print("Error:$E");
+//                                            }
+//                                                   // auth.login();
+//                                                   print("Validate");
+//                                                    setState(() {
+//                                                       auth.isLoading = false;
+//                                                     });
+//                                                 }
+//                                               })),
+//                                     ],
+//                                   ),
+//                                 ),
                               ),
                             ),
                           ),
@@ -272,23 +282,24 @@ class _ProfileCardState extends State<ProfileCard> {
                 width: 40,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(80),
-                    color: cont.bgColor),
+                    color: colorManager.bgColor),
                 child: MouseRegion(
-                  onEnter: (_) => cont.onSettingHover(true),
-                  onExit: (_) => cont.onSettingHover(false),
+                  onEnter: (_) => colorManager.onSettingHover(true),
+                  onExit: (_) => colorManager.onSettingHover(false),
                   child: GestureDetector(
                     onTap: () {
-                      cont.handleSetting();
+                      // Get.to(page)
+                      colorManager.handleSetting();
                     },
                     child: AnimatedRotation(
                       duration: Duration(milliseconds: 1200),
-                      turns: cont.isSettingHover
+                      turns: colorManager.isSettingHover
                           ? 0.5
                           : 0.0, // Rotate 180 degrees on hover
 
                       child: Icon(
                         FontAwesomeIcons.gear,
-                        color: cont.primaryColor,
+                        color: colorManager.primaryColor,
                         size: 32,
                       ),
                     ),
@@ -338,7 +349,7 @@ class ProfileForMobile extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return GetBuilder(
-        init: GeneralController(),
+        init: AuthController(),
         builder: (cont) {
           return Stack(
             children: [
@@ -349,7 +360,7 @@ class ProfileForMobile extends StatelessWidget {
                 padding: EdgeInsets.all(42),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(52),
-                    border: Border.all(width: 1, color: cont.borderColor)),
+                    border: Border.all(width: 1, color: colorManager.borderColor)),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -360,7 +371,7 @@ class ProfileForMobile extends StatelessWidget {
                               flex: 1,
                               child: Text("Mosen",
                                   style: TextStyle(
-                                      color: cont.whiteColor,
+                                      color: colorManager.textColor,
                                       fontWeight: FontWeight.w800,
                                       fontSize: 38))),
                           Expanded(
@@ -370,7 +381,7 @@ class ProfileForMobile extends StatelessWidget {
                                 style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w300,
-                                    color: cont.whiteColor,
+                                    color: colorManager.textColor,
                                     letterSpacing: 2),
                                 textAlign: TextAlign.end,
                               ))
@@ -387,7 +398,7 @@ class ProfileForMobile extends StatelessWidget {
                             decoration: BoxDecoration(
                                 border: Border.all(
                                   width: 1,
-                                  color: cont.borderColor,
+                                  color: colorManager.borderColor,
                                 ),
                                 image: DecorationImage(
                                   image: AssetImage(
@@ -407,7 +418,7 @@ class ProfileForMobile extends StatelessWidget {
                               Text(
                                 "Muhammad Mohsin",
                                 style: TextStyle(
-                                    fontSize: 32, color: cont.whiteColor),
+                                    fontSize: 32, color: colorManager.textColor),
                               ),
                               SizedBox(height: 12),
                               Text(
@@ -416,14 +427,14 @@ class ProfileForMobile extends StatelessWidget {
                                     fontSize: 14,
                                     letterSpacing: 2,
                                     fontWeight: FontWeight.w300,
-                                    color: cont.borderColor),
+                                    color: colorManager.borderColor),
                               ),
                               SizedBox(height: 8),
                               Text(
                                 "m.mohsin2055@gmail.com",
                                 style: TextStyle(
                                     fontSize: 16,
-                                    color: cont.whiteColor,
+                                    color: colorManager.textColor,
                                     letterSpacing: 3,
                                     fontWeight: FontWeight.w300),
                               ),
@@ -478,7 +489,7 @@ class ProfileForMobile extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w300,
-                            color: cont.borderColor),
+                            color: colorManager.borderColor),
                       ),
                     ],
                   ),
@@ -494,13 +505,13 @@ class ProfileForMobile extends StatelessWidget {
                     filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
                     child: AnimatedContainer(
                       duration: Duration(milliseconds: 700),
-                      height: cont.showSettings ? height * 0.8 : 0,
+                      height: colorManager.showSettings ? height * 0.8 : 0,
                       width: 350,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(52),
                           color: Colors.black54,
                           border:
-                              Border.all(width: 1, color: cont.borderColor)),
+                              Border.all(width: 1, color: colorManager.borderColor)),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 32.0),
                         child: Column(
@@ -515,14 +526,14 @@ class ProfileForMobile extends StatelessWidget {
                             //       fontWeight: FontWeight.w200,
                             //       fontSize: 32),
                             // ), SizedBox(height: 32,),
-                            // ReusableRow(title: "Color", child: Row(children: List.generate(cont.colors.length, (index){
+                            // ReusableRow(title: "Color", child: Row(children: List.generate(colorManager.colors.length, (index){
                             //   return Padding(
                             //     padding: const EdgeInsets.symmetric(horizontal: 4.0),
                             //     child: GestureDetector(
                             //       onTap: (){
-                            //         // cont.changeColor(cont.colors[index]);
+                            //         // colorManager.changeColor(colorManager.colors[index]);
                             //       },
-                            //       child: Container(height: 30,width: 30 ,decoration: BoxDecoration(color:cont.colors[index],borderRadius: BorderRadius.circular(50)))),
+                            //       child: Container(height: 30,width: 30 ,decoration: BoxDecoration(color:colorManager.colors[index],borderRadius: BorderRadius.circular(50)))),
                             //   );
                             // }),)
                             // )
@@ -538,23 +549,23 @@ class ProfileForMobile extends StatelessWidget {
                 width: 40,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(80),
-                    color: cont.bgColor),
+                    color: colorManager.bgColor),
                 child: MouseRegion(
-                  onEnter: (_) => cont.onSettingHover(true),
-                  onExit: (_) => cont.onSettingHover(false),
+                  onEnter: (_) => colorManager.onSettingHover(true),
+                  onExit: (_) => colorManager.onSettingHover(false),
                   child: GestureDetector(
                     onTap: () {
-                      cont.handleSetting();
+                      colorManager.handleSetting();
                     },
                     child: AnimatedRotation(
                       duration: Duration(milliseconds: 1200),
-                      turns: cont.isSettingHover
+                      turns: colorManager.isSettingHover
                           ? 0.5
                           : 0.0, // Rotate 180 degrees on hover
 
                       child: Icon(
                         FontAwesomeIcons.gear,
-                        color: cont.primaryColor,
+                        color: colorManager.primaryColor,
                         size: 32,
                       ),
                     ),
@@ -567,124 +578,3 @@ class ProfileForMobile extends StatelessWidget {
   }
 }
 
-Widget EmailField(
-    {required TextEditingController controller,
-    required String label,
-    bool? visibility}) {
-  return AnimatedOpacity(
-    opacity: visibility == true ? 1 : 0,
-    duration: Duration(milliseconds: 400),
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4),
-      child: TextFormField(
-        validator: (val) {
-          return val == null || val.isEmpty ? "Email can't be empty!" : null;
-        },
-        controller: controller,
-        cursorColor: generalCont.primaryColor,
-        decoration: InputDecoration(
-            errorStyle: TextStyle(color: Colors.white),
-            filled: true,
-            enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(12)),
-            focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(12)),
-            disabledBorder: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(12)),
-            errorBorder: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(12)),
-            hintText: label,
-            hintStyle: TextStyle(fontSize: 14),
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-            )),
-      ),
-    ),
-  );
-}
-
-class PasswordField extends StatefulWidget {
-  bool? visibility;
-  String label;
-  TextEditingController controller;
-  PasswordField(
-      {super.key,
-      required this.controller,
-      this.visibility,
-      required this.label});
-
-  @override
-  State<PasswordField> createState() => _PasswordFieldState();
-}
-
-class _PasswordFieldState extends State<PasswordField> {
-  // Declare the obscure state at the class level
-  bool obscure = true;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      opacity: widget.visibility == true ? 1 : 0,
-      duration: Duration(milliseconds: 400),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4),
-        child: TextFormField(
-          validator: (val) {
-            return val == null || val.isEmpty
-                ? "Password can't be empty!"
-                : null;
-          },
-          obscureText: obscure, // Use the class-level obscure variable
-          controller: widget.controller,
-          cursorColor: generalCont.primaryColor,
-          keyboardType: TextInputType.visiblePassword,
-          decoration: InputDecoration(
-            errorStyle: TextStyle(color: Colors.white),
-            filled: true,
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            disabledBorder: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            hintText: widget.label,
-            hintStyle: TextStyle(fontSize: 14),
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            suffixIcon: GestureDetector(
-              onTap: () {
-                setState(() {
-                  // Toggle the obscure value on tap
-                  obscure = !obscure;
-                });
-              },
-              child: HugeIcon(
-                icon: obscure
-                    ? HugeIcons.strokeRoundedViewOff
-                    : HugeIcons.strokeRoundedView,
-                color: generalCont.primaryColor,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}

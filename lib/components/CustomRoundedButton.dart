@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 
 class CustomRoundedButton extends StatefulWidget {
   final String label;
   final IconData? icon;
   final bool isRounded;
-   VoidCallback onTap;
+  final double? fontSize;
+  VoidCallback onTap;
   final Color? bgColor, hoverColor;
 
-   CustomRoundedButton({
+  CustomRoundedButton({
     super.key,
     required this.label,
-     this.icon,
-     this.isRounded = false,
+    this.icon,
+    this.isRounded = false,
     required this.onTap,
+    this.fontSize,
     this.bgColor,
     this.hoverColor,
   });
@@ -25,7 +28,6 @@ class CustomRoundedButton extends StatefulWidget {
 
 class _CustomRoundedButtonState extends State<CustomRoundedButton> {
   bool isHover = false;
-  final generalCont = Get.find<GeneralController>();
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +35,11 @@ class _CustomRoundedButtonState extends State<CustomRoundedButton> {
       onEnter: (_) => onHover(true),
       onExit: (_) => onHover(false),
       child: InkWell(
-         hoverColor: Colors.transparent,
-        focusColor:Colors.transparent,
+        hoverColor: Colors.transparent,
+        focusColor: Colors.transparent,
         highlightColor: Colors.transparent,
         splashColor: Colors.transparent,
-      
-        onTap:(){
+        onTap: () {
           print("button pressed");
           widget.onTap();
         },
@@ -48,25 +49,36 @@ class _CustomRoundedButtonState extends State<CustomRoundedButton> {
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: !isHover ? Colors.transparent : generalCont.primaryColor,
+              color: !isHover ? Colors.transparent : colorManager.primaryColor,
             ),
-            color: !isHover ? generalCont.primaryColor : null,
-            borderRadius:widget.isRounded? BorderRadius.circular(36):BorderRadius.circular(12),
+            color: !isHover ? colorManager.primaryColor : null,
+            borderRadius: widget.isRounded
+                ? BorderRadius.circular(36)
+                : BorderRadius.circular(12),
           ),
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-              widget.icon != null ?Icon(widget.icon, color: isHover? generalCont.primaryColor : generalCont.whiteColor,) :Container(),
-            widget.icon!=null?    SizedBox(width: 12) :Container(),
-          Text(
+                widget.icon != null
+                    ? Icon(
+                        widget.icon,
+                        color: isHover
+                            ? colorManager.primaryColor
+                            : colorManager.textColor,
+                      )
+                    : Container(),
+                widget.icon != null ? SizedBox(width: 12) : Container(),
+                Text(
                   widget.label,
                   style: TextStyle(
-                    fontSize: 22,
- color: !isHover? generalCont.whiteColor : generalCont.primaryColor,                  ),
-                )   
-                
+                    fontSize: widget.fontSize ?? 22,
+                    color: !isHover
+                        ? colorManager.textColor
+                        : colorManager.primaryColor,
+                  ),
+                )
               ],
             ),
           ),

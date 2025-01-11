@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:portfolio/components/animatedCounter.dart';
 import 'package:portfolio/components/circularTextButton.dart';
 import 'package:portfolio/components/outlineButton.dart';
+import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/general_controller.dart';
 import 'package:portfolio/test.dart';
 
@@ -28,7 +29,6 @@ class _HeroSectionState extends State<HeroSection> {
       });
     });
   }
-  var generalCont = Get.find<GeneralController>();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -52,7 +52,7 @@ class _HeroSectionState extends State<HeroSection> {
             Text(
               "Say Hi from ",
               style: TextStyle(
-                  color: generalCont.whiteColor,
+                  color: colorManager.textColor,
                   fontSize: width >800 ? 72: width *0.1,
                   fontWeight: FontWeight.w200,
                   letterSpacing: 4,
@@ -61,7 +61,7 @@ class _HeroSectionState extends State<HeroSection> {
            Text(
                   "Muhammad Mohsin",
                   style: TextStyle(
-                      color: generalCont.primaryColor,
+                      color: colorManager.primaryColor,
                       fontSize: width >800 ? 90: width *0.13,
                       fontWeight: FontWeight.w900,
                       height: 1),
@@ -70,7 +70,7 @@ class _HeroSectionState extends State<HeroSection> {
             Text(
               "A Passionate Flutter Developer, Full-stack Web developer.",
               style: TextStyle(
-                  color: generalCont.whiteColor,
+                  color: colorManager.textColor,
                   fontSize: width >800 ? 28: width *0.05,
                   fontWeight: FontWeight.w300,
                   height: width >800 ? 2: 1.2,
@@ -80,7 +80,7 @@ class _HeroSectionState extends State<HeroSection> {
             Text(
               "I specialize in transforming your vision into beautifully crafted, high-performing apps and websites. With over 3 years of experience as a Full Stack Developer & Designer, I blend design, functionality, and cutting-edge technology to create digital solutions that not only look great but deliver results. From Flutter to WordPress, Next.js to Ruby on Rails, I handle every step of the process to ensure your project exceeds expectations. Let’s collaborate to bring your ideas to life and build something extraordinary together!",
               style: TextStyle(
-                  color: generalCont.whiteColor,
+                  color: colorManager.textColor,
                   fontSize: 18,
                   fontWeight: FontWeight.w200,
                   letterSpacing: 4),
@@ -116,7 +116,7 @@ class _HeroSectionState extends State<HeroSection> {
                      width> 500? Container(
                        width: 200,
                         child:Center(child: RotatingContainer(onTap: (){
-                          generalCont.changePage(5);
+                          colorManager.changePage(5);
                         },))):Container()
                 ],
               ),
