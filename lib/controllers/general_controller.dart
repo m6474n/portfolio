@@ -7,7 +7,7 @@ import 'package:portfolio/utility/appsettings.dart';
 import 'package:portfolio/view/sections/about_section.dart';
 import 'package:portfolio/view/sections/contact_section.dart';
 import 'package:portfolio/view/sections/hero_section.dart';
-import 'package:portfolio/view/sections/portfolio_section.dart';
+import 'package:portfolio/view/sections/projects/portfolio_section.dart';
 import 'package:portfolio/view/sections/resume_section.dart';
 import 'package:portfolio/view/sections/service_section.dart';
 import 'package:portfolio/view/sections/skill_section.dart';

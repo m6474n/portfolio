@@ -10,6 +10,7 @@ import 'package:portfolio/utility/responsiveness/mobile_view.dart';
 import 'package:portfolio/utility/responsiveness/responsive_layout.dart';
 import 'package:portfolio/view/LoginForm.dart';
 import 'package:portfolio/view/home.dart';
+import 'package:portfolio/view/sections/projects/all_projects.dart';
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
       title: "Mosen's Portfolio",
       theme: ThemeData(
        fontFamily: 'Inter',
+       appBarTheme: AppBarTheme(backgroundColor: colorManager.bgDark, scrolledUnderElevation: 0, elevation: 0),
        scaffoldBackgroundColor: colorManager.bgDark,
        textTheme: TextTheme(
         displayLarge: TextStyle(color: colorManager.textColor),
@@ -53,7 +55,9 @@ class MyApp extends StatelessWidget {
         // colorScheme: ColorScheme.fromSeed(seedColor: colorManager.primaryColor),
         useMaterial3: true,
       ),
-      // home: LoginForm(),
+      // home: AllProjects(
+
+      // ),
       home:  ResponsiveLayout(mobileView: MobileView(), desktopView: DesktopView())
     );
   }

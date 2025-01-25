@@ -5,7 +5,7 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:portfolio/view/sections/about_section.dart';
 import 'package:portfolio/view/sections/contact_section.dart';
 import 'package:portfolio/view/sections/hero_section.dart';
-import 'package:portfolio/view/sections/portfolio_section.dart';
+import 'package:portfolio/view/sections/projects/portfolio_section.dart';
 import 'package:portfolio/view/sections/resume_section.dart';
 import 'package:portfolio/view/sections/service_section.dart';
 import 'package:portfolio/view/sections/skill_section.dart';
@@ -19,10 +19,10 @@ class ColorManager extends GetxController {
   String currency = "\$";
   String StoreLogo = 'assets/logo-light.png';
 
-   Color primaryColor= Color.fromARGB(255, 255, 148, 7);
+   Color primaryColor= Color.fromARGB(255, 7, 234, 255);
   //  Color primaryColor= Color(0xFF03DAC5);
   //  Color bgColor= Color(0xffffffff); 
-   Color bgColor= Color.fromARGB(255, 20, 20, 20); 
+   Color bgColor= Color(0xFF171717); 
     Color textColor = const Color.fromARGB(255, 255, 255, 255);
     // Color textColor = const Color.fromRGBO(22, 22, 22, 1);
   Color iconColor = const Color.fromARGB(255, 242, 148, 6);
@@ -35,7 +35,7 @@ class ColorManager extends GetxController {
   // Color bgLight = const Color.fromARGB(255, 237, 237, 237);
   Color bgDark = const Color.fromARGB(255, 0, 0, 0);
   // Color bgDark = const Color.fromARGB(255, 255, 255, 255);
-  Color borderColor = Color.fromARGB(255, 176, 176, 176);
+  Color borderColor = Color.fromARGB(255, 137, 137, 137);
 
   lightTheme() {
     textColor = const Color(0xff161616);

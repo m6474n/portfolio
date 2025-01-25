@@ -2,17 +2,20 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:portfolio/components/outlineButton.dart';
 import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/general_controller.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProjectCard extends StatefulWidget {
-  final String title, description, image;
+  final String title, description, image, link;
   final List<String> tech;
   const ProjectCard(
       {super.key,
       required this.title,
       required this.description,
+      required this.link,
       required this.image,
       required this.tech});
 
@@ -35,7 +38,7 @@ class _ProjectCardState extends State<ProjectCard> {
         
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(widget.image), fit: BoxFit.cover),
+                image: AssetImage(widget.image), fit: BoxFit.cover, alignment: Alignment.topCenter),
             border: Border.all(width: 1, color: colorManager.borderColor),
             borderRadius: BorderRadius.circular(32)),
         child: Stack(
@@ -49,13 +52,13 @@ class _ProjectCardState extends State<ProjectCard> {
                   child: AnimatedContainer(
                       duration: Duration(milliseconds: 400),
                       curve: Curves.easeInOut,
-                      height: isHover ? height * 0.235 : 0,
+                      height: isHover ? 180 : 0,
                       width: 500,
                       decoration: BoxDecoration(
                           color: Colors.black.withOpacity(0.6),
                           borderRadius: BorderRadius.circular(32)),
                       child: Padding(
-                          padding: EdgeInsets.all(24),
+                          padding: EdgeInsets.all(16),
                           child: showContent
                               ? SingleChildScrollView(
                                   // Wrap the Column with SingleChildScrollView
@@ -64,16 +67,30 @@ class _ProjectCardState extends State<ProjectCard> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        widget.title,
-                                        style: TextStyle(
-                                            fontSize: 32,
-                                            fontWeight: FontWeight.w300,
-                                            color: colorManager.whiteColor),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            widget.title,
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                height: 1,
+                                                fontWeight: FontWeight.w300,
+                                                color: colorManager.whiteColor),
+                                          ),
+                                          IconButton(onPressed: ()async{
+                                              String url =
+                                    widget.link;
+                                if (await canLaunchUrl(Uri.parse(url))) {
+                                  launchUrl(Uri.parse(url));
+                                }
+                                          }, icon: HugeIcon(icon: HugeIcons.strokeRoundedSent, color: colorManager.primaryColor))
+                                        ],
                                       ),
-                                      SizedBox(
-                                        height: 12,
-                                      ),
+                                      // SizedBox(
+                                      //   height: 6,
+                                      // ),
                                       Text(
                                         widget.description,
                                         style: TextStyle(

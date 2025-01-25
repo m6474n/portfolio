@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:portfolio/components/outlineButton.dart';
@@ -8,6 +9,7 @@ import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/controllers/contact_controller.dart';
 import 'package:portfolio/controllers/project_controller.dart';
 import 'package:portfolio/utility/appsettings.dart';
+import 'package:portfolio/view/sections/projects/all_projects.dart';
 
 class PortfolioSection extends StatefulWidget {
   const PortfolioSection({super.key});
@@ -66,7 +68,11 @@ class _PortfolioSectionState extends State<PortfolioSection> {
                             letterSpacing: 4,
                             height: 1.2),
                       ),
-                     width>500? Container(child: Row(children: [Text("View More"), HugeIcon(icon: HugeIcons.strokeRoundedArrowRight01, color: colorManager.primaryColor)],),):SizedBox()
+                     width>500? InkWell(
+                      onTap: (){
+                        Get.to(AllProjects());
+                      },
+                      child: Container(child: Row(children: [Text("View More"), HugeIcon(icon: HugeIcons.strokeRoundedArrowRight01, color: colorManager.primaryColor)],),)):SizedBox()
                     ],
                   ),
                   SizedBox(
@@ -81,6 +87,7 @@ class _PortfolioSectionState extends State<PortfolioSection> {
                               Expanded(
                                   child: ProjectCard(
                                 title: cont.projects[0]['title'],
+                                link: cont.projects[0]['link'],
                                 description: cont.projects[0]['description'],
                                 tech: cont.projects[0]['tech'],
                                 image: cont.projects[0]['image'],
@@ -91,6 +98,8 @@ class _PortfolioSectionState extends State<PortfolioSection> {
                               Expanded(
                                   child: ProjectCard(
                                 title: cont.projects[1]['title'],
+                                link: cont.projects[1]['link'],
+
                                 description: cont.projects[1]['description'],
                                 tech: cont.projects[1]['tech'],
                                 image: cont.projects[1]['image'],
@@ -102,6 +111,7 @@ class _PortfolioSectionState extends State<PortfolioSection> {
                                   child: ProjectCard(
                                 title: cont.projects[2]['title'],
                                 description: cont.projects[2]['description'],
+                                link: cont.projects[2]['link'],
                                 tech: cont.projects[2]['tech'],
                                 image: cont.projects[2]['image'],
                               ))
@@ -113,7 +123,8 @@ class _PortfolioSectionState extends State<PortfolioSection> {
                                   child: ProjectCard(
                                 title: cont.projects[0]['title'],
                                 description: cont.projects[0]['description'],
-                                tech: cont.projects[0]['tech'],
+                                tech: cont.projects[0]['tech'],                                link: cont.projects[0]['link'],
+
                                 image: cont.projects[0]['image'],
                               )),
                               Expanded(
@@ -125,7 +136,8 @@ class _PortfolioSectionState extends State<PortfolioSection> {
                                           child: ProjectCard(
                                         title: cont.projects[1]['title'],
                                         description: cont.projects[1]
-                                            ['description'],
+                                            ['description'],                                link: cont.projects[1]['link'],
+
                                         tech: cont.projects[1]['tech'],
                                         image: cont.projects[1]['image'],
                                       )),
@@ -136,7 +148,8 @@ class _PortfolioSectionState extends State<PortfolioSection> {
                                           child: ProjectCard(
                                         title: cont.projects[2]['title'],
                                         description: cont.projects[2]
-                                            ['description'],
+                                            ['description'],                                link: cont.projects[2]['link'],
+
                                         tech: cont.projects[2]['tech'],
                                         image: cont.projects[2]['image'],
                                       )),
