@@ -42,35 +42,40 @@ class _ServiceSectionState extends State<ServiceSection> {
         init: ServiceController(),
         builder: (cont) {
           return SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 100,
-                ),
-                CustomOutlineButton(title: "Services", onTap: () {}),
-                SizedBox(
-                  height: 12,
-                ),
-                Text(
-                  "My Specialization",
-                  style: TextStyle(
-                      color: colorManager.textColor,
-                      // fontSize: 72,
-                                        fontSize: width >800 ? 72: width *0.1,
-
-                      fontWeight: FontWeight.w200,
-                      letterSpacing: 4,
-                      height: 1.2),
-                ),
-                SizedBox(height: 20,),
-              ...List.generate(cont.services.length, (index){
-                var service = Service.fromMap(cont.services[index]);
-                return ServiceCard(title: service.title, description: service.description, icon: service.icon, tech: service.tech);
-              })
+            child: Padding(
+          padding:width>500 ? EdgeInsets.symmetric(horizontal: 0):EdgeInsets.only(left: 8, top: 40, right: 8),
+          child:  Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                 
+                  CustomOutlineButton(title: "Services", onTap: () {}),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    "My Specialization",
+                    style: TextStyle(
+                        color: colorManager.textColor,
+                        // fontSize: 72,
+                                          fontSize: width >800 ? 54: width *0.1,
               
-              ],
+                        fontWeight: FontWeight.w200,
+                        letterSpacing: 4,
+                        height: 1.2),
+                  ),
+                  SizedBox(height: 20,),
+                  Wrap(
+                    spacing: 12,
+                    runSpacing: 12,
+                    children: 
+              List.generate(cont.services.length, (index){
+                  var service = Service.fromMap(cont.services[index]);
+                  return ServiceCard(title: service.title, description: service.description, icon: service.icon, tech: service.tech);
+                })
+                  ),
+                ],
+              ),
             ),
           );
         }

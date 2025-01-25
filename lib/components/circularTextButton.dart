@@ -41,8 +41,8 @@ class _RotatingContainerState extends State<RotatingContainer>
         onExit: (_) => _onHover(false),
         child: Container(
           decoration: BoxDecoration(border: Border.all(width: 1,color: colorManager.borderColor), borderRadius: BorderRadius.circular(500)),
-          height: 160,
-          width: 160,
+          height: 120,
+          width: 120,
           padding: EdgeInsets.all(12),
           child: Stack(
             alignment: Alignment.center,
@@ -56,7 +56,7 @@ class _RotatingContainerState extends State<RotatingContainer>
                     child: Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage('assets/images/round-text-1.png'),),
+                            image: AssetImage('assets/images/round-text.png'),),
       
                         // borderRadius: BorderRadius.circular(100),
                       ),
@@ -67,7 +67,7 @@ class _RotatingContainerState extends State<RotatingContainer>
               // Fixed child in the center
               Icon(
                 HugeIcons.strokeRoundedArrowDown02,
-                size: 42,
+                size: 28,
                 color:
                     isHover ? colorManager.primaryColor : colorManager.borderColor,
               )

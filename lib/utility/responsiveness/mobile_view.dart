@@ -4,6 +4,7 @@ import 'package:portfolio/components/floatingNavBar.dart';
 import 'package:portfolio/components/profileCard.dart';
 import 'package:portfolio/components/socialIcon.dart';
 import 'package:portfolio/view/home.dart';
+import 'package:portfolio/view/sections/skill_section.dart';
 
 import '../../controllers/general_controller.dart';
 
@@ -28,7 +29,8 @@ class MobileView extends StatelessWidget {
                 ),
 
                 ...List.generate(colorManager.sectionList.length, (index){
-                  return colorManager.sectionList[index];
+                  List<Widget> sectionList = colorManager.sectionList.where((e)=> e!=SkillsSection()).toList();
+                  return sectionList[index];
                 })
                 // Web View
                 // Expanded(

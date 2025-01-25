@@ -92,15 +92,15 @@ class ReusableExperienceCard extends StatelessWidget {
       children: [ Text(
                       role??"",
                     style: TextStyle(
-                        fontSize: 28,
+                        fontSize: 24,
                         fontWeight: FontWeight.w200,
                         color:colorManager.textColor),
                   ),
                   Text(
                     "${company??""} ${address??""}",
                     style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
                         color: colorManager.borderColor, letterSpacing: 3),
                   ),
                   SizedBox(height: 10,),],);

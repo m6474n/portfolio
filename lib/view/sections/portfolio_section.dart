@@ -48,9 +48,7 @@ class _PortfolioSectionState extends State<PortfolioSection> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 100,
-                  ),
+                 
                   CustomOutlineButton(title: "Portfolio", onTap: () {}),
                   SizedBox(
                     height: 12,
@@ -63,12 +61,12 @@ class _PortfolioSectionState extends State<PortfolioSection> {
                         "Featured Projects",
                         style: TextStyle(
                             color: colorManager.textColor,
-                      fontSize: width >800 ? 72: width *0.1,
+                      fontSize: width >800 ? 54: width *0.1,
                             fontWeight: FontWeight.w200,
                             letterSpacing: 4,
                             height: 1.2),
                       ),
-                      Container(child: Row(children: [Text("View More"), HugeIcon(icon: HugeIcons.strokeRoundedArrowRight01, color: colorManager.primaryColor)],),)
+                     width>500? Container(child: Row(children: [Text("View More"), HugeIcon(icon: HugeIcons.strokeRoundedArrowRight01, color: colorManager.primaryColor)],),):SizedBox()
                     ],
                   ),
                   SizedBox(

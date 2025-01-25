@@ -36,39 +36,41 @@ class _AboutSectionState extends State<AboutSection> {
       duration: Duration(seconds: 1), // Duration of the fade-in animation
       curve: Curves.easeInOut, // Curve for the animation
       child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 100,
-            ),
-            CustomOutlineButton(title: "About", onTap: () {}),
-            SizedBox(
-              height: 12,
-            ),
-            Text(
-              "Who I Am",
-              style: TextStyle(
-                  color: colorManager.textColor,
-                  fontSize: width >800 ? 72: width *0.1,
-                  fontWeight: FontWeight.w200,
-                  letterSpacing: 4,
-                  height: 1.2),
-            ),
-            Text(
-              "Hello I am Mosen, a dedicated Full Stack Developer and Designer with over three years of experience in creating dynamic and visually appealing applications and websites. My technical expertise includes Flutter, WordPress, Next.js, JavaScript, and Ruby on Rails, allowing me to effectively bridge the gap between front-end and back-end development. With a strong background in graphic design, I focus on user-centric design principles to achieve a seamless blend of functionality and aesthetics.\n \nI am passionate about solving complex challenges and am driven by a commitment to deliver outstanding results, whether in a team setting or independently. As a lifelong learner, I am constantly exploring new technologies and methodologies to enhance my skills and contribute to project success. Thank you for visiting my portfolio. I am excited about the opportunity to collaborate on future projects. Please feel free to reach out with any questions or opportunities!",
-              style: TextStyle(
-                  color: colorManager.textColor,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w200,
-                  letterSpacing: 4),
-            ),
-            SizedBox(
-              height: 32,
-            ),
-           
-          ],
+        child:Padding(
+          padding:width>500 ? EdgeInsets.symmetric(horizontal: 0):EdgeInsets.only(left: 8, top: 40, right: 8),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+             
+              CustomOutlineButton(title: "About", onTap: () {}),
+              SizedBox(
+                height: 12,
+              ),
+              Text(
+                "Who I Am",
+                style: TextStyle(
+                    color: colorManager.textColor,
+                    fontSize: width >800 ? 54: width *0.1,
+                    fontWeight: FontWeight.w100,
+                    letterSpacing: 4,
+                    height: 1.2),
+              ),
+              SizedBox(height: 20,),
+              Text(
+                "Hello I am Mosen, a dedicated Full Stack Developer and Designer with over three years of experience in creating dynamic and visually appealing applications and websites. My technical expertise includes Flutter, WordPress, Next.js, JavaScript, and Ruby on Rails, allowing me to effectively bridge the gap between front-end and back-end development. With a strong background in graphic design, I focus on user-centric design principles to achieve a seamless blend of functionality and aesthetics.\n \nI am passionate about solving complex challenges and am driven by a commitment to deliver outstanding results, whether in a team setting or independently. As a lifelong learner, I am constantly exploring new technologies and methodologies to enhance my skills and contribute to project success. Thank you for visiting my portfolio. I am excited about the opportunity to collaborate on future projects. Please feel free to reach out with any questions or opportunities!",
+                style: TextStyle(
+                    color: colorManager.textColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w200,
+                    letterSpacing: 4),
+              ),
+              SizedBox(
+                height: 32,
+              ),
+             
+            ],
+          ),
         ),
       ),
     );

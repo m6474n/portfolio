@@ -23,43 +23,49 @@ class DesktopView extends StatelessWidget {
             body: LayoutBuilder(
               builder: (context, constraints) {
                 double width = constraints.maxWidth
-;                return Stack(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 60.0),
-                      child: Row(
-                        children: [
-                          //  Profile Card (fixed)
-                          ProfileCard(),
-                          SizedBox(
-                            width: width * 0.04,
+                // double width = 1366
+;                return Center(
+  child: Container(
+    width: width,
+    child: Stack(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 80),
+                          child: Row(
+                            children: [
+                              //  Profile Card (fixed)
+                              ProfileCard(),
+                              SizedBox(
+                                width: width * 0.04,
+                              ),
+                              // Web View
+                              Expanded(
+                                flex: 3,
+                                child: Home(),
+                              ),
+                              SizedBox(
+                                width: 80,
+                                child: Center(
+                                    child: Container(
+                                        height: 350,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(left: 30.0),
+                                          child: FloatingNavbar(),
+                                        ))),
+                              )
+                            ],
                           ),
-                          // Web View
-                          Expanded(
-                            flex: 3,
-                            child: Home(),
-                          ),
-                          SizedBox(
-                            width: 80,
-                            child: Center(
-                                child: Container(
-                                    height: 350,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(left: 30.0),
-                                      child: FloatingNavbar(),
-                                    ))),
-                          )
-                        ],
-                      ),
+                        ),
+                      //   AnimatedContainer(
+                      //     height:colorManager.isLoggedin? constraints.maxHeight:0,
+                      //     width: constraints.maxWidth,
+                      //     duration: Duration(milliseconds: 600),
+                      //     decoration: BoxDecoration(color: colorManager.bgColor),
+                      //  )
+                      ],
                     ),
-                  //   AnimatedContainer(
-                  //     height:colorManager.isLoggedin? constraints.maxHeight:0,
-                  //     width: constraints.maxWidth,
-                  //     duration: Duration(milliseconds: 600),
-                  //     decoration: BoxDecoration(color: colorManager.bgColor),
-                  //  )
-                  ],
-                );
+  ),
+);
               }
             ));
       }

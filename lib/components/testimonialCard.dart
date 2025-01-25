@@ -57,10 +57,12 @@ class _TestimonialCardState extends State<TestimonialCard> {
             width: 1,
             color: colorManager.borderColor,
           ),
-          borderRadius: BorderRadius.circular(32)),
+          borderRadius: BorderRadius.circular(26)),
       child: SingleChildScrollView(
         controller: _scrollController,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             width > 500
                 ? Row(
@@ -156,6 +158,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
             SizedBox(height: 24),
             Text(
               '"${widget.testimonial.message}"',
+               textAlign: TextAlign.left,
               style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w200,

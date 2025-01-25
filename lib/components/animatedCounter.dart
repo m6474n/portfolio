@@ -28,7 +28,7 @@ class AnimatedCounter extends StatelessWidget {
                 Text(
                     '$value+',
                     style: TextStyle(
-                        fontSize: 72,
+                        fontSize: 54,
                         fontWeight: FontWeight.w900,
                         color: colorManager.primaryColor, height: 1),textAlign: TextAlign.center,
                   ),
@@ -36,7 +36,7 @@ class AnimatedCounter extends StatelessWidget {
                 Text(
                   '$title',
                   style: TextStyle(
-                      fontSize: 22,
+                      fontSize: 20,
                       fontWeight: FontWeight.w200,
                       color: colorManager.textColor, letterSpacing: 3),textAlign: TextAlign.center,
                 )

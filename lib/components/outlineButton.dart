@@ -15,8 +15,8 @@ class CustomOutlineButton extends StatelessWidget {
           border: Border.all(width: 1, color: color??colorManager.borderColor),
           borderRadius: BorderRadius.circular(40)),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
-        child: Text(title, style: TextStyle(color:color?? colorManager.textColor, fontSize: 12),),
+        padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 8),
+        child: Text(title, style: TextStyle(color:color?? colorManager.textColor, fontSize: 10),),
       ),
     );
   }

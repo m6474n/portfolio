@@ -43,7 +43,7 @@ class _ProjectCardState extends State<ProjectCard> {
             Align(
               alignment: Alignment.bottomCenter,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(32),
+                borderRadius: BorderRadius.circular(26),
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
                   child: AnimatedContainer(
@@ -83,7 +83,7 @@ class _ProjectCardState extends State<ProjectCard> {
                                             letterSpacing: 2),
                                       ),
                                       SizedBox(
-                                        height: 12,
+                                        height: 8,
                                       ),
                                       Wrap(
                                         direction: Axis.horizontal,

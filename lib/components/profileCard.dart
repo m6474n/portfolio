@@ -49,7 +49,7 @@ var auth = Get.put(AuthController()
                       width: width < AppSettings.mobileWidth ? width : 400,
                       // height: width < AppSettings.mobileWidth ? 350 : height * 0.8,
                       constraints: BoxConstraints(minWidth: 400),
-                      padding: EdgeInsets.all(42),
+                      padding: EdgeInsets.all(24),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(52),
                           border:

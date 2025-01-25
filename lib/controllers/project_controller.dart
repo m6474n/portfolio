@@ -6,7 +6,8 @@ class ProjectController  extends GetxController{
     {
       'title': 'Project 1',
       'description': 'Project 1 is an innovative real estate platform designed to simplify the home buying and selling process.',
-      'image': 'assets/images/portfolio1.jpg',
+      // 'image': 'assets/images/portfolio1.jpg',
+      'image': 'assets/images/Next js Portfolio.png',
       'tech':[
         'Figma',
         'WordPress',

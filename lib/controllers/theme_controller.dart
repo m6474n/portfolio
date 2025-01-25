@@ -19,9 +19,12 @@ class ColorManager extends GetxController {
   String currency = "\$";
   String StoreLogo = 'assets/logo-light.png';
 
-   Color primaryColor= Color(0xFF03DAC5);
-   Color bgColor= Color(0xffffffff); 
-    Color textColor = const Color.fromRGBO(22, 22, 22, 1);
+   Color primaryColor= Color.fromARGB(255, 255, 148, 7);
+  //  Color primaryColor= Color(0xFF03DAC5);
+  //  Color bgColor= Color(0xffffffff); 
+   Color bgColor= Color.fromARGB(255, 20, 20, 20); 
+    Color textColor = const Color.fromARGB(255, 255, 255, 255);
+    // Color textColor = const Color.fromRGBO(22, 22, 22, 1);
   Color iconColor = const Color.fromARGB(255, 242, 148, 6);
   // Color iconColor = const Color(0xffEA7C69);
   Color whiteColor = Colors.white;
@@ -30,7 +33,8 @@ class ColorManager extends GetxController {
   Color greyText = Colors.grey.shade200;
   Color bgLight = const Color.fromARGB(255, 244, 244, 244);
   // Color bgLight = const Color.fromARGB(255, 237, 237, 237);
-  Color bgDark = const Color.fromARGB(255, 255, 255, 255);
+  Color bgDark = const Color.fromARGB(255, 0, 0, 0);
+  // Color bgDark = const Color.fromARGB(255, 255, 255, 255);
   Color borderColor = Color.fromARGB(255, 176, 176, 176);
 
   lightTheme() {
@@ -127,7 +131,8 @@ static double mobileWidth = 1220;
     const AboutSection(),
     const ResumeSection(),
     const ServiceSection(),
-    const SkillsSection(),
+    
+     const SkillsSection(),
     const PortfolioSection(),
     const TestimonialSection(),
     const ContactSection(),

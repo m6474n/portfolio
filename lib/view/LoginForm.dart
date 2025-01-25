@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:lottie/lottie.dart';
 import 'package:portfolio/components/CustomInputField%20copy.dart';
 import 'package:portfolio/components/CustomRoundedButton.dart';
 import 'package:portfolio/components/socialIcon.dart';
