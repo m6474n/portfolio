@@ -6,13 +6,13 @@ class ProjectController  extends GetxController{
     {
       'title': 'Tailor Book',
       'link': 'https://github.com/m6474n',
-      'description': 'Project 1 is an innovative real estate platform designed to simplify the home buying and selling process.',
+      'description': 'Tailor Book is the ultimate app for tailors to manage their business efficiently.and helps you keep track of all your records seamlessly.',
       // 'image': 'assets/images/portfolio1.jpg',
-      'image': 'assets/images/Next js Portfolio.png',
+      'image': 'assets/images/Tailor Book.png',
       'tech':[
-        'Figma',
-        'WordPress',
-        'Elementor'
+        'Dart',
+        'Flutter',
+        'Firebase',
       ]
     },
      {
