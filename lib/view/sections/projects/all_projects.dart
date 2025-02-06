@@ -38,6 +38,7 @@ class _AllProjectsState extends State<AllProjects> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: colorManager.bgColor,
       body: AnimatedOpacity(
         opacity: _opacity,
         duration: Duration(seconds: 1),
@@ -46,6 +47,7 @@ class _AllProjectsState extends State<AllProjects> {
             init: ProjectController(),
             builder: (cont) {
               return SingleChildScrollView(
+              
                 child: Column(
                 
                   mainAxisAlignment: MainAxisAlignment.start,
